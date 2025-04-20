@@ -9,7 +9,7 @@ import {
   NormalText,
   SoftTitle,
 } from "./Details.style";
-import { AppTitle, JoinText } from "@/constants";
+import { AppTitle, JoinText, FeedbackText, EmailText } from "@/constants";
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
@@ -63,11 +63,11 @@ const Details = () => {
             {JoinText}
           </BottomButton>
           <InputWithTitle>
-            <NormalText>Test</NormalText>
+            <NormalText>{EmailText}</NormalText>
             <CustomInput onChange={handleEmailChange} value={email} />
           </InputWithTitle>
           <InputWithTitle>
-            <NormalText>Test</NormalText>
+            <NormalText>{FeedbackText}</NormalText>
             <CustomInput onChange={handleFeedbackChange} value={feedback} />
           </InputWithTitle>
         </InputContainer>
