@@ -4,8 +4,8 @@ const SimpleButton = ({
   onClick,
   buttonText,
 }: {
-  onClick: any;
-  buttonText: any;
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
+  buttonText: string;
 }) => {
   return <StyledButton onClick={onClick}>{buttonText}</StyledButton>;
 };
