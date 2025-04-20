@@ -1,4 +1,4 @@
-import StyledComponentsRegistry from "./lib/registry";
+import StyledComponentsRegistry from "../lib/registry";
 
 export const metadata = {
   title: "Next.js",
