@@ -1,0 +1,19 @@
+name: Deploy Frontend on Release
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Connect via SSH and deploy
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: "[${{ secrets.SERVER_IPV6 }}]"
+          username: ${{ secrets.SERVER_USER }}
+          password: ${{ secrets.SERVER_PASSWORD }}
+          script: |
+            /root/why/update_frontend.sh
