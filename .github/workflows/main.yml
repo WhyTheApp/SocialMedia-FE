@@ -15,5 +15,6 @@ jobs:
           host: ${{ secrets.SERVER_IPV6 }} 
           username: ${{ secrets.SERVER_USER }}
           password: ${{ secrets.SERVER_PASSWORD }}
+          protocol: tcp6
           script: |
             /root/why/update_frontend.sh
