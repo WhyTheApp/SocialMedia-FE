@@ -1,0 +1,31 @@
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+import validPaths from "../validPaths.json";
+
+export function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl;
+
+  if (
+    pathname.startsWith("/api/") ||
+    pathname.startsWith("/_next/") ||
+    pathname.includes(".") // Skip static files (e.g., .js, .css, .png)
+  ) {
+    return NextResponse.next();
+  }
+
+  console.log("middleware: pathname " + pathname);
+  console.log(validPaths);
+  const isValidPath = validPaths.includes(pathname);
+
+  if (!isValidPath) {
+    const url = request.nextUrl.clone();
+    url.pathname = "/home";
+    return NextResponse.redirect(url);
+  }
+
+  return NextResponse.next();
+}
+
+export const config = {
+  matcher: "/:path*",
+};
