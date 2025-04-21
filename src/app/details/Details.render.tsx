@@ -10,7 +10,15 @@ import {
   SoftTitle,
   StyledCheckbox,
 } from "./Details.style";
-import {AppTitle, JoinText, FeedbackText, EmailText, AgreeText, PrivacyPolicyText, PromiseText} from "@/constants";
+import {
+  AppTitle,
+  JoinText,
+  FeedbackText,
+  EmailText,
+  AgreeText,
+  PrivacyPolicyText,
+  PromiseText,
+} from "@/constants";
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
@@ -61,10 +69,6 @@ const Details = () => {
       <CenteredContainer>
         <SoftTitle>{AppTitle}</SoftTitle>
         <InputContainer>
-          <BottomCutout />
-          <BottomButton onClick={sendEmail} disabled={loading}>
-            {JoinText}
-          </BottomButton>
           <InputWithTitle>
             <NormalText>{EmailText}</NormalText>
             <CustomInput onChange={handleEmailChange} value={email} />
@@ -86,9 +90,12 @@ const Details = () => {
             </a>
             .
           </label>
-          <label>
-            {PromiseText}
-          </label>
+          <label>{PromiseText}</label>
+
+          <BottomCutout />
+          <BottomButton onClick={sendEmail} disabled={loading}>
+            {JoinText}
+          </BottomButton>
         </InputContainer>
       </CenteredContainer>
     </BackgroundContainer>
