@@ -35,4 +35,19 @@ export const InputContainer = styled.div`
   border-radius: 30px;
   background-color: ${colors.accent};
   margin: 0 auto;
+  @media (max-width: 1400px) {
+    position: static;
+
+    padding: 20px;
+    width: 60%;
+  }
+
+  @media (max-width: 800px) {
+    position: static;
+
+    overflow: auto;
+
+    padding: 20px;
+    width: 80%;
+  }
 `;

@@ -30,6 +30,7 @@ export const InputWithTitle = styled.div`
   text-align: left;
   width: 100%;
   margin: 0 auto;
+  gap: 5px;
 `;
 
 export const InputContainer = styled.div`
