@@ -44,6 +44,11 @@ export const InputContainer = styled.div`
   border-radius: 30px;
   background-color: ${colors.accent};
   margin: 0 auto;
+
+  @media (max-width: 1400px) {
+    padding: 20px;
+    width: 60%;
+  }
 `;
 
 export const BottomCutout = styled.div`
@@ -52,8 +57,13 @@ export const BottomCutout = styled.div`
   border-top-left-radius: 30px;
   background-color: ${colors.gradientMidpoint};
   position: absolute;
-  right: 0;
   bottom: 0;
+  right: 0;
+
+  @media (max-width: 1700px) {
+    display: none;
+    position: relative;
+  }
 `;
 
 export const BottomButton = styled.button`
@@ -72,6 +82,12 @@ export const BottomButton = styled.button`
   right: 0;
   bottom: 0;
   background-color: ${colors.accent};
+
+  @media (max-width: 1700px) {
+    position: static;
+    background-color: ${colors.gradientMidpoint};
+    color: ${colors.textSoft};
+  }
 `;
 
 export const CustomInput = styled.input`
