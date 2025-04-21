@@ -90,3 +90,37 @@ export const CustomInput = styled.input`
   border: none;
   outline: none;
 `;
+
+export const StyledCheckbox = styled.input.attrs({ type: "checkbox" })`
+  width: 16px;
+  height: 16px;
+  accent-color: ${colors.gradientMidpoint};
+  border-radius: 4px;
+  appearance: none;
+  background-color: white;
+  border: 1.5px solid #aaa;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  justify-self: center;
+  align-self: center;
+  margin-right: 5px;
+  margin-bottom: 0px;
+
+  &:checked {
+    background-color: ${colors.gradientMidpoint};
+    border-color: ${colors.gradientMidpoint};
+  }
+
+  &:checked::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 5px;
+    width: 4px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+`;
