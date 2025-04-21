@@ -8,8 +8,9 @@ import {
   InputWithTitle,
   NormalText,
   SoftTitle,
+  StyledCheckbox,
 } from "./Details.style";
-import { AppTitle, JoinText, FeedbackText, EmailText } from "@/constants";
+import {AppTitle, JoinText, FeedbackText, EmailText, AgreeText, PrivacyPolicyText, PromiseText} from "@/constants";
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
@@ -17,6 +18,7 @@ import { useRouter } from "next/navigation";
 const Details = () => {
   const [email, setEmail] = useState("");
   const [feedback, setFeedback] = useState("");
+  const [checked, setIsChecked] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const router = useRouter();
@@ -29,6 +31,7 @@ const Details = () => {
   };
 
   const sendEmail = async () => {
+    if (checked == false) return;
     if (email.length < 3) return;
     setLoading(true);
 
@@ -70,6 +73,22 @@ const Details = () => {
             <NormalText>{FeedbackText}</NormalText>
             <CustomInput onChange={handleFeedbackChange} value={feedback} />
           </InputWithTitle>
+          <label>
+            <StyledCheckbox
+              id="consent"
+              checked={checked}
+              onChange={(e) => setIsChecked(e.target.checked)}
+              required
+            />
+            {AgreeText}{" "}
+            <a href="/privacy" target="_blank">
+              {PrivacyPolicyText}
+            </a>
+            .
+          </label>
+          <label>
+            {PromiseText}
+          </label>
         </InputContainer>
       </CenteredContainer>
     </BackgroundContainer>
