@@ -46,8 +46,23 @@ export const InputContainer = styled.div`
   margin: 0 auto;
 
   @media (max-width: 1400px) {
+    position: static;
+    justify-content: flex-start;
+
     padding: 20px;
+    height: 70%;
     width: 60%;
+  }
+
+  @media (max-width: 800px) {
+    position: static;
+    justify-content: flex-start;
+
+    overflow: auto;
+
+    padding: 20px;
+    height: 70%;
+    width: 80%;
   }
 `;
 
@@ -88,6 +103,13 @@ export const BottomButton = styled.button`
     background-color: ${colors.gradientMidpoint};
     color: ${colors.textSoft};
   }
+
+  @media (max-width: 1000px) {
+    position: static;
+    height: 100px;
+    background-color: ${colors.gradientMidpoint};
+    color: ${colors.textSoft};
+  }
 `;
 
 export const CustomInput = styled.input`
@@ -105,6 +127,10 @@ export const CustomInput = styled.input`
 
   border: none;
   outline: none;
+
+  @media (max-width: 800px) {
+    width: 80%;
+  }
 `;
 
 export const StyledCheckbox = styled.input.attrs({ type: "checkbox" })`
