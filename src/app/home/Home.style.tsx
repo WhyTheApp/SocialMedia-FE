@@ -16,3 +16,10 @@ export const SoftTitle = styled.text`
   font-weight: 200;
   font-size: 21px;
 `;
+
+export const SoftText = styled.text`
+  color: ${colors.textSoft};
+  font-weight: 400;
+  font-size: 18px;
+  margin-top: -20px;
+`;
