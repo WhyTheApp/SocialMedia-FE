@@ -11,13 +11,13 @@ export const CenteredContainer = styled.div`
   justify-content: center;
 `;
 
-export const SoftTitle = styled.text`
+export const SoftTitle = styled.p`
   color: ${colors.textSoft};
   font-weight: 200;
   font-size: 21px;
 `;
 
-export const NormalText = styled.text`
+export const NormalText = styled.p`
   color: white;
   font-weight: 500;
   font-size: 15px;

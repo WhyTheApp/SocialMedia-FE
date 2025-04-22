@@ -11,16 +11,20 @@ export const CenteredContainer = styled.div`
   justify-content: center;
 `;
 
-export const SoftTitle = styled.text`
+export const SoftTitle = styled.p`
   color: ${colors.textSoft};
   font-weight: 200;
   font-size: 21px;
 `;
 
-export const NormalText = styled.text`
-  color: ${colors.text};
+export const NormalText = styled.p`
+  color: ${colors.text2};
   font-weight: 500;
   font-size: 15px;
+`;
+
+export const StyledLabel = styled.label`
+  color: ${colors.text2};
 `;
 
 export const InputWithTitle = styled.div`
@@ -37,20 +41,23 @@ export const InputContainer = styled.div`
   position: relative;
   height: 50%;
   width: 40%;
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  align-items: center;
-  justify-content: center;
+  min-height: 200px;
+  min-width: 300px;
   border-radius: 30px;
-  background-color: ${colors.accent};
-  margin: 0 auto;
+  overflow: hidden;
+
+  @media (max-width: 1700px) {
+    position: static;
+    justify-content: flex-start;
+
+    height: 70%;
+    width: 60%;
+  }
 
   @media (max-width: 1400px) {
     position: static;
     justify-content: flex-start;
 
-    padding: 20px;
     height: 70%;
     width: 60%;
   }
@@ -61,9 +68,51 @@ export const InputContainer = styled.div`
 
     overflow: auto;
 
-    padding: 20px;
     height: 70%;
     width: 80%;
+  }
+`;
+
+export const InputInner = styled.div`
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  background-color: ${colors.accent};
+  background: linear-gradient(135deg, #111, #222);
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.05;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noisy' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noisy)' opacity='1'/%3E%3C/svg%3E");
+  }
+  margin: 0 auto;
+  overflow: auto;
+  @media (max-width: 1400px) {
+    position: static;
+    justify-content: flex-start;
+
+    padding: 20px;
+  }
+
+  @media (max-width: 800px) {
+    position: static;
+    justify-content: flex-start;
+
+    overflow: auto;
+
+    padding: 20px;
   }
 `;
 
@@ -97,19 +146,20 @@ export const BottomButton = styled.button`
   position: absolute;
   right: 0;
   bottom: 0;
-  background-color: ${colors.accent};
+  background-color: #222;
+  color: ${colors.text2};
 
   @media (max-width: 1700px) {
     position: static;
     background-color: ${colors.gradientMidpoint};
-    color: ${colors.textSoft};
+    color: ${colors.text2};
   }
 
   @media (max-width: 1000px) {
     position: static;
     height: 100px;
     background-color: ${colors.gradientMidpoint};
-    color: ${colors.textSoft};
+    color: ${colors.text2};
   }
 `;
 

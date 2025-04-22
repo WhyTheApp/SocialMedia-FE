@@ -5,10 +5,12 @@ import {
   CenteredContainer,
   CustomInput,
   InputContainer,
+  InputInner,
   InputWithTitle,
   NormalText,
   SoftTitle,
   StyledCheckbox,
+  StyledLabel,
 } from "./Details.style";
 import {
   AppTitle,
@@ -69,33 +71,35 @@ const Details = () => {
       <CenteredContainer>
         <SoftTitle>{AppTitle}</SoftTitle>
         <InputContainer>
-          <InputWithTitle>
-            <NormalText>{EmailText}</NormalText>
-            <CustomInput onChange={handleEmailChange} value={email} />
-          </InputWithTitle>
-          <InputWithTitle>
-            <NormalText>{FeedbackText}</NormalText>
-            <CustomInput onChange={handleFeedbackChange} value={feedback} />
-          </InputWithTitle>
-          <label>
-            <StyledCheckbox
-              id="consent"
-              checked={checked}
-              onChange={(e) => setIsChecked(e.target.checked)}
-              required
-            />
-            {AgreeText}{" "}
-            <a href="/privacy" target="_blank">
-              {PrivacyPolicyText}
-            </a>
-            .
-          </label>
-          <label>{PromiseText}</label>
+          <InputInner>
+            <InputWithTitle>
+              <NormalText>{EmailText}</NormalText>
+              <CustomInput onChange={handleEmailChange} value={email} />
+            </InputWithTitle>
+            <InputWithTitle>
+              <NormalText>{FeedbackText}</NormalText>
+              <CustomInput onChange={handleFeedbackChange} value={feedback} />
+            </InputWithTitle>
+            <StyledLabel>
+              <StyledCheckbox
+                id="consent"
+                checked={checked}
+                onChange={(e) => setIsChecked(e.target.checked)}
+                required
+              />
+              {AgreeText}{" "}
+              <a href="/privacy" target="_blank">
+                {PrivacyPolicyText}
+              </a>
+              .
+            </StyledLabel>
+            <StyledLabel>{PromiseText}</StyledLabel>
 
-          <BottomCutout />
-          <BottomButton onClick={sendEmail} disabled={loading}>
-            {JoinText}
-          </BottomButton>
+            <BottomCutout />
+            <BottomButton onClick={sendEmail} disabled={loading}>
+              {JoinText}
+            </BottomButton>
+          </InputInner>
         </InputContainer>
       </CenteredContainer>
     </BackgroundContainer>
