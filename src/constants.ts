@@ -7,6 +7,7 @@ export const FeedbackText = "Anything else you wish from the app";
 
 export const ReadText = "Read more ";
 export const AboutUsText = "about Why";
+export const AboutUsTitle = "Our goal";
 
 export const AgreeText =
   "I agree to the processing of my personal data in accordance with the ";

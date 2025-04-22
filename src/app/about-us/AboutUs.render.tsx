@@ -11,14 +11,14 @@ import {
   NormalText,
   SoftTitle,
 } from "./AboutUs.style";
-import { AboutUsCards, AppTitle, ThankYouText } from "@/constants";
+import { AboutUsCards, AppTitle, AboutUsTitle } from "@/constants";
 
 const ThankYou = () => {
   return (
     <BackgroundContainer>
       <SoftTitle>{AppTitle}</SoftTitle>
       <CenteredContainer>
-        <HardTitle>Our goal</HardTitle>
+        <HardTitle>{AboutUsTitle}</HardTitle>
         <CardsContainer>
           <CardGrid1>
             <InputContainer>
