@@ -1,4 +1,4 @@
-import { NavButtonProps, PathToIcon } from "@/constants";
+import { NavButtonProps, PathToIcon } from "@/constants";   
 import { NavButtonContainer, NavText } from "./NavigationButton.style";
 
 const NavigationButton = ({ Text, Path, Active, setTab }: NavButtonProps) => {

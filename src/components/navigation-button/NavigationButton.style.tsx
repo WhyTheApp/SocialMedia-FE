@@ -12,4 +12,7 @@ export const NavText = styled.span<{ $active?: boolean }>`
   font-size: 24px;
   font-family: inherit;
   font-weight: 600;
+  @media (max-width: 1200px) {
+    display: none;
+  }
 `;

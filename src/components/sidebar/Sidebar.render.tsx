@@ -1,6 +1,7 @@
 import { NavigationButtons, PLACEHOLDERS, TabProps } from "@/constants";
 import {
   NavigationContainer,
+  SidebarContainer,
   StyledLogo,
   StyledUserImage,
   UserArea,
@@ -12,7 +13,7 @@ import NavigationButton from "../navigation-button";
 
 const Sidebar = ({ setTab }: TabProps) => {
   return (
-    <>
+    <SidebarContainer>
       <StyledLogo />
       <UserArea>
         <StyledUserImage />
@@ -33,7 +34,7 @@ const Sidebar = ({ setTab }: TabProps) => {
           />
         ))}
       </NavigationContainer>
-    </>
+    </SidebarContainer>
   );
 };
 

@@ -22,24 +22,47 @@ export const CenterDivider = styled.div`
 `;
 
 export const SidebarContainer = styled.div`
-  width: 30%;
+  width: 35%;
   padding-left: 30px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 
   @media (max-width: 1200px) {
+    padding-left: 10px;
+    align-items: center;
     width: 10%;
   }
-  @media (max-width: 750px) {
-    display: none;
+
+  @media (max-width: 900px) {
+    padding-left: 10px;
+    align-items: center;
+    width: 15%;
+  }
+
+  @media (max-width: 7500px) {
+    padding-left: 10px;
+    align-items: center;
+    width: 20%;
   }
 `;
 
 export const MainContainer = styled.div`
-  width: 70%;
+  width: 65%;
   padding: 20px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   @media (max-width: 1200px) {
     width: 90%;
   }
+  @media (max-width: 900px) {
+    width: 85%;
+  }
+
   @media (max-width: 750px) {
-    width: 100%;
+    width: 80%;
   }
 `;
