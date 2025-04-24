@@ -43,4 +43,9 @@ export const UsernameHandle = styled.p`
   align-self: flex-start;
 `;
 
-export const NavigationContainer = styled.div``;
+export const NavigationContainer = styled.div`
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+`;

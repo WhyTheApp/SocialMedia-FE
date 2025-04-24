@@ -1,4 +1,4 @@
-import { PLACEHOLDERS } from "@/constants";
+import { NavigationButtons, PLACEHOLDERS, TabProps } from "@/constants";
 import {
   NavigationContainer,
   StyledLogo,
@@ -8,8 +8,9 @@ import {
   UsernameHandle,
   UsernameText,
 } from "./Sidebar.style";
+import NavigationButton from "../navigation-button";
 
-const Sidebar = () => {
+const Sidebar = ({ setTab }: TabProps) => {
   return (
     <>
       <StyledLogo />
@@ -21,7 +22,17 @@ const Sidebar = () => {
         </UserDetails>
       </UserArea>
 
-      <NavigationContainer></NavigationContainer>
+      <NavigationContainer>
+        {NavigationButtons.map(({ Text, Path, Active }) => (
+          <NavigationButton
+            key={Text + Path + (Active ? "active" : "inactive")}
+            Text={Text}
+            Path={Path}
+            Active={Active}
+            setTab={setTab}
+          />
+        ))}
+      </NavigationContainer>
     </>
   );
 };

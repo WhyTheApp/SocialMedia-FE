@@ -44,7 +44,7 @@ const Home = () => {
       <CenterContainer>
         <CenterDivider>
           <SidebarContainer>
-            <Sidebar />
+            <Sidebar setTab={setTab} />
           </SidebarContainer>
           <MainContainer>
             <ActiveTab setTab={setTab} />

@@ -12,12 +12,11 @@ import {
   NormalText,
   SoftTitle,
 } from "./AboutUs.style";
-import { AboutUsCards, AppTitle, AboutUsTitle } from "@/constants";
+import { AboutUsCards, AppTitle, AboutUsTitle, TabProps } from "@/constants";
 
-const AboutUs = () => {
-  return (
-    <BackgroundContainer>
-      <SoftTitle>{AppTitle}</SoftTitle>
+const AboutUs = ({ setTab }: TabProps) => {
+  const pageContent = (
+    <>
       <CenteredContainer>
         <HardTitle>{AboutUsTitle}</HardTitle>
         <CardsContainer>
@@ -55,6 +54,16 @@ const AboutUs = () => {
           </CardGrid2>
         </CardsContainer>
       </CenteredContainer>
+    </>
+  );
+
+  return setTab ? (
+    pageContent
+  ) : (
+    <BackgroundContainer>
+      <SoftTitle>{AppTitle}</SoftTitle>
+
+      {pageContent}
     </BackgroundContainer>
   );
 };

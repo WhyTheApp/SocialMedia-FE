@@ -1,11 +1,12 @@
 import styled from "styled-components";
-import { colors } from "../theme";
+import { colors } from "../../app/theme";
 
 export const CenteredContainer = styled.div`
   height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
+
   gap: 30px;
   align-items: center;
   justify-content: center;
