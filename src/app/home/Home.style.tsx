@@ -1,18 +1,45 @@
 import styled from "styled-components";
-import { colors } from "../theme";
 
-export const CenteredContainer = styled.div`
-  height: 100%;
+export const CenterContainer = styled.div`
   width: 100%;
+  height: 100%;
   display: flex;
-  flex-direction: column;
-  gap: 30px;
-  align-items: center;
   justify-content: center;
 `;
 
-export const SoftTitle = styled.text`
-  color: ${colors.textSoft};
-  font-weight: 200;
-  font-size: 21px;
+export const CenterDivider = styled.div`
+  width: 70%;
+  height: 100%;
+  display: flex;
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+
+  @media (max-width: 1200px) {
+    width: 100%;
+    border-left: none;
+    border-right: none;
+  }
+`;
+
+export const SidebarContainer = styled.div`
+  width: 30%;
+  padding-left: 30px;
+
+  @media (max-width: 1200px) {
+    width: 10%;
+  }
+  @media (max-width: 750px) {
+    display: none;
+  }
+`;
+
+export const MainContainer = styled.div`
+  width: 70%;
+  padding: 20px;
+  @media (max-width: 1200px) {
+    width: 90%;
+  }
+  @media (max-width: 750px) {
+    width: 100%;
+  }
 `;

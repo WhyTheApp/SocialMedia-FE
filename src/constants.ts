@@ -1,3 +1,9 @@
+import Privacy from "./app/privacy/page";
+import ThankYou from "./app/thank-you/page";
+import Details from "./pages/details/page";
+import Waitlist from "./pages/waitlist/page";
+import {Dispatch, SetStateAction} from "react";
+
 export const JoinText = "Join us";
 export const AppTitle = "why - the app";
 export const ThankYouText =
@@ -5,9 +11,42 @@ export const ThankYouText =
 export const EmailText = "Email";
 export const FeedbackText = "Anything else you wish from the app";
 
-export const AgreeText = "I agree to the processing of my personal data in accordance with the ";
+export const ReadText = "Read more ";
+export const AboutUsText = "about Why";
+export const AboutUsTitle = "Our goal";
+
+export const AgreeText =
+  "I agree to the processing of my personal data in accordance with the ";
 export const PrivacyPolicyText = "Privacy Policy";
-export const PromiseText = "(We promise we're good, you can check the privacy policy)"
+export const PromiseText =
+  "(We promise we're good, you can check the privacy policy)";
+
+export const AboutUsCards = {
+  card1: {
+    title: "PRIVACY FIRST",
+    content:
+      "As a European app, we follow GDPR. Your data is safe - no TikTok-style risks.",
+    footer: "Trust matters.",
+  },
+  card2: {
+    title: "FREE SPEECH",
+    content:
+      "Speak freely. Left, right or center. No instagram bias, no X silencing.",
+    footer: "Your voice counts.",
+  },
+  card3: {
+    title: "USER OWNED",
+    content:
+      "Why’s not corporate. It’s YOURS. Built for users, not for profits. No Reddit-style sellouts here.",
+    footer: "Shape your social media app.",
+  },
+  card4: {
+    title: "JOIN US",
+    content:
+      "We need your help. We need YOU to shape your social media app. Leave us your feedback on the main page of whythe.app. It’s worth it, I promise.",
+    footer: "",
+  },
+};
 
 export const GDPRText = `Privacy Policy
 Effective Date: 20 April 2025
@@ -82,3 +121,21 @@ If you have any questions about this Privacy Policy or your personal data, pleas
 Why the app
 Email: letstalk@whythe.app
 Website: https://whythe.app`;
+
+export type TabKey = "thank-you" | "privacy" | "details" | "waitlist";
+
+export type TabProps = {
+  setTab?: Dispatch<SetStateAction<TabKey>>;
+};
+
+export const TabComponents: Record<TabKey, React.FC<TabProps>> = {
+  "thank-you": ThankYou,
+  privacy: Privacy,
+  details: Details,
+  waitlist: Waitlist,
+};
+
+export const PLACEHOLDERS = {
+  UserName: "Your future username",
+  UserHandle: "@YourFutureHandle",
+};
