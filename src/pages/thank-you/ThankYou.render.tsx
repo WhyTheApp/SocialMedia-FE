@@ -5,7 +5,8 @@ import {
   NormalText,
   SoftTitle,
 } from "./ThankYou.style";
-import { AppTitle, TabProps, ThankYouText } from "@/constants";
+import { AppTitle, ThankYouText } from "@/CONSTANTS/ui.constants";
+import { TabProps } from "@/CONSTANTS/navigation.constants";
 
 const ThankYou = ({ setTab }: TabProps) => {
   const pageContent = (
@@ -16,7 +17,6 @@ const ThankYou = ({ setTab }: TabProps) => {
       </InputContainer>
     </CenteredContainer>
   );
-
   return setTab ? (
     pageContent
   ) : (

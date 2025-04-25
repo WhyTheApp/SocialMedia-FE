@@ -15,11 +15,17 @@ export const SidebarContainer = styled.div`
   @media (max-width: 1200px) {
     align-items: center;
   }
+  @media (max-width: 750px) {
+    flex-direction: row;
+  }
 `;
 
 export const StyledLogo = styled(Logo)`
   width: ${LogoSize};
   height: ${LogoSize};
+  @media (max-width: 750px) {
+    display: none;
+  }
 `;
 
 export const StyledUserImage = styled(UserImage)`
@@ -37,7 +43,7 @@ export const UserArea = styled.div`
   display: flex;
   flex-direction: row;
   gap: 20px;
-  width: 100%;
+  width: 70%;
 `;
 
 export const UserDetails = styled.div`
@@ -46,7 +52,7 @@ export const UserDetails = styled.div`
   max-height: ${UserImageSize};
   gap: 5px;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: flex-start;
 
   @media (max-width: 1200px) {
     display: none;
@@ -76,5 +82,8 @@ export const NavigationContainer = styled.div`
 
   @media (max-width: 1200px) {
     padding: 25px;
+  }
+  @media (max-width: 750px) {
+    flex-direction: row;
   }
 `;

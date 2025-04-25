@@ -41,7 +41,7 @@ export const NormalText = styled.p`
 
 export const CardsContainer = styled.div`
   height: 60%;
-  width: 60%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -57,11 +57,11 @@ export const CardGrid1 = styled.div`
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(1, auto);
   gap: 40px;
-  height: 50%;
   width: 100%;
+  height: 100%;
   align-items: center;
 
-  @media (max-width: 1400px) {
+  @media (max-width: 1450px) {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -72,14 +72,14 @@ export const CardGrid1 = styled.div`
 `;
 export const CardGrid2 = styled.div`
   display: grid;
+  grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(1, auto);
   gap: 40px;
-  height: 50%;
   width: 100%;
+  height: 100%;
+  align-items: center;
 
-  grid-template-columns: calc(75% - 40px) 25%;
-
-  @media (max-width: 1400px) {
+    @media (max-width: 1450px) {
     display: flex;
     flex-direction: column;
     width: 100%;

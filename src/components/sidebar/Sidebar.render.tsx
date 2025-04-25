@@ -1,4 +1,3 @@
-import { NavigationButtons, PLACEHOLDERS, TabProps } from "@/constants";
 import {
   NavigationContainer,
   SidebarContainer,
@@ -10,6 +9,8 @@ import {
   UsernameText,
 } from "./Sidebar.style";
 import NavigationButton from "../navigation-button";
+import { PLACEHOLDERS } from "@/CONSTANTS/placeholders.constants";
+import { NavigationButtons, TabProps } from "@/CONSTANTS/navigation.constants";
 
 const Sidebar = ({ setTab }: TabProps) => {
   return (

@@ -6,9 +6,9 @@ import {
   MainContainer,
 } from "./Home.style";
 import { useEffect, useState } from "react";
-import { TabComponents, TabKey } from "@/constants";
 import { usePathname, useRouter } from "next/navigation";
 import Sidebar from "@/components/sidebar";
+import { TabComponents, TabKey } from "@/CONSTANTS/navigation.constants";
 
 const DEFAULT_TAB: TabKey = "waitlist";
 

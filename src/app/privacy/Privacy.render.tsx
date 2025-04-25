@@ -5,7 +5,8 @@ import {
   NormalText,
   SoftTitle,
 } from "./Privacy.style";
-import { AppTitle, GDPRText } from "@/constants";
+import { GDPRText } from "@/CONSTANTS/gdpr.constants";
+import { AppTitle } from "@/CONSTANTS/ui.constants";
 
 const Privacy = () => {
   return (

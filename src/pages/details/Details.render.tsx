@@ -12,19 +12,20 @@ import {
   StyledCheckbox,
   StyledLabel,
 } from "./Details.style";
-import {
-  AppTitle,
-  JoinText,
-  FeedbackText,
-  EmailText,
-  AgreeText,
-  PrivacyPolicyText,
-  PromiseText,
-  TabProps,
-} from "@/constants";
+
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { TabProps } from "@/CONSTANTS/navigation.constants";
+import {
+  AgreeText,
+  AppTitle,
+  EmailText,
+  FeedbackText,
+  JoinText,
+  PrivacyPolicyText,
+  PromiseText,
+} from "@/CONSTANTS/ui.constants";
 
 const Details = ({ setTab }: TabProps) => {
   const [email, setEmail] = useState("");

@@ -10,18 +10,19 @@ import {
   SoftTitle,
   StyledCheckbox,
 } from "./Details.style";
-import {
-  AppTitle,
-  JoinText,
-  FeedbackText,
-  EmailText,
-  AgreeText,
-  PrivacyPolicyText,
-  PromiseText,
-} from "@/constants";
+
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import {
+  AgreeText,
+  AppTitle,
+  EmailText,
+  FeedbackText,
+  JoinText,
+  PrivacyPolicyText,
+  PromiseText,
+} from "@/CONSTANTS/ui.constants";
 
 const Details = () => {
   const [email, setEmail] = useState("");

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { colors } from "@/app/theme";
+import { colors } from "../../app/theme";
 
 export const CenteredContainer = styled.div`
   height: 100%;
@@ -25,8 +25,9 @@ export const NormalText = styled.text`
 
 export const InputContainer = styled.div`
   position: relative;
-  height: 40%;
-  width: 50%;
+  height: 30%;
+  width: 30%;
+  padding: 30px;
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -35,20 +36,4 @@ export const InputContainer = styled.div`
   border-radius: 30px;
   background-color: ${colors.accent};
   margin: 0 auto;
-  padding: 20px;
-
-  @media (max-width: 1400px) {
-    position: static;
-
-    padding: 20px;
-    width: 60%;
-  }
-
-  @media (max-width: 800px) {
-    position: static;
-
-    overflow: auto;
-
-    width: 80%;
-  }
 `;

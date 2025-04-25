@@ -1,14 +1,15 @@
 import BackgroundContainer from "@/components/background";
 import { CenteredContainer, SoftText, SoftTitle } from "./Waitlist.style";
 import SimpleButton from "@/components/simple-button";
+
+import { useRouter } from "next/navigation";
+import { TabProps } from "@/CONSTANTS/navigation.constants";
 import {
   AboutUsText,
   AppTitle,
   JoinText,
   ReadText,
-  TabProps,
-} from "@/constants";
-import { useRouter } from "next/navigation";
+} from "@/CONSTANTS/ui.constants";
 
 const Waitlist = ({ setTab }: TabProps) => {
   const router = useRouter();
