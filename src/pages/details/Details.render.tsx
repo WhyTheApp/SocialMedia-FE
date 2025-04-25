@@ -76,6 +76,7 @@ const Details = ({ setTab }: TabProps) => {
     }
   };
 
+
   const pageContent = (
     <CenteredContainer>
       <SoftTitle>{AppTitle}</SoftTitle>
