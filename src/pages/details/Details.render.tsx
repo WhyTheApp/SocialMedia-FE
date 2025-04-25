@@ -5,15 +5,18 @@ import {
   CenteredContainer,
   CustomInput,
   InputContainer,
+  InputInner,
   InputWithTitle,
   NormalText,
   SoftTitle,
   StyledCheckbox,
+  StyledLabel,
 } from "./Details.style";
 
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { TabProps } from "@/CONSTANTS/navigation.constants";
 import {
   AgreeText,
   AppTitle,
@@ -24,7 +27,7 @@ import {
   PromiseText,
 } from "@/CONSTANTS/ui.constants";
 
-const Details = () => {
+const Details = ({ setTab }: TabProps) => {
   const [email, setEmail] = useState("");
   const [feedback, setFeedback] = useState("");
   const [checked, setIsChecked] = useState(false);
@@ -37,6 +40,14 @@ const Details = () => {
   };
   const handleFeedbackChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFeedback(event.target.value);
+  };
+
+  const handlePageChange = () => {
+    if (setTab) {
+      setTab("thank-you");
+    } else {
+      router.push("/thank-you");
+    }
   };
 
   const sendEmail = async () => {
@@ -55,7 +66,7 @@ const Details = () => {
     try {
       await axios.post(url, data).then((response) => {
         if (response.status === 200 || response.status === 201) {
-          router.push("/thank-you");
+          handlePageChange();
         } else {
           setLoading(false);
         }
@@ -65,11 +76,11 @@ const Details = () => {
     }
   };
 
-  return (
-    <BackgroundContainer>
-      <CenteredContainer>
-        <SoftTitle>{AppTitle}</SoftTitle>
-        <InputContainer>
+  const pageContent = (
+    <CenteredContainer>
+      <SoftTitle>{AppTitle}</SoftTitle>
+      <InputContainer>
+        <InputInner>
           <InputWithTitle>
             <NormalText>{EmailText}</NormalText>
             <CustomInput onChange={handleEmailChange} value={email} />
@@ -78,7 +89,7 @@ const Details = () => {
             <NormalText>{FeedbackText}</NormalText>
             <CustomInput onChange={handleFeedbackChange} value={feedback} />
           </InputWithTitle>
-          <label>
+          <StyledLabel>
             <StyledCheckbox
               id="consent"
               checked={checked}
@@ -90,16 +101,22 @@ const Details = () => {
               {PrivacyPolicyText}
             </a>
             .
-          </label>
-          <label>{PromiseText}</label>
+          </StyledLabel>
+          <StyledLabel>{PromiseText}</StyledLabel>
 
           <BottomCutout />
           <BottomButton onClick={sendEmail} disabled={loading}>
             {JoinText}
           </BottomButton>
-        </InputContainer>
-      </CenteredContainer>
-    </BackgroundContainer>
+        </InputInner>
+      </InputContainer>
+    </CenteredContainer>
+  );
+
+  return setTab ? (
+    pageContent
+  ) : (
+    <BackgroundContainer>{pageContent}</BackgroundContainer>
   );
 };
 

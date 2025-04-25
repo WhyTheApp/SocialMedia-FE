@@ -4,6 +4,7 @@ export const colors = {
   accent: "#BBAA98",
   textSoft: "#777777",
   text: "#00000",
+  text2: "wheat",
   gradientMidpoint: "#19181c",
 };
 
