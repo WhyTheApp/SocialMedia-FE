@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { colors } from "../theme";
+import { colors } from "@/app/theme";
 
 export const CenteredContainer = styled.div`
   height: 100%;
@@ -39,12 +39,20 @@ export const InputWithTitle = styled.div`
 
 export const InputContainer = styled.div`
   position: relative;
-  height: 50%;
-  width: 40%;
+  height: 60%;
+  width: 50%;
   min-height: 200px;
   min-width: 300px;
   border-radius: 30px;
   overflow: hidden;
+
+  @media (max-height: 1710px) {
+    position: static;
+    justify-content: flex-start;
+
+    height: 70%;
+    width: 60%;
+  }
 
   @media (max-width: 1700px) {
     position: static;
@@ -81,10 +89,11 @@ export const InputInner = styled.div`
   flex-direction: column;
   gap: 30px;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   border-radius: 30px;
   background-color: ${colors.accent};
   background: linear-gradient(135deg, #111, #222);
+  padding: 20px;
 
   &::before {
     content: "";
@@ -99,11 +108,10 @@ export const InputInner = styled.div`
   }
   margin: 0 auto;
   overflow: auto;
+
   @media (max-width: 1400px) {
     position: static;
     justify-content: flex-start;
-
-    padding: 20px;
   }
 
   @media (max-width: 800px) {
@@ -111,8 +119,6 @@ export const InputInner = styled.div`
     justify-content: flex-start;
 
     overflow: auto;
-
-    padding: 20px;
   }
 `;
 
@@ -124,6 +130,11 @@ export const BottomCutout = styled.div`
   position: absolute;
   bottom: 0;
   right: 0;
+
+  @media (max-height: 900px) {
+    display: none;
+    position: relative;
+  }
 
   @media (max-width: 1700px) {
     display: none;
@@ -148,6 +159,12 @@ export const BottomButton = styled.button`
   bottom: 0;
   background-color: #222;
   color: ${colors.text2};
+
+  @media (max-height: 900px) {
+    position: static;
+    background-color: ${colors.gradientMidpoint};
+    color: ${colors.text2};
+  }
 
   @media (max-width: 1700px) {
     position: static;
@@ -198,7 +215,7 @@ export const StyledCheckbox = styled.input.attrs({ type: "checkbox" })`
   justify-self: center;
   align-self: center;
   margin-right: 5px;
-  margin-bottom: 0px;
+  margin-bottom: 0;
 
   &:checked {
     background-color: ${colors.gradientMidpoint};

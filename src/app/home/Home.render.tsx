@@ -1,34 +1,56 @@
 import BackgroundContainer from "@/components/background";
-import { CenteredContainer, SoftText, SoftTitle } from "./Home.style";
-import SimpleButton from "@/components/simple-button";
-import { AboutUsText, AppTitle, JoinText, ReadText } from "@/constants";
-import { useRouter } from "next/navigation";
+import {
+  CenterContainer,
+  CenterDivider,
+  SidebarContainer,
+  MainContainer,
+} from "./Home.style";
+import { useEffect, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import Sidebar from "@/components/sidebar";
+import { TabComponents, TabKey } from "@/CONSTANTS/navigation.constants";
+
+const DEFAULT_TAB: TabKey = "waitlist";
 
 const Home = () => {
   const router = useRouter();
+  const pathname = usePathname();
 
-  const navigateToDetailsInput = () => {
-    console.log("clicked");
-    router.push("/details");
-  };
+  const [tab, setTab] = useState<TabKey>(DEFAULT_TAB);
+
+  const ActiveTab = TabComponents[tab];
+
+  useEffect(() => {
+    const pathParts = pathname?.split("/") || [];
+    const lastSegment = pathParts[pathParts.length - 1];
+
+    if (
+      lastSegment &&
+      (Object.keys(TabComponents) as TabKey[]).includes(lastSegment as TabKey)
+    ) {
+      setTab(lastSegment as TabKey);
+    }
+  }, []);
+
+  useEffect(() => {
+    const currentTabInUrl = pathname?.split("/").pop();
+    if (tab !== currentTabInUrl) {
+      router.push(`/home/${tab}`, { scroll: false });
+    }
+  }, [tab]);
 
   return (
     <BackgroundContainer>
-      <CenteredContainer>
-        <SoftTitle>{AppTitle}</SoftTitle>
-        <>
-          <SimpleButton
-            onClick={navigateToDetailsInput}
-            buttonText={JoinText}
-          ></SimpleButton>
-          <SoftText>
-            {ReadText}{" "}
-            <a href="/about-us" target="_blank">
-              {AboutUsText}
-            </a>
-          </SoftText>
-        </>
-      </CenteredContainer>
+      <CenterContainer>
+        <CenterDivider>
+          <SidebarContainer>
+            <Sidebar setTab={setTab} />
+          </SidebarContainer>
+          <MainContainer>
+            <ActiveTab setTab={setTab} />
+          </MainContainer>
+        </CenterDivider>
+      </CenterContainer>
     </BackgroundContainer>
   );
 };

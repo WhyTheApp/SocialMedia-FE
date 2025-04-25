@@ -4,9 +4,9 @@ import {
   BlockOfTextContainer,
   NormalText,
   SoftTitle,
-} from "./Privacy.style";
-import { GDPRText } from "@/CONSTANTS/gdpr.constants";
+} from "./RoadmapExtended.style";
 import { AppTitle } from "@/CONSTANTS/ui.constants";
+import { RoadmapExtendedText } from "@/CONSTANTS/roadmap.constants";
 
 const Privacy = () => {
   return (
@@ -16,7 +16,7 @@ const Privacy = () => {
 
         <BlockOfTextContainer>
           <pre style={{ whiteSpace: "pre-wrap" }}>
-            <NormalText>{GDPRText}</NormalText>
+            <NormalText>{RoadmapExtendedText}</NormalText>
           </pre>
         </BlockOfTextContainer>
       </CenteredContainer>
