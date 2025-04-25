@@ -1,9 +1,9 @@
 import Privacy from "@/app/privacy/page";
-import ThankYou from "@/pages/thank-you/page";
-import AboutUs from "@/pages/about-us/page";
-import Details from "@/pages/details/page";
-import Waitlist from "@/pages/waitlist/page";
-import Roadmap from "@/pages/roadmap/page";
+import ThankYou from "@/tabs/thank-you/page";
+import AboutUs from "@/tabs/about-us/page";
+import Details from "@/tabs/details/page";
+import Waitlist from "@/tabs/waitlist/page";
+import Roadmap from "@/tabs/roadmap/page";
 import { Dispatch, SetStateAction } from "react";
 
 export type TabKey =
