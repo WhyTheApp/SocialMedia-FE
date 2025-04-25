@@ -3,6 +3,7 @@ import ThankYou from "@/pages/thank-you/page";
 import AboutUs from "@/pages/about-us/page";
 import Details from "@/pages/details/page";
 import Waitlist from "@/pages/waitlist/page";
+import Roadmap from "@/pages/roadmap/page";
 import { Dispatch, SetStateAction } from "react";
 
 export type TabKey =
@@ -35,6 +36,7 @@ export const TabComponents: Record<TabKey, React.FC<TabProps>> = {
   privacy: Privacy,
   details: Details,
   waitlist: Waitlist,
+  roadmap: Roadmap,
 
   //placeholders
   profile: Waitlist,
@@ -42,7 +44,6 @@ export const TabComponents: Record<TabKey, React.FC<TabProps>> = {
   tabs: Waitlist,
   settings: Waitlist,
   news: Waitlist,
-  roadmap: Waitlist,
   faq: Waitlist,
   "about-us": AboutUs,
 };
@@ -69,7 +70,7 @@ export const NavigationButtons: {
   { Text: "Tabs", Path: "tabs", Active: false },
   { Text: "Settings", Path: "settings", Active: false },
   { Text: "News", Path: "news", Active: false },
-  { Text: "Roadmap", Path: "roadmap", Active: false },
+  { Text: "Roadmap", Path: "roadmap", Active: true },
   { Text: "FAQ", Path: "faq", Active: false },
   { Text: "Our goals", Path: "about-us", Active: true },
   { Text: "Waitlist", Path: "waitlist", Active: true },
