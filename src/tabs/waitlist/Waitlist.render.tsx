@@ -1,13 +1,19 @@
 import BackgroundContainer from "@/components/background";
-import { CenteredContainer, SoftTitle } from "./Waitlist.style";
+import { BottomText, ColoredLink } from "./Waitlist.style";
 import SimpleButton from "@/components/simple-button";
 
 import { useRouter } from "next/navigation";
 import { TabProps } from "@/CONSTANTS/navigation.constants";
 import {
-  AppTitle,
+  JoinUsTitle,
   JoinText,
+  ReadChoiceFirstText,
+  ReadChoiceSecondText,
+  AboutUsText,
+  RoadmapText,
 } from "@/CONSTANTS/ui.constants";
+import Background from "@/components/background";
+import { Title } from "@/components/title";
 
 const Waitlist = ({ setTab }: TabProps) => {
   const router = useRouter();
@@ -21,13 +27,17 @@ const Waitlist = ({ setTab }: TabProps) => {
   };
 
   const pageContent = (
-    <CenteredContainer>
-      <SoftTitle>{AppTitle}</SoftTitle>
+    <Background>
+      <Title>{JoinUsTitle}</Title>
       <SimpleButton
         onClick={navigateToDetailsInput}
         buttonText={JoinText}
       ></SimpleButton>
-    </CenteredContainer>
+      <BottomText>
+        {ReadChoiceFirstText} <ColoredLink>{AboutUsText}</ColoredLink> <br />
+        {ReadChoiceSecondText} <ColoredLink>{RoadmapText}</ColoredLink>
+      </BottomText>
+    </Background>
   );
 
   return setTab ? (

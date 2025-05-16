@@ -1,12 +1,15 @@
-import { colors } from "@/app/theme";
-import styled from "styled-components";
+import styles from "./SimpleButton.module.css";
+import { ReactNode } from "react";
 
-export const StyledButton = styled.button`
-  height: 60px;
-  min-width: 300px;
-  border-radius: 10px;
-  font-family: inherit;
-  font-size: 14px;
-  font-weight: 600;
-  background-color: ${colors.accent};
-`;
+interface Props {
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
+  children: ReactNode;
+}
+
+export function StyledButton({ onClick, children }: Props) {
+  return (
+    <button className={styles.simpleButton} onClick={onClick}>
+      {children}
+    </button>
+  );
+}

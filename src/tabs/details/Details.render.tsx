@@ -1,14 +1,10 @@
 import BackgroundContainer from "@/components/background";
 import {
-  BottomButton,
-  BottomCutout,
-  CenteredContainer,
+  BottomText,
+  ColoredLink,
   CustomInput,
-  InputContainer,
+  CustomLargeInput,
   InputInner,
-  InputWithTitle,
-  NormalText,
-  SoftTitle,
   StyledCheckbox,
   StyledLabel,
 } from "./Details.style";
@@ -19,13 +15,14 @@ import { useRouter } from "next/navigation";
 import { TabProps } from "@/CONSTANTS/navigation.constants";
 import {
   AgreeText,
-  AppTitle,
-  EmailText,
-  FeedbackText,
+  EmailPlaceholder,
   JoinText,
+  LargeContainerPlaceholder,
   PrivacyPolicyText,
-  PromiseText,
 } from "@/CONSTANTS/ui.constants";
+import Background from "@/components/background";
+import { Title } from "@/components/title";
+import SimpleButton from "@/components/simple-button";
 
 const Details = ({ setTab }: TabProps) => {
   const [email, setEmail] = useState("");
@@ -76,42 +73,39 @@ const Details = ({ setTab }: TabProps) => {
     }
   };
 
-
   const pageContent = (
-    <CenteredContainer>
-      <SoftTitle>{AppTitle}</SoftTitle>
-      <InputContainer>
-        <InputInner>
-          <InputWithTitle>
-            <NormalText>{EmailText}</NormalText>
-            <CustomInput onChange={handleEmailChange} value={email} />
-          </InputWithTitle>
-          <InputWithTitle>
-            <NormalText>{FeedbackText}</NormalText>
-            <CustomInput onChange={handleFeedbackChange} value={feedback} />
-          </InputWithTitle>
-          <StyledLabel>
-            <StyledCheckbox
-              id="consent"
-              checked={checked}
-              onChange={(e) => setIsChecked(e.target.checked)}
-              required
-            />
+    <Background>
+      <InputInner>
+        <Title>Join us today!</Title>
+        <CustomInput
+          onChange={handleEmailChange}
+          value={email}
+          placeholder={EmailPlaceholder}
+        />
+        <CustomLargeInput
+          onChange={handleFeedbackChange}
+          value={feedback}
+          placeholder={LargeContainerPlaceholder}
+        />
+        <StyledLabel>
+          <StyledCheckbox
+            id="consent"
+            checked={checked}
+            onChange={(e) => setIsChecked(e.target.checked)}
+            required
+          />
+          <BottomText>
             {AgreeText}{" "}
-            <a href="/privacy" target="_blank">
+            <ColoredLink href="/privacy" target="_blank">
               {PrivacyPolicyText}
-            </a>
-            .
-          </StyledLabel>
-          <StyledLabel>{PromiseText}</StyledLabel>
+            </ColoredLink>
+          </BottomText>
+          .
+        </StyledLabel>
 
-          <BottomCutout />
-          <BottomButton onClick={sendEmail} disabled={loading}>
-            {JoinText}
-          </BottomButton>
-        </InputInner>
-      </InputContainer>
-    </CenteredContainer>
+        <SimpleButton onClick={sendEmail} buttonText={JoinText} />
+      </InputInner>
+    </Background>
   );
 
   return setTab ? (

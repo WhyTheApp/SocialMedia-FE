@@ -1,10 +1,4 @@
-import BackgroundContainer from "@/components/background";
-import {
-  CenterContainer,
-  CenterDivider,
-  SidebarContainer,
-  MainContainer,
-} from "./Home.style";
+import { CenterContainer, SidebarContainer, MainContainer } from "./Home.style";
 import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import Sidebar from "@/components/sidebar";
@@ -40,18 +34,14 @@ const Home = () => {
   }, [tab]);
 
   return (
-    <BackgroundContainer>
-      <CenterContainer>
-        <CenterDivider>
-          <SidebarContainer>
-            <Sidebar setTab={setTab} />
-          </SidebarContainer>
-          <MainContainer>
-            <ActiveTab setTab={setTab} />
-          </MainContainer>
-        </CenterDivider>
-      </CenterContainer>
-    </BackgroundContainer>
+    <CenterContainer>
+      <SidebarContainer>
+        <Sidebar setTab={setTab} />
+      </SidebarContainer>
+      <MainContainer>
+        <ActiveTab setTab={setTab} />
+      </MainContainer>
+    </CenterContainer>
   );
 };
 

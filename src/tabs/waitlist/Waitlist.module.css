@@ -1,0 +1,12 @@
+.bottomText {
+  color: var(--color-text2);
+  font-weight: 600;
+  font-size: 16px;
+  text-align: right;
+}
+
+.coloredLink {
+  color: #660033;
+  text-decoration: none;
+  cursor: pointer;
+}

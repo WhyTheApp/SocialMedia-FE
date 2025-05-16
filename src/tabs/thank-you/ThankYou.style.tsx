@@ -1,54 +1,27 @@
-import styled from "styled-components";
-import { colors } from "../../app/theme";
+import { ReactNode } from "react";
+import styles from "./ThankYou.module.css";
 
-export const CenteredContainer = styled.div`
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  align-items: center;
-  justify-content: center;
-`;
+interface Props {
+  children: ReactNode;
+}
 
-export const SoftTitle = styled.text`
-  color: ${colors.textSoft};
-  font-weight: 200;
-  font-size: 21px;
-`;
+interface TextProps {
+  children: ReactNode;
+}
 
-export const NormalText = styled.text`
-  color: ${colors.text};
-  font-weight: 500;
-  font-size: 15px;
-`;
+export function BottomText({ children }: TextProps) {
+  return <p className={styles.bottomText}>{children}</p>;
+}
 
-export const InputContainer = styled.div`
-  position: relative;
-  height: 30%;
-  width: 30%;
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  align-items: center;
-  justify-content: center;
-  border-radius: 30px;
-  background-color: ${colors.accent};
-  margin: 0 auto;
-  @media (max-width: 1400px) {
-    position: static;
+export function ColoredLink({ children }: TextProps) {
+  return <a className={styles.coloredLink}>{children}</a>;
+}
 
-    padding: 20px;
-    width: 60%;
-  }
 
-  @media (max-width: 800px) {
-    position: static;
+export function NormalText({ children }: Props) {
+  return <p className={styles.normalText}>{children}</p>;
+}
 
-    overflow: auto;
-
-    padding: 20px;
-    width: 80%;
-  }
-`;
+export function InputContainer({ children }: Props) {
+  return <div className={styles.inputContainer}>{children}</div>;
+}

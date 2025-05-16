@@ -1,21 +1,32 @@
 import BackgroundContainer from "@/components/background";
 import {
-  CenteredContainer,
+  BottomText,
+  ColoredLink,
   InputContainer,
   NormalText,
-  SoftTitle,
 } from "./ThankYou.style";
-import { AppTitle, ThankYouText } from "@/CONSTANTS/ui.constants";
+import {
+  AboutUsText,
+  ReadChoiceFirstVariantText,
+  ReadChoiceSecondText,
+  RoadmapText,
+  ThankYouText,
+} from "@/CONSTANTS/ui.constants";
 import { TabProps } from "@/CONSTANTS/navigation.constants";
+import Background from "@/components/background";
 
 const ThankYou = ({ setTab }: TabProps) => {
   const pageContent = (
-    <CenteredContainer>
-      <SoftTitle>{AppTitle}</SoftTitle>
+    <Background>
       <InputContainer>
         <NormalText>{ThankYouText}</NormalText>
       </InputContainer>
-    </CenteredContainer>
+      <BottomText>
+        {ReadChoiceFirstVariantText} <ColoredLink>{AboutUsText}</ColoredLink>{" "}
+        <br />
+        {ReadChoiceSecondText} <ColoredLink>{RoadmapText}</ColoredLink>
+      </BottomText>
+    </Background>
   );
   return setTab ? (
     pageContent
