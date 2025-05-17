@@ -5,6 +5,10 @@ interface Props {
   children: ReactNode;
 }
 
+export function Container({ children }: Props) {
+  return <div className={styles.container}>{children}</div>;
+}
+
 export function CenterContainer({ children }: Props) {
   return <div className={styles.centerContainer}>{children}</div>;
 }

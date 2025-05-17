@@ -6,16 +6,20 @@ interface Props {
 }
 interface TextProps {
   children: ReactNode;
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
 }
 
 export function BottomText({ children }: TextProps) {
   return <p className={styles.bottomText}>{children}</p>;
 }
 
-export function ColoredLink({ children }: TextProps) {
-  return <a className={styles.coloredLink}>{children}</a>;
+export function ColoredLink({ children, onClick }: TextProps) {
+  return (
+    <a className={styles.coloredLink} onClick={onClick}>
+      {children}
+    </a>
+  );
 }
-
 
 export function StyledLabel({ children }: Props) {
   return <label className={styles.styledLabel}>{children}</label>;
@@ -40,4 +44,8 @@ export function StyledCheckbox(
   props: React.InputHTMLAttributes<HTMLInputElement>
 ) {
   return <input className={styles.styledCheckbox} type="checkbox" {...props} />;
+}
+
+export function CenteredContainer({ children }: TextProps) {
+  return <div className={styles.centeredContainer}>{children}</div>;
 }

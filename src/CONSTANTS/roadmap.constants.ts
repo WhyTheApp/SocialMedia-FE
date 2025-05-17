@@ -199,4 +199,6 @@ export const RoadmapEvents = [
   },
 ];
 
-export const RoadmapExtendedViewText = "See the detailed view of our roadmap";
+export const RoadmapExtendedViewTextStart = "See the ";
+export const RoadmapDetailedViewInsertText = "detailed view ";
+export const RoadmapExtendedViewTextEnd = "of our roadmap";

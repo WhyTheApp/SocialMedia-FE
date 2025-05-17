@@ -9,8 +9,8 @@
   gap: 20px;
   align-items: center;
   justify-content: center;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: hidden;
+  z-index: 0;
 }
 
 .blurredCircle1 {
@@ -20,8 +20,16 @@
   border-radius: 50%;
   background: #1b2142;
   filter: blur(100px);
-  top: calc(100% - 200px);
-  right: calc(100% - 200px);
+  top: calc(100% - 120px);
+  right: calc(100% - 700px);
+  z-index: 0;
+}
+
+@media (max-width: 1400px) {
+  .blurredCircle1 {
+    top: calc(100% - 200px);
+    right: calc(100% - 200px);
+  }
 }
 
 .blurredCircle2 {

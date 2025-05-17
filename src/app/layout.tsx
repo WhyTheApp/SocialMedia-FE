@@ -1,4 +1,3 @@
-import StyledComponentsRegistry from "../lib/registry";
 import "./../CONSTANTS/styles.css";
 
 export const metadata = {
@@ -49,9 +48,7 @@ export default function RootLayout({
           }
         `}</style>
         </head>
-        <body style={{ padding: 0, margin: 0 }}>
-          <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
-        </body>
+        <body style={{ padding: 0, margin: 0 }}>{children}</body>
       </html>
     </>
   );

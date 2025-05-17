@@ -1,15 +1,26 @@
 import {
+  RoadmapDetailedViewInsertText,
   RoadmapEvents,
-  RoadmapExtendedViewText,
+  RoadmapExtendedViewTextEnd,
+  RoadmapExtendedViewTextStart,
 } from "@/CONSTANTS/roadmap.constants";
 import {
   RoadmapWrapper,
   RoadmapItem,
   Label,
   CurrentBadge,
+  ColoredLink,
+  BottomText,
 } from "./Roadmap.style";
+import { useRouter } from "next/navigation";
 
 const Roadmap = () => {
+  const router = useRouter();
+
+  const navigateToFullRoadmap = () => {
+    router.push("/roadmap-extended");
+  };
+
   return (
     <RoadmapWrapper>
       {RoadmapEvents.map((event, idx) => (
@@ -22,9 +33,14 @@ const Roadmap = () => {
           <p>{event.description}</p>
         </RoadmapItem>
       ))}
-      <a href="/roadmap-extended" target="_blank">
-        {RoadmapExtendedViewText}
-      </a>
+
+      <BottomText>
+        {RoadmapExtendedViewTextStart}{" "}
+        <ColoredLink onClick={navigateToFullRoadmap}>
+          {RoadmapDetailedViewInsertText}
+        </ColoredLink>{" "}
+        {RoadmapExtendedViewTextEnd}
+      </BottomText>
     </RoadmapWrapper>
   );
 };

@@ -1,6 +1,6 @@
-import BackgroundContainer from "@/components/background";
 import {
   BottomText,
+  CenteredContainer,
   ColoredLink,
   CustomInput,
   CustomLargeInput,
@@ -12,7 +12,6 @@ import {
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { TabProps } from "@/CONSTANTS/navigation.constants";
 import {
   AgreeText,
   EmailPlaceholder,
@@ -20,11 +19,10 @@ import {
   LargeContainerPlaceholder,
   PrivacyPolicyText,
 } from "@/CONSTANTS/ui.constants";
-import Background from "@/components/background";
 import { Title } from "@/components/title";
 import SimpleButton from "@/components/simple-button";
 
-const Details = ({ setTab }: TabProps) => {
+const Details = () => {
   const [email, setEmail] = useState("");
   const [feedback, setFeedback] = useState("");
   const [checked, setIsChecked] = useState(false);
@@ -35,19 +33,24 @@ const Details = ({ setTab }: TabProps) => {
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
   };
-  const handleFeedbackChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFeedbackChange = (
+    event: React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
     setFeedback(event.target.value);
   };
 
   const handlePageChange = () => {
-    if (setTab) {
-      setTab("thank-you");
-    } else {
-      router.push("/thank-you");
-    }
+    router.push("/home/thank-you");
+  };
+
+  const navigateToPrivacy = () => {
+    router.push("/privacy");
   };
 
   const sendEmail = async () => {
+    if(loading)
+      return;
+
     if (checked == false) return;
     if (email.length < 3) return;
     setLoading(true);
@@ -73,8 +76,8 @@ const Details = ({ setTab }: TabProps) => {
     }
   };
 
-  const pageContent = (
-    <Background>
+  return (
+    <CenteredContainer>
       <InputInner>
         <Title>Join us today!</Title>
         <CustomInput
@@ -96,7 +99,7 @@ const Details = ({ setTab }: TabProps) => {
           />
           <BottomText>
             {AgreeText}{" "}
-            <ColoredLink href="/privacy" target="_blank">
+            <ColoredLink onClick={navigateToPrivacy}>
               {PrivacyPolicyText}
             </ColoredLink>
           </BottomText>
@@ -105,13 +108,7 @@ const Details = ({ setTab }: TabProps) => {
 
         <SimpleButton onClick={sendEmail} buttonText={JoinText} />
       </InputInner>
-    </Background>
-  );
-
-  return setTab ? (
-    pageContent
-  ) : (
-    <BackgroundContainer>{pageContent}</BackgroundContainer>
+    </CenteredContainer>
   );
 };
 

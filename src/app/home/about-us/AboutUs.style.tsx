@@ -9,10 +9,6 @@ interface TextProps {
   children: ReactNode;
 }
 
-export function CenteredContainer({ children }: Props) {
-  return <div className={styles.centeredContainer}>{children}</div>;
-}
-
 export function SoftTitle({ children }: TextProps) {
   return <p className={styles.softTitle}>{children}</p>;
 }
@@ -29,14 +25,6 @@ export function CardsContainer({ children }: Props) {
   return <div className={styles.cardsContainer}>{children}</div>;
 }
 
-export function CardGrid1({ children }: Props) {
-  return <div className={styles.cardGrid1}>{children}</div>;
-}
-
-export function CardGrid2({ children }: Props) {
-  return <div className={styles.cardGrid2}>{children}</div>;
-}
-
 export function InputContainer({ children }: Props) {
   return <div className={styles.inputContainer}>{children}</div>;
 }
@@ -51,4 +39,8 @@ export function CardTitle({ children }: TextProps) {
 
 export function CardFooter({ children }: TextProps) {
   return <p className={styles.cardFooter}>{children}</p>;
+}
+
+export function CenteredContainer({ children }: TextProps) {
+  return <div className={styles.centeredContainer}>{children}</div>;
 }

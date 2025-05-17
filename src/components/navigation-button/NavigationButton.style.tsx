@@ -1,18 +1,70 @@
-import styled from "styled-components";
+import styles from "./NavigationButton.module.css";
+import { FC, ReactNode, SVGProps } from "react";
 
-export const NavButtonContainer = styled.div`
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-`;
+interface ContainerProps {
+  children: ReactNode;
+  onClick?: () => void;
+  clicked?: boolean;
+}
 
-export const NavText = styled.span<{ $active?: boolean }>`
-  color: ${({ $active }) => ($active ? "#fff" : "#6B6B6B")};
-  font-size: 24px;
-  font-family: inherit;
-  font-weight: 600;
-  @media (max-width: 1200px) {
-    display: none;
-  }
-`;
+interface NavTextProps {
+  children: ReactNode;
+  active?: boolean;
+  clicked?: boolean;
+}
+
+interface NavIconProps {
+  icon: FC<SVGProps<SVGSVGElement>>;
+  alt: string;
+  active?: boolean;
+  clicked?: boolean;
+}
+
+export function NavButtonContainer({
+  children,
+  onClick,
+  clicked,
+}: ContainerProps) {
+  return (
+    <div
+      className={`${styles.navButtonContainer} ${
+        clicked ? styles.clicked : ""
+      }`}
+      onClick={onClick}
+    >
+      {children}
+    </div>
+  );
+}
+
+export function NavText({ children, active, clicked }: NavTextProps) {
+  return (
+    <span
+      className={`${styles.navText} ${active ? styles.active : ""} ${
+        clicked ? styles.clicked : ""
+      }`}
+    >
+      {children}
+    </span>
+  );
+}
+
+export function NavIcon({ icon, alt, active, clicked }: NavIconProps) {
+  const IconComponent = icon;
+
+  return (
+    <div
+      className={`${styles.iconWrapper} ${active ? styles.active : ""} ${
+        clicked ? styles.clicked : ""
+      }`}
+    >
+      <IconComponent
+        className={styles.navIcon}
+        role="img"
+        aria-label={alt}
+        width={36}
+        height={36}
+      />
+    </div>
+  );
+}

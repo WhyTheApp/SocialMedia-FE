@@ -1,10 +1,14 @@
-import Privacy from "@/app/privacy/page";
-import ThankYou from "@/tabs/thank-you/page";
-import AboutUs from "@/tabs/about-us/page";
-import Details from "@/tabs/details/page";
-import Waitlist from "@/tabs/waitlist/page";
-import Roadmap from "@/tabs/roadmap/page";
-import { Dispatch, SetStateAction } from "react";
+import { FC, SVGProps } from "react";
+
+import ProfileIcon from "@/icons/profile.svg";
+import FriendsIcon from "@/icons/friends.svg";
+import TabsIcon from "@/icons/tabs.svg";
+import SettingsIcon from "@/icons/settings.svg";
+import NewsIcon from "@/icons/news.svg";
+import RoadmapIcon from "@/icons/roadmap.svg";
+import FaqIcon from "@/icons/faq.svg";
+import AboutUsIcon from "@/icons/goals.svg";
+import WaitlistIcon from "@/icons/waitlist.svg";
 
 export type TabKey =
   | "thank-you"
@@ -20,44 +24,25 @@ export type TabKey =
   | "tabs"
   | "about-us";
 
-export type TabProps = {
-  setTab?: Dispatch<SetStateAction<TabKey>>;
-};
-
 export type NavButtonProps = {
+  Key: string;
   Text: string;
   Path: TabKey;
   Active?: boolean;
-  setTab?: Dispatch<SetStateAction<TabKey>>;
+  Clicked?: boolean;
+  setClickedButton: React.Dispatch<React.SetStateAction<string | null>>;
 };
 
-export const TabComponents: Record<TabKey, React.FC<TabProps>> = {
-  "thank-you": ThankYou,
-  privacy: Privacy,
-  details: Details,
-  waitlist: Waitlist,
-  roadmap: Roadmap,
-
-  //placeholders
-  profile: Waitlist,
-  friends: Waitlist,
-  tabs: Waitlist,
-  settings: Waitlist,
-  news: Waitlist,
-  faq: Waitlist,
-  "about-us": AboutUs,
-};
-
-export const PathToIcon: Record<string, Record<string, string>> = {
-  profile: { active: "profile.svg", inactive: "profile-inactive.svg" },
-  friends: { active: "friends.svg", inactive: "friends-inactive.svg" },
-  tabs: { active: "tabs.svg", inactive: "tabs-inactive.svg" },
-  settings: { active: "settings.svg", inactive: "settings-inactive.svg" },
-  news: { active: "news.svg", inactive: "news-inactive.svg" },
-  roadmap: { active: "roadmap.svg", inactive: "roadmap-inactive.svg" },
-  faq: { active: "faq.svg", inactive: "faq-inactive.svg" },
-  "about-us": { active: "goals.svg", inactive: "goals-inactive.svg" },
-  waitlist: { active: "waitlist.svg", inactive: "waitlist-inactive.svg" },
+export const PathToIcon: Record<string, FC<SVGProps<SVGSVGElement>>> = {
+  profile: ProfileIcon,
+  friends: FriendsIcon,
+  tabs: TabsIcon,
+  settings: SettingsIcon,
+  news: NewsIcon,
+  roadmap: RoadmapIcon,
+  faq: FaqIcon,
+  "about-us": AboutUsIcon,
+  waitlist: WaitlistIcon,
 };
 
 export const NavigationButtons: {
