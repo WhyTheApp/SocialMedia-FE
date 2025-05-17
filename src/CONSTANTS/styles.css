@@ -1,0 +1,31 @@
+:root {
+  --color-primary: #7b515d;
+  --color-secondary: #060012;
+  --color-accent: #bbaa98;
+  --color-text-soft: #777777;
+  --color-text: #000000;
+  --color-text2: white;
+  --color-gradient-midpoint: #19181c;
+
+  /* Opacity values */
+  --opacity-background: 0.2;
+
+  /* Gradient backgrounds */
+  --gradient-vertical: linear-gradient(
+    10deg,
+    rgba(123, 81, 93, 0.2) 0%,
+    rgba(6, 0, 18, 0.2) 50%
+  );
+
+  --gradient-vertical-webkit: -webkit-linear-gradient(
+    10deg,
+    rgba(123, 81, 93, 0.2) 0%,
+    rgba(6, 0, 18, 0.2) 50%
+  );
+
+  --gradient-vertical-moz: -moz-linear-gradient(
+    10deg,
+    rgba(123, 81, 93, 0.2) 0%,
+    rgba(6, 0, 18, 0.2) 50%
+  );
+}

@@ -1,4 +1,4 @@
-import StyledComponentsRegistry from "../lib/registry";
+import "./../CONSTANTS/styles.css";
 
 export const metadata = {
   title: "Why The App",
@@ -33,11 +33,11 @@ export default function RootLayout({
           />
           <link rel="icon" href="/favicon.ico" sizes="any" />
           <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
           html, body {
             padding: 0;
             margin: 0;
-            font-family: "Noto Sans", sans-serif;
+            font-family: "Outfit", sans-serif;
             box-sizing: border-box;
             min-height: 100vh;
             background-color: #1e1e1e;
@@ -48,9 +48,7 @@ export default function RootLayout({
           }
         `}</style>
         </head>
-        <body style={{ padding: 0, margin: 0 }}>
-          <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
-        </body>
+        <body style={{ padding: 0, margin: 0 }}>{children}</body>
       </html>
     </>
   );

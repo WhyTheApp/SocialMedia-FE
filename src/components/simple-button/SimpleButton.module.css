@@ -1,0 +1,15 @@
+.simpleButton {
+  all: unset;
+  height: 60px;
+  min-width: 300px;
+  border-radius: 10px;
+  font-family: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  background: linear-gradient(to right, #012878, #660033);
+  cursor: pointer;
+}

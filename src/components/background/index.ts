@@ -1,3 +1,3 @@
-import { BackgroundContainer } from "./background.style";
+import { Background } from "./background.style";
 
-export default BackgroundContainer;
+export default Background;

@@ -1,11 +1,16 @@
-import { backgroundGradients } from "@/app/theme";
-import styled from "styled-components";
+import styles from "./background.module.css";
+import { ReactNode } from "react";
 
-export const BackgroundContainer = styled.div`
-  height: 100vh;
-  width: 100vw;
+interface CenteredContainerProps {
+  children: ReactNode;
+}
 
-  background: ${backgroundGradients.vertical.default};
-  background: ${backgroundGradients.vertical.webkit};
-  background: ${backgroundGradients.vertical.moz};
-`;
+export function Background({ children }: CenteredContainerProps) {
+  return (
+    <div className={styles.background}>
+      <div className={styles.blurredCircle1}></div>
+      <div className={styles.blurredCircle2}></div>
+      {children}
+    </div>
+  );
+}

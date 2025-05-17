@@ -13,13 +13,16 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  console.log("middleware: pathname " + pathname);
-  console.log(validPaths);
+  if (pathname === "/home") {
+    const url = request.nextUrl.clone();
+    url.pathname = "/home/waitlist";
+    return NextResponse.redirect(url);
+  }
   const isValidPath = validPaths.includes(pathname);
 
   if (!isValidPath) {
     const url = request.nextUrl.clone();
-    url.pathname = "/home";
+    url.pathname = "/home/waitlist";
     return NextResponse.redirect(url);
   }
 
