@@ -17,6 +17,7 @@ import {
   ArticleCardDetailsNameSection,
   ArticleCardDetailsTextPart,
 } from "@/components/article-card/ArticleCard.style";
+import { useParams } from "next/navigation";
 
 const PAGE_SIZE = 10;
 type ApiResponse = {
@@ -32,6 +33,7 @@ const Articles = () => {
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
   const [currentArticle, setCurrentArticle] = useState<Article>();
+  const { articleId } = useParams() as { articleId?: string };
 
   const fetchArticles = async () => {
     const url = process.env.NEXT_PUBLIC_API_URL + "articles/get-filtered";
@@ -65,7 +67,9 @@ const Articles = () => {
   };
 
   const fetchFeatured = async () => {
-    const url = process.env.NEXT_PUBLIC_API_URL + "articles/get-featured";
+    const url = articleId
+      ? `${process.env.NEXT_PUBLIC_API_URL}articles/get-article?articleId=${articleId}`
+      : `${process.env.NEXT_PUBLIC_API_URL}articles/get-featured`;
 
     try {
       await axios.get<Article>(url).then((response) => {
