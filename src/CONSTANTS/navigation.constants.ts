@@ -18,7 +18,7 @@ export type TabKey =
   | "profile"
   | "friends"
   | "settings"
-  | "news"
+  | "articles"
   | "roadmap"
   | "faq"
   | "tabs"
@@ -38,7 +38,7 @@ export const PathToIcon: Record<string, FC<SVGProps<SVGSVGElement>>> = {
   friends: FriendsIcon,
   tabs: TabsIcon,
   settings: SettingsIcon,
-  news: NewsIcon,
+  articles: NewsIcon,
   roadmap: RoadmapIcon,
   faq: FaqIcon,
   "about-us": AboutUsIcon,
@@ -54,7 +54,7 @@ export const NavigationButtons: {
   { Text: "Friends", Path: "friends", Active: false },
   { Text: "Tabs", Path: "tabs", Active: false },
   { Text: "Settings", Path: "settings", Active: false },
-  { Text: "News", Path: "news", Active: false },
+  { Text: "Articles", Path: "articles", Active: true },
   { Text: "Roadmap", Path: "roadmap", Active: true },
   { Text: "FAQ", Path: "faq", Active: false },
   { Text: "Our goals", Path: "about-us", Active: true },

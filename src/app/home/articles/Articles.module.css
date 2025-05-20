@@ -1,0 +1,42 @@
+.container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-top: 70px;
+  padding-left: 50px;
+}
+
+@media (max-width: 1000px) {
+  .softTitle {
+    display: none;
+  }
+}
+
+.hardTitle {
+  color: white;
+  font-weight: 600;
+  font-size: 36px;
+}
+
+.normalText {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.articlesScrollContainer {
+  display: flex;
+  gap: 16px;
+  padding: 10px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #888 transparent;
+}
