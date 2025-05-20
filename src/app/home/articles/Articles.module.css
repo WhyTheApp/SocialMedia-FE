@@ -1,0 +1,89 @@
+.container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 50px;
+  padding-top: 70px;
+}
+
+@media (max-width: 1000px) {
+  .container {
+    padding: 20px;
+    padding-top: 30px;
+  }
+
+  .softTitle {
+    display: none;
+  }
+}
+
+.hardTitle {
+  color: white;
+  font-weight: 600;
+  font-size: 36px;
+}
+
+.normalText {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.articlesScrollContainer {
+  display: flex;
+
+  gap: 16px;
+  padding: 10px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #888 transparent;
+}
+
+.mainArticleContainer {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+  height: 60%;
+  padding: 30px;
+  padding-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.mainArticleContentContainer {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #888 transparent;
+
+  max-height: 100%;
+  gap: 24px;
+}
+
+.articleTitle {
+  color: #c8cede;
+  font-weight: 600;
+  font-size: 36px;
+  padding: 0;
+  margin: 0;
+  word-break: break-word;
+}
+
+.articleContent {
+  color: #c8cede;
+  font-weight: 500;
+  font-size: 18px;
+  padding: 0;
+  margin: 0;
+  word-break: break-word;
+}

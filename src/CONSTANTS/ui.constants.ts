@@ -26,3 +26,5 @@ export const ReadChoiceSecondText = "... or see our ";
 export const EmailPlaceholder = "Email";
 export const LargeContainerPlaceholder =
   "Anything else you might want to tell us?";
+
+export const MostRecentArticlesText = "Most Recent Articles";

@@ -8,7 +8,7 @@ export function middleware(request: NextRequest) {
   if (
     pathname.startsWith("/api/") ||
     pathname.startsWith("/_next/") ||
-    pathname.includes(".") // Skip static files (e.g., .js, .css, .png)
+    pathname.includes(".") 
   ) {
     return NextResponse.next();
   }
@@ -18,6 +18,12 @@ export function middleware(request: NextRequest) {
     url.pathname = "/home/waitlist";
     return NextResponse.redirect(url);
   }
+
+  const articleDynamicMatch = /^\/home\/articles\/\d+$/;
+  if (articleDynamicMatch.test(pathname)) {
+    return NextResponse.next();
+  }
+
   const isValidPath = validPaths.includes(pathname);
 
   if (!isValidPath) {
