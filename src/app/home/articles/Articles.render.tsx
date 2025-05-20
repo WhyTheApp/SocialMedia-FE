@@ -1,13 +1,22 @@
 import { Article } from "@/CONSTANTS/article.constants";
 import {
+  ArticleContent,
   ArticlesScrollContainer,
+  ArticleTitle,
   Container,
+  MainArticleContainer,
+  MainArticleContentContainer,
 } from "./Articles.style";
 import { MostRecentArticlesText } from "@/CONSTANTS/ui.constants";
 import ArticleCard from "@/components/article-card";
 import { Title } from "@/components/title";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
+import {
+  ArticleCardDetailsDateSection,
+  ArticleCardDetailsNameSection,
+  ArticleCardDetailsTextPart,
+} from "@/components/article-card/ArticleCard.style";
 
 const PAGE_SIZE = 10;
 type ApiResponse = {
@@ -22,10 +31,10 @@ const Articles = () => {
   const [pageNumber, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
+  const [currentArticle, setCurrentArticle] = useState<Article>();
 
   const fetchArticles = async () => {
     const url = process.env.NEXT_PUBLIC_API_URL + "articles/get-filtered";
-    console.log(url);
 
     const data = {
       onlyCount: false,
@@ -42,7 +51,6 @@ const Articles = () => {
     try {
       await axios.post<ApiResponse>(url, data).then((response) => {
         if (response.status === 200 || response.status === 201) {
-          console.log(response.data);
           if (
             items.length + response.data.numberRetrieved >=
             response.data.numberFound
@@ -51,7 +59,18 @@ const Articles = () => {
 
           setPage(pageNumber + 1);
           setItems((prev) => [...prev, ...response.data.results]);
-          console.log(items.length);
+        }
+      });
+    } catch {}
+  };
+
+  const fetchFeatured = async () => {
+    const url = process.env.NEXT_PUBLIC_API_URL + "articles/get-featured";
+
+    try {
+      await axios.get<Article>(url).then((response) => {
+        if (response.status === 200 || response.status === 201) {
+          setCurrentArticle(response.data);
         }
       });
     } catch {}
@@ -65,6 +84,7 @@ const Articles = () => {
 
   useEffect(() => {
     fetchMore();
+    fetchFeatured();
   }, []);
 
   const handleScroll = () => {
@@ -93,6 +113,33 @@ const Articles = () => {
           </div>
         ))}
       </ArticlesScrollContainer>
+      {currentArticle && (
+        <MainArticleContainer>
+          <MainArticleContentContainer>
+            <ArticleTitle>{currentArticle.title}</ArticleTitle>
+            <ArticleContent>
+              {currentArticle.content.split("\n").map((line, index) => (
+                <span key={index}>
+                  {line}
+                  <br />
+                </span>
+              ))}
+            </ArticleContent>
+          </MainArticleContentContainer>
+          <ArticleCardDetailsTextPart>
+            <ArticleCardDetailsNameSection>
+              {currentArticle.author}
+            </ArticleCardDetailsNameSection>
+            <ArticleCardDetailsDateSection>
+              {new Date(currentArticle.date).toLocaleDateString("en-GB", {
+                day: "2-digit",
+                month: "short",
+                year: "numeric",
+              })}
+            </ArticleCardDetailsDateSection>
+          </ArticleCardDetailsTextPart>
+        </MainArticleContainer>
+      )}
     </Container>
   );
 };

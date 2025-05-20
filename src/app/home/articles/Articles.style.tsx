@@ -42,3 +42,19 @@ export function ArticlesScrollContainer({
     </div>
   );
 }
+
+export function MainArticleContainer({ children }: TextProps) {
+  return <div className={styles.mainArticleContainer}>{children}</div>;
+}
+
+export function MainArticleContentContainer({ children }: TextProps) {
+  return <div className={styles.mainArticleContentContainer}>{children}</div>;
+}
+
+export function ArticleTitle({ children }: TextProps) {
+  return <p className={styles.articleTitle}>{children}</p>;
+}
+
+export function ArticleContent({ children }: TextProps) {
+  return <p className={styles.articleContent}>{children}</p>;
+}
