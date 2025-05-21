@@ -1,15 +1,32 @@
 import { NavButtonProps, PathToIcon } from "@/CONSTANTS/navigation.constants";
-import { NavButtonContainer, NavText } from "./NavigationButton.style";
+import { NavButtonContainer, NavIcon, NavText } from "./NavigationButton.style";
+import { useRouter } from "next/navigation";
 
-const NavigationButton = ({ Text, Path, Active, setTab }: NavButtonProps) => {
-  let Icon;
-  if (Active) Icon = PathToIcon[Path]["active"];
-  else Icon = PathToIcon[Path]["inactive"];
+const NavigationButton = ({
+  Text,
+  Path,
+  Active,
+  Clicked,
+  setClickedButton,
+  Key,
+}: NavButtonProps) => {
+  const Icon = PathToIcon[Path];
+  const router = useRouter();
+
+  const handleClick = () => {
+    setClickedButton(Key);
+    router.push("/home/" + Path);
+  };
 
   return (
-    <NavButtonContainer onClick={Active ? () => setTab!(Path) : undefined}>
-      <img color="#fffff" src={`/${Icon}`} alt={Text} width={36} height={36} />
-      <NavText $active={Active}>{Text}</NavText>
+    <NavButtonContainer
+      onClick={Active ? handleClick : undefined}
+      clicked={Clicked}
+    >
+      <NavIcon icon={Icon} alt={Text} active={Active} clicked={Clicked} />
+      <NavText active={Active} clicked={Clicked}>
+        {Text}
+      </NavText>
     </NavButtonContainer>
   );
 };

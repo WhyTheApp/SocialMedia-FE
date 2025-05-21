@@ -10,9 +10,19 @@ import {
 } from "./Sidebar.style";
 import NavigationButton from "../navigation-button";
 import { PLACEHOLDERS } from "@/CONSTANTS/placeholders.constants";
-import { NavigationButtons, TabProps } from "@/CONSTANTS/navigation.constants";
+import { NavigationButtons } from "@/CONSTANTS/navigation.constants";
+import { useState } from "react";
+import { usePathname } from "next/navigation";
 
-const Sidebar = ({ setTab }: TabProps) => {
+const Sidebar = () => {
+  const pathname = usePathname();
+  const indexOfTab = 2;
+  const initialButton = pathname.split("/")[indexOfTab] || "waitlist";
+
+  const [clickedButton, setClickedButton] = useState<string | null>(
+    initialButton
+  );
+
   return (
     <SidebarContainer>
       <StyledLogo />
@@ -25,15 +35,20 @@ const Sidebar = ({ setTab }: TabProps) => {
       </UserArea>
 
       <NavigationContainer>
-        {NavigationButtons.map(({ Text, Path, Active }) => (
-          <NavigationButton
-            key={Text + Path + (Active ? "active" : "inactive")}
-            Text={Text}
-            Path={Path}
-            Active={Active}
-            setTab={setTab}
-          />
-        ))}
+        {NavigationButtons.map(({ Text, Path, Active }) => {
+          const key = Path;
+          return (
+            <NavigationButton
+              key={key}
+              Text={Text}
+              Path={Path}
+              Active={Active}
+              Clicked={clickedButton === key}
+              setClickedButton={setClickedButton}
+              Key={key}
+            />
+          );
+        })}
       </NavigationContainer>
     </SidebarContainer>
   );

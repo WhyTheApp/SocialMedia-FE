@@ -8,18 +8,27 @@ export function middleware(request: NextRequest) {
   if (
     pathname.startsWith("/api/") ||
     pathname.startsWith("/_next/") ||
-    pathname.includes(".") // Skip static files (e.g., .js, .css, .png)
+    pathname.includes(".") 
   ) {
     return NextResponse.next();
   }
 
-  console.log("middleware: pathname " + pathname);
-  console.log(validPaths);
+  if (pathname === "/home") {
+    const url = request.nextUrl.clone();
+    url.pathname = "/home/waitlist";
+    return NextResponse.redirect(url);
+  }
+
+  const articleDynamicMatch = /^\/home\/articles\/\d+$/;
+  if (articleDynamicMatch.test(pathname)) {
+    return NextResponse.next();
+  }
+
   const isValidPath = validPaths.includes(pathname);
 
   if (!isValidPath) {
     const url = request.nextUrl.clone();
-    url.pathname = "/home";
+    url.pathname = "/home/waitlist";
     return NextResponse.redirect(url);
   }
 

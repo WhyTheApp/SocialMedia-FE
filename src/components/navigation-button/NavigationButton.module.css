@@ -1,0 +1,55 @@
+.navButtonContainer {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 15px;
+  width: 100%;
+}
+
+.navButtonContainer.clicked {
+  background: linear-gradient(to right, #2a3465, #1b2142);
+}
+
+.navText {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 24px;
+  font-family: inherit;
+  font-weight: 600;
+}
+
+.navText.clicked {
+  color: #ffffff;
+}
+
+.iconWrapper {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navIcon path {
+  fill: #6b6b6b;
+}
+
+.iconWrapper.active .navIcon path {
+  fill: #660033;
+}
+
+.iconWrapper.clicked .navIcon path {
+  fill: white;
+}
+
+.iconWrapper.active.clicked .navIcon path {
+  fill: white;
+}
+
+@media (max-width: 1200px) {
+  .navText {
+    display: none;
+  }
+}

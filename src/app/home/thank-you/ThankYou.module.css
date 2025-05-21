@@ -1,0 +1,50 @@
+.normalText {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 32px;
+  text-align: center;
+}
+
+.inputContainer {
+  position: relative;
+  height: 50%;
+  max-height: 300px;
+  width: 70%;
+  max-width: 700px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.05);
+  margin: 0 auto;
+}
+
+.bottomText {
+  color: var(--color-text2);
+  font-weight: 600;
+  font-size: 16px;
+  text-align: right;
+}
+
+.coloredLink {
+  color: #660033;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.centeredContainer {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+

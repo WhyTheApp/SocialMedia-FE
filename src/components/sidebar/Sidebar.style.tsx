@@ -1,89 +1,44 @@
-import styled from "styled-components";
-import Logo from "../../../public/whylogo.svg";
-import UserImage from "../../../public/user-placeholder.svg";
+import styles from "./Sidebar.module.css";
+import { ReactNode } from "react";
+import LogoSVG from "../../../public/whylogo.svg";
+import UserImageSVG from "../../../public/user-placeholder.svg";
 
-const UserImageSize = "77px";
-const MiniUserImageSize = "40px";
+interface Props {
+  children: ReactNode;
+}
 
-const LogoSize = "115px";
+interface TextProps {
+  children: ReactNode;
+}
 
-export const SidebarContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+export function SidebarContainer({ children }: Props) {
+  return <div className={styles.sidebarContainer}>{children}</div>;
+}
 
-  @media (max-width: 1200px) {
-    align-items: center;
-  }
-  @media (max-width: 750px) {
-    flex-direction: row;
-  }
-`;
+export function StyledLogo() {
+  return <LogoSVG className={styles.styledLogo} />;
+}
 
-export const StyledLogo = styled(Logo)`
-  width: ${LogoSize};
-  height: ${LogoSize};
-  @media (max-width: 750px) {
-    display: none;
-  }
-`;
+export function StyledUserImage() {
+  return <UserImageSVG className={styles.styledUserImage} />;
+}
 
-export const StyledUserImage = styled(UserImage)`
-  height: ${UserImageSize};
-  width: ${UserImageSize};
-  margin: auto;
+export function UserArea({ children }: Props) {
+  return <div className={styles.userArea}>{children}</div>;
+}
 
-  @media (max-width: 800px) {
-    height: ${MiniUserImageSize};
-    width: ${MiniUserImageSize};
-  }
-`;
+export function UserDetails({ children }: Props) {
+  return <div className={styles.userDetails}>{children}</div>;
+}
 
-export const UserArea = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-  width: 70%;
-`;
+export function UsernameText({ children }: TextProps) {
+  return <p className={styles.usernameText}>{children}</p>;
+}
 
-export const UserDetails = styled.div`
-  display: flex;
-  flex-direction: column;
-  max-height: ${UserImageSize};
-  gap: 5px;
-  align-items: flex-start;
-  justify-content: flex-start;
+export function UsernameHandle({ children }: TextProps) {
+  return <p className={styles.usernameHandle}>{children}</p>;
+}
 
-  @media (max-width: 1200px) {
-    display: none;
-  }
-`;
-
-export const UsernameText = styled.p`
-  align-self: center;
-  color: white;
-  font-size: 18px;
-  margin: 0;
-  margin-top: 10px;
-`;
-
-export const UsernameHandle = styled.p`
-  color: #a1a1a1;
-  font-size: 14px;
-  margin: 0;
-  align-self: flex-start;
-`;
-
-export const NavigationContainer = styled.div`
-  padding: 25px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-
-  @media (max-width: 1200px) {
-    padding: 25px;
-  }
-  @media (max-width: 750px) {
-    flex-direction: row;
-  }
-`;
+export function NavigationContainer({ children }: Props) {
+  return <div className={styles.navigationContainer}>{children}</div>;
+}
