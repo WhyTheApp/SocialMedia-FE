@@ -15,30 +15,35 @@
 
 .blurredCircle1 {
   position: absolute;
-  width: 300px;
-  height: 300px;
+  width: 30%;
+  aspect-ratio: 1 / 1;
   border-radius: 50%;
   background: #1b2142;
-  filter: blur(100px);
-  top: calc(100% - 120px);
-  right: calc(100% - 700px);
+  filter: blur(10vw);
+  top: 75%;
+  right: 60%;
   z-index: 0;
 }
 
 @media (max-width: 1400px) {
   .blurredCircle1 {
-    top: calc(100% - 200px);
-    right: calc(100% - 200px);
+    top: 80%;
+    right: 80%;
+  }
+
+  .blurredCircle2 {
+    bottom: 80%;
+    left: 80%;
   }
 }
 
 .blurredCircle2 {
   position: absolute;
-  width: 300px;
-  height: 300px;
+  width: 30%;
+  aspect-ratio: 1 / 1;
   border-radius: 50%;
   background: #660033;
-  filter: blur(100px);
-  bottom: calc(100% - 200px);
-  left: calc(100% - 200px);
+  filter: blur(10vw);
+  bottom: 75%;
+  left: 70%;
 }
