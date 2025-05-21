@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { readFileSync } from "fs";
 import path from "path";
 
@@ -19,10 +21,12 @@ export async function GET() {
   }
 
   // Generate article paths from 1 to latestId
-  const articleRoutes = Array.from({ length: latestId }, (_, i) => `/home/articles/${i + 1}`);
+  const articleRoutes = Array.from(
+    { length: latestId },
+    (_, i) => `/home/articles/${i + 1}`
+  );
 
   const routes = [...staticRoutes, ...articleRoutes];
-
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
