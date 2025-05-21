@@ -1,3 +1,5 @@
+"use client";
+
 import { Article } from "@/CONSTANTS/article.constants";
 import {
   ArticleContent,
@@ -10,73 +12,54 @@ import {
 import { MostRecentArticlesText } from "@/CONSTANTS/ui.constants";
 import ArticleCard from "@/components/article-card";
 import { Title } from "@/components/title";
-import { useEffect, useRef, useState } from "react";
-import axios from "axios";
 import {
   ArticleCardDetailsDateSection,
   ArticleCardDetailsNameSection,
   ArticleCardDetailsTextPart,
 } from "@/components/article-card/ArticleCard.style";
-import { useParams } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
+import axios from "axios";
 
 const PAGE_SIZE = 10;
+
 type ApiResponse = {
   numberFound: number;
   numberRetrieved: number;
   results: Article[];
 };
 
-const Articles = () => {
+type Props = {
+  currentArticle: Article | null;
+};
+
+const ArticlesClient = ({ currentArticle }: Props) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [items, setItems] = useState<Article[]>([]);
   const [pageNumber, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
-  const [currentArticle, setCurrentArticle] = useState<Article>();
-  const { articleId } = useParams() as { articleId?: string };
 
   const fetchArticles = async () => {
     const url = process.env.NEXT_PUBLIC_API_URL + "articles/get-filtered";
 
     const data = {
       onlyCount: false,
-      paging: {
-        pageSize: PAGE_SIZE,
-        pageNumber: pageNumber,
-      },
-      sorting: {
-        fieldToSortBy: "date",
-        order: "desc",
-      },
+      paging: { pageSize: PAGE_SIZE, pageNumber },
+      sorting: { fieldToSortBy: "date", order: "desc" },
     };
 
     try {
-      await axios.post<ApiResponse>(url, data).then((response) => {
-        if (response.status === 200 || response.status === 201) {
-          if (
-            items.length + response.data.numberRetrieved >=
-            response.data.numberFound
-          )
-            setHasMore(false);
+      const response = await axios.post<ApiResponse>(url, data);
+      if (response.status === 200 || response.status === 201) {
+        if (
+          items.length + response.data.numberRetrieved >=
+          response.data.numberFound
+        )
+          setHasMore(false);
 
-          setPage(pageNumber + 1);
-          setItems((prev) => [...prev, ...response.data.results]);
-        }
-      });
-    } catch {}
-  };
-
-  const fetchFeatured = async () => {
-    const url = articleId
-      ? `${process.env.NEXT_PUBLIC_API_URL}articles/get-article?articleId=${articleId}`
-      : `${process.env.NEXT_PUBLIC_API_URL}articles/get-featured`;
-
-    try {
-      await axios.get<Article>(url).then((response) => {
-        if (response.status === 200 || response.status === 201) {
-          setCurrentArticle(response.data);
-        }
-      });
+        setPage(pageNumber + 1);
+        setItems((prev) => [...prev, ...response.data.results]);
+      }
     } catch {}
   };
 
@@ -88,14 +71,13 @@ const Articles = () => {
 
   useEffect(() => {
     fetchMore();
-    fetchFeatured();
   }, []);
 
   const handleScroll = () => {
-    if (hasMore == false) return;
+    if (!hasMore || loading) return;
 
     const el = containerRef.current;
-    if (!el || loading) return;
+    if (!el) return;
 
     const nearEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - 100;
     if (nearEnd) fetchMore();
@@ -105,18 +87,13 @@ const Articles = () => {
     <Container>
       <Title>{MostRecentArticlesText}</Title>
       <ArticlesScrollContainer ref={containerRef} onScroll={handleScroll}>
-        {items.map((item: Article, index: number) => (
+        {items.map((item, index) => (
           <div key={index} style={{ scrollSnapAlign: "start" }}>
-            <ArticleCard
-              articleId={item.articleId}
-              title={item.title}
-              content={item.content}
-              author={item.author}
-              date={item.date}
-            />
+            <ArticleCard {...item} />
           </div>
         ))}
       </ArticlesScrollContainer>
+
       {currentArticle && (
         <MainArticleContainer>
           <MainArticleContentContainer>
@@ -148,4 +125,4 @@ const Articles = () => {
   );
 };
 
-export default Articles;
+export default ArticlesClient;
