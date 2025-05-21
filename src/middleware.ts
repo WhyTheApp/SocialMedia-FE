@@ -5,12 +5,16 @@ import validPaths from "../validPaths.json";
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  const response = NextResponse.next();
+
+  response.headers.set("x-pathname", request.nextUrl.pathname);
+
   if (
     pathname.startsWith("/api/") ||
     pathname.startsWith("/_next/") ||
-    pathname.includes(".") 
+    pathname.includes(".")
   ) {
-    return NextResponse.next();
+    return response;
   }
 
   if (pathname === "/home") {
@@ -21,7 +25,7 @@ export function middleware(request: NextRequest) {
 
   const articleDynamicMatch = /^\/home\/articles\/\d+$/;
   if (articleDynamicMatch.test(pathname)) {
-    return NextResponse.next();
+    return response;
   }
 
   const isValidPath = validPaths.includes(pathname);
@@ -32,7 +36,7 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  return NextResponse.next();
+  return response;
 }
 
 export const config = {
