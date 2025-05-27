@@ -19,6 +19,7 @@ import {
 } from "@/components/article-card/ArticleCard.style";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
+import { marked } from "marked";
 
 const PAGE_SIZE = 10;
 
@@ -98,14 +99,7 @@ const ArticlesClient = ({ currentArticle }: Props) => {
         <MainArticleContainer>
           <MainArticleContentContainer>
             <ArticleTitle>{currentArticle.title}</ArticleTitle>
-            <ArticleContent>
-              {currentArticle.content.split("\n").map((line, index) => (
-                <span key={index}>
-                  {line}
-                  <br />
-                </span>
-              ))}
-            </ArticleContent>
+            <ArticleContent html={marked(currentArticle.content)} />
           </MainArticleContentContainer>
           <ArticleCardDetailsTextPart>
             <ArticleCardDetailsNameSection>
