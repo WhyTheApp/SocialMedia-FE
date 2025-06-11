@@ -83,14 +83,27 @@
   resize: none;
 }
 
+@media (max-height: 800px), (max-width: 750px) {
+  .customInput1 {
+    font-size: 12px;
+    height: 60px;
+  }
+  .customInput2 {
+    font-size: 12px;
+    height: 120px;
+    min-height: 60px;
+  }
+  .bottomText {
+    font-size: 14px;
+  }
+}
+
 @media (max-width: 1000px) {
   .customInput1 {
     width: 90%;
-    min-height: 60px;
   }
   .customInput2 {
     width: 90%;
-    min-height: 60px;
   }
 }
 
