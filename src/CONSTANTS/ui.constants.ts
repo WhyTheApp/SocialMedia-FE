@@ -27,4 +27,8 @@ export const EmailPlaceholder = "Email";
 export const LargeContainerPlaceholder =
   "Anything else you might want to tell us?";
 
-export const MostRecentArticlesText = "Most Recent Articles";
+export const MostRecentArticlesHeader = "Most Recent Articles";
+export const RoadmapHeader = "Our roadmap";
+export const GoalsHeader = "Our goals and values";
+export const WaitlistHeader = "Waitlist";
+export const FAQHeader = "Frequently asked questions";

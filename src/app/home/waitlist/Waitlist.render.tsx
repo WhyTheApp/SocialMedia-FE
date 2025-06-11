@@ -9,8 +9,11 @@ import {
   ReadChoiceSecondText,
   AboutUsText,
   RoadmapText,
+  WaitlistHeader,
 } from "@/CONSTANTS/ui.constants";
 import { Title } from "@/components/title";
+import PageContainer from "@/components/page-container/PageContainer.style";
+import { PageHeader } from "@/components/page-heeader";
 
 const Waitlist = () => {
   const router = useRouter();
@@ -28,20 +31,24 @@ const Waitlist = () => {
   };
 
   return (
-    <CenteredContainer>
-      <Title>{JoinUsTitle}</Title>
-      <SimpleButton
-        onClick={navigateToDetailsInput}
-        buttonText={JoinText}
-      ></SimpleButton>
-      <BottomText>
-        {ReadChoiceFirstText}{" "}
-        <ColoredLink onClick={navigateToAboutUs}>{AboutUsText}</ColoredLink>{" "}
-        <br />
-        {ReadChoiceSecondText}{" "}
-        <ColoredLink onClick={navigateToRoadmap}>{RoadmapText}</ColoredLink>
-      </BottomText>
-    </CenteredContainer>
+    <PageContainer>
+      <PageHeader>{WaitlistHeader}</PageHeader>
+
+      <CenteredContainer>
+        <Title>{JoinUsTitle}</Title>
+        <SimpleButton
+          onClick={navigateToDetailsInput}
+          buttonText={JoinText}
+        ></SimpleButton>
+        <BottomText>
+          {ReadChoiceFirstText}{" "}
+          <ColoredLink onClick={navigateToAboutUs}>{AboutUsText}</ColoredLink>{" "}
+          <br />
+          {ReadChoiceSecondText}{" "}
+          <ColoredLink onClick={navigateToRoadmap}>{RoadmapText}</ColoredLink>
+        </BottomText>
+      </CenteredContainer>
+    </PageContainer>
   );
 };
 

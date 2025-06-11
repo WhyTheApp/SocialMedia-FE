@@ -49,6 +49,9 @@
 }
 
 @media (max-width: 800px), (max-height: 950px) {
+  .articleCardTitle {
+    font-size: 11px;
+  }
   .articleCardContentText {
     display: none;
   }
@@ -114,10 +117,16 @@
 .popup {
   height: 65px;
   width: 150px;
+
   background-color: #22242d;
+  border-color: white;
+  border-width: 2px;
+  border-style: solid;
+
+  z-index: 3;
   border-radius: 15px;
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 100%;
   padding: 20px;
 
@@ -128,4 +137,42 @@
   font-weight: 600;
   font-size: 16px;
   cursor: pointer;
+}
+
+@media (max-width: 750px) {
+  .articleCardDetails {
+    border-radius: 15px;
+    height: 40px;
+
+    gap: 5px;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .articleCardDetailsNameSection {
+    gap: 10px;
+    font-size: 12px;
+  }
+
+  .articleCardDetailsDateSection {
+    font-size: 9px;
+  }
+
+  .articleFile {
+    height: 15px;
+  }
+
+  .moreButton {
+    height: 20px;
+    cursor: pointer;
+  }
+
+  .popup {
+    height: 40px;
+    width: 90px;
+    font-size: 10px;
+  }
 }

@@ -11,6 +11,11 @@ interface TextProps {
   children: ReactNode;
 }
 
+type ArticleContentProps = {
+  html?: string | Promise<string>;
+  children?: React.ReactNode;
+};
+
 export function SoftTitle({ children }: TextProps) {
   return <p className={styles.softTitle}>{children}</p>;
 }
@@ -23,9 +28,7 @@ export function NormalText({ children }: TextProps) {
   return <p className={styles.normalText}>{children}</p>;
 }
 
-export function Container({ children }: TextProps) {
-  return <div className={styles.container}>{children}</div>;
-}
+
 
 export function ArticlesScrollContainer({
   ref,
@@ -55,6 +58,11 @@ export function ArticleTitle({ children }: TextProps) {
   return <p className={styles.articleTitle}>{children}</p>;
 }
 
-export function ArticleContent({ children }: TextProps) {
-  return <p className={styles.articleContent}>{children}</p>;
+export function ArticleContent({ html, children }: ArticleContentProps) {
+  return (
+    <p
+      className={styles.articleContent}
+      {...(html ? { dangerouslySetInnerHTML: { __html: html } } : { children })}
+    />
+  );
 }

@@ -5,13 +5,11 @@ import {
   ArticleContent,
   ArticlesScrollContainer,
   ArticleTitle,
-  Container,
   MainArticleContainer,
   MainArticleContentContainer,
 } from "./Articles.style";
-import { MostRecentArticlesText } from "@/CONSTANTS/ui.constants";
+import { MostRecentArticlesHeader } from "@/CONSTANTS/ui.constants";
 import ArticleCard from "@/components/article-card";
-import { Title } from "@/components/title";
 import {
   ArticleCardDetailsDateSection,
   ArticleCardDetailsNameSection,
@@ -19,6 +17,9 @@ import {
 } from "@/components/article-card/ArticleCard.style";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
+import { marked } from "marked";
+import { PageHeader } from "@/components/page-heeader";
+import PageContainer from "@/components/page-container/PageContainer.style";
 
 const PAGE_SIZE = 10;
 
@@ -84,8 +85,8 @@ const ArticlesClient = ({ currentArticle }: Props) => {
   };
 
   return (
-    <Container>
-      <Title>{MostRecentArticlesText}</Title>
+    <PageContainer>
+      <PageHeader>{MostRecentArticlesHeader}</PageHeader>
       <ArticlesScrollContainer ref={containerRef} onScroll={handleScroll}>
         {items.map((item, index) => (
           <div key={index} style={{ scrollSnapAlign: "start" }}>
@@ -98,14 +99,7 @@ const ArticlesClient = ({ currentArticle }: Props) => {
         <MainArticleContainer>
           <MainArticleContentContainer>
             <ArticleTitle>{currentArticle.title}</ArticleTitle>
-            <ArticleContent>
-              {currentArticle.content.split("\n").map((line, index) => (
-                <span key={index}>
-                  {line}
-                  <br />
-                </span>
-              ))}
-            </ArticleContent>
+            <ArticleContent html={marked(currentArticle.content)} />
           </MainArticleContentContainer>
           <ArticleCardDetailsTextPart>
             <ArticleCardDetailsNameSection>
@@ -121,7 +115,7 @@ const ArticlesClient = ({ currentArticle }: Props) => {
           </ArticleCardDetailsTextPart>
         </MainArticleContainer>
       )}
-    </Container>
+    </PageContainer>
   );
 };
 
