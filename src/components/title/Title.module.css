@@ -4,3 +4,9 @@
   font-size: 32px;
   margin: 0;
 }
+
+@media (max-height: 800px), (max-width: 750px) {
+  .title {
+    font-size: 24px;
+  }
+}
