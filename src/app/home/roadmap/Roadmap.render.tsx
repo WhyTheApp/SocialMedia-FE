@@ -13,6 +13,9 @@ import {
   BottomText,
 } from "./Roadmap.style";
 import { useRouter } from "next/navigation";
+import { PageHeader } from "@/components/page-heeader";
+import PageContainer from "@/components/page-container/PageContainer.style";
+import { RoadmapHeader } from "@/CONSTANTS/ui.constants";
 
 const Roadmap = () => {
   const router = useRouter();
@@ -22,26 +25,30 @@ const Roadmap = () => {
   };
 
   return (
-    <RoadmapWrapper>
-      {RoadmapEvents.map((event, idx) => (
-        <RoadmapItem key={idx}>
-          <Label>
-            {event.label}
-            {event.current && <CurrentBadge>Current</CurrentBadge>}
-          </Label>
-          <h3>{event.title}</h3>
-          <p>{event.description}</p>
-        </RoadmapItem>
-      ))}
+    <PageContainer>
+      <PageHeader>{RoadmapHeader}</PageHeader>
 
-      <BottomText>
-        {RoadmapExtendedViewTextStart}{" "}
-        <ColoredLink onClick={navigateToFullRoadmap}>
-          {RoadmapDetailedViewInsertText}
-        </ColoredLink>{" "}
-        {RoadmapExtendedViewTextEnd}
-      </BottomText>
-    </RoadmapWrapper>
+      <RoadmapWrapper>
+        {RoadmapEvents.map((event, idx) => (
+          <RoadmapItem key={idx}>
+            <Label>
+              {event.label}
+              {event.current && <CurrentBadge>Current</CurrentBadge>}
+            </Label>
+            <h3>{event.title}</h3>
+            <p>{event.description}</p>
+          </RoadmapItem>
+        ))}
+
+        <BottomText>
+          {RoadmapExtendedViewTextStart}{" "}
+          <ColoredLink onClick={navigateToFullRoadmap}>
+            {RoadmapDetailedViewInsertText}
+          </ColoredLink>{" "}
+          {RoadmapExtendedViewTextEnd}
+        </BottomText>
+      </RoadmapWrapper>
+    </PageContainer>
   );
 };
 

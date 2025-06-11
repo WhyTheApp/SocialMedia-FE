@@ -28,9 +28,7 @@ export function NormalText({ children }: TextProps) {
   return <p className={styles.normalText}>{children}</p>;
 }
 
-export function Container({ children }: TextProps) {
-  return <div className={styles.container}>{children}</div>;
-}
+
 
 export function ArticlesScrollContainer({
   ref,

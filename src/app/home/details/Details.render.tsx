@@ -18,9 +18,12 @@ import {
   JoinText,
   LargeContainerPlaceholder,
   PrivacyPolicyText,
+  WaitlistHeader,
 } from "@/CONSTANTS/ui.constants";
 import { Title } from "@/components/title";
 import SimpleButton from "@/components/simple-button";
+import PageContainer from "@/components/page-container/PageContainer.style";
+import { PageHeader } from "@/components/page-heeader";
 
 const Details = () => {
   const [email, setEmail] = useState("");
@@ -48,10 +51,9 @@ const Details = () => {
   };
 
   const sendEmail = async () => {
-    if(loading)
-      return;
+    if (loading) return;
 
-    if (checked == false) return;
+    if (!checked) return;
     if (email.length < 3) return;
     setLoading(true);
 
@@ -77,38 +79,41 @@ const Details = () => {
   };
 
   return (
-    <CenteredContainer>
-      <InputInner>
-        <Title>Join us today!</Title>
-        <CustomInput
-          onChange={handleEmailChange}
-          value={email}
-          placeholder={EmailPlaceholder}
-        />
-        <CustomLargeInput
-          onChange={handleFeedbackChange}
-          value={feedback}
-          placeholder={LargeContainerPlaceholder}
-        />
-        <StyledLabel>
-          <StyledCheckbox
-            id="consent"
-            checked={checked}
-            onChange={(e) => setIsChecked(e.target.checked)}
-            required
+    <PageContainer>
+      <PageHeader>{WaitlistHeader}</PageHeader>
+      <CenteredContainer>
+        <InputInner>
+          <Title>Join us today!</Title>
+          <CustomInput
+            onChange={handleEmailChange}
+            value={email}
+            placeholder={EmailPlaceholder}
           />
-          <BottomText>
-            {AgreeText}{" "}
-            <ColoredLink onClick={navigateToPrivacy}>
-              {PrivacyPolicyText}
-            </ColoredLink>
-          </BottomText>
-          .
-        </StyledLabel>
+          <CustomLargeInput
+            onChange={handleFeedbackChange}
+            value={feedback}
+            placeholder={LargeContainerPlaceholder}
+          />
+          <StyledLabel>
+            <StyledCheckbox
+              id="consent"
+              checked={checked}
+              onChange={(e) => setIsChecked(e.target.checked)}
+              required
+            />
+            <BottomText>
+              {AgreeText}{" "}
+              <ColoredLink onClick={navigateToPrivacy}>
+                {PrivacyPolicyText}
+              </ColoredLink>
+            </BottomText>
+            .
+          </StyledLabel>
 
-        <SimpleButton onClick={sendEmail} buttonText={JoinText} />
-      </InputInner>
-    </CenteredContainer>
+          <SimpleButton onClick={sendEmail} buttonText={JoinText} />
+        </InputInner>
+      </CenteredContainer>
+    </PageContainer>
   );
 };
 
