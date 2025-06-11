@@ -1,3 +1,4 @@
+import PageContainer from "@/components/page-container/PageContainer.style";
 import {
   CenteredContainer,
   BottomText,
@@ -11,8 +12,10 @@ import {
   ReadChoiceSecondText,
   RoadmapText,
   ThankYouText,
+  WaitlistHeader,
 } from "@/CONSTANTS/ui.constants";
 import { useRouter } from "next/navigation";
+import { PageHeader } from "@/components/page-heeader";
 
 const ThankYou = () => {
   const router = useRouter();
@@ -26,18 +29,21 @@ const ThankYou = () => {
   };
 
   return (
-    <CenteredContainer>
-      <InputContainer>
-        <NormalText>{ThankYouText}</NormalText>
-      </InputContainer>
-      <BottomText>
-        {ReadChoiceFirstVariantText}{" "}
-        <ColoredLink onClick={navigateToAboutUs}>{AboutUsText}</ColoredLink>{" "}
-        <br />
-        {ReadChoiceSecondText}{" "}
-        <ColoredLink onClick={navigateToRoadmap}>{RoadmapText}</ColoredLink>
-      </BottomText>
-    </CenteredContainer>
+    <PageContainer>
+      <PageHeader>{WaitlistHeader}</PageHeader>
+      <CenteredContainer>
+        <InputContainer>
+          <NormalText>{ThankYouText}</NormalText>
+        </InputContainer>
+        <BottomText>
+          {ReadChoiceFirstVariantText}{" "}
+          <ColoredLink onClick={navigateToAboutUs}>{AboutUsText}</ColoredLink>{" "}
+          <br />
+          {ReadChoiceSecondText}{" "}
+          <ColoredLink onClick={navigateToRoadmap}>{RoadmapText}</ColoredLink>
+        </BottomText>
+      </CenteredContainer>
+    </PageContainer>
   );
 };
 

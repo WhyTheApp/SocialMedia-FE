@@ -1,0 +1,19 @@
+.container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 50px;
+  padding-top: 70px;
+}
+
+@media (max-width: 750px) {
+  .container {
+    padding: 30px;
+    padding-top: 20px;
+  }
+}

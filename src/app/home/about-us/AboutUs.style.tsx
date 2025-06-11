@@ -9,14 +9,6 @@ interface TextProps {
   children: ReactNode;
 }
 
-export function SoftTitle({ children }: TextProps) {
-  return <p className={styles.softTitle}>{children}</p>;
-}
-
-export function HardTitle({ children }: TextProps) {
-  return <p className={styles.hardTitle}>{children}</p>;
-}
-
 export function NormalText({ children }: TextProps) {
   return <p className={styles.normalText}>{children}</p>;
 }
@@ -39,8 +31,4 @@ export function CardTitle({ children }: TextProps) {
 
 export function CardFooter({ children }: TextProps) {
   return <p className={styles.cardFooter}>{children}</p>;
-}
-
-export function CenteredContainer({ children }: TextProps) {
-  return <div className={styles.centeredContainer}>{children}</div>;
 }
