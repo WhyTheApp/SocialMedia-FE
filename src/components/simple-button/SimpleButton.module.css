@@ -1,6 +1,7 @@
 .simpleButton {
   all: unset;
   height: 60px;
+  min-height: 40px;
   min-width: 300px;
   border-radius: 10px;
   font-family: inherit;
@@ -12,4 +13,11 @@
   font-weight: 600;
   background: linear-gradient(to right, #012878, #660033);
   cursor: pointer;
+}
+
+@media (max-width: 750px) {
+  .simpleButton {
+    min-width: auto;
+    width: 90%;
+  }
 }

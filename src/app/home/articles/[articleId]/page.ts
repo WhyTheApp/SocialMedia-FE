@@ -1,3 +1,1 @@
-"use client";
-
-export { default } from "../Articles.render";
+export { default } from "../Articles.server.render";

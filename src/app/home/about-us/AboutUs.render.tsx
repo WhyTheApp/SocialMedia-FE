@@ -2,18 +2,19 @@ import {
   CardFooter,
   CardsContainer,
   CardTitle,
-  CenteredContainer,
   InputInner,
   NormalText,
 } from "./AboutUs.style";
 import { AboutUsCards } from "@/CONSTANTS/about.constants";
-import { AboutUsTitle } from "@/CONSTANTS/ui.constants";
-import { Title } from "@/components/title";
+import { GoalsHeader } from "@/CONSTANTS/ui.constants";
+import PageContainer from "@/components/page-container/PageContainer.style";
+import { PageHeader } from "@/components/page-heeader";
 
 const AboutUs = () => {
   return (
-    <CenteredContainer>
-      <Title>{AboutUsTitle}</Title>
+    <PageContainer>
+      <PageHeader>{GoalsHeader}</PageHeader>
+
       <CardsContainer>
         <InputInner>
           <CardTitle>{AboutUsCards.card1.title}</CardTitle>
@@ -36,7 +37,7 @@ const AboutUs = () => {
           <CardFooter>{AboutUsCards.card4.footer}</CardFooter>
         </InputInner>
       </CardsContainer>
-    </CenteredContainer>
+    </PageContainer>
   );
 };
 

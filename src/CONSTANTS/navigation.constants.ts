@@ -50,13 +50,13 @@ export const NavigationButtons: {
   Path: TabKey;
   Active: boolean;
 }[] = [
+  { Text: "Roadmap", Path: "roadmap", Active: true },
+  { Text: "Articles", Path: "articles", Active: true },
+  { Text: "FAQ", Path: "faq", Active: true },
+  { Text: "Our goals", Path: "about-us", Active: true },
+  { Text: "Waitlist", Path: "waitlist", Active: true },
   { Text: "Profile", Path: "profile", Active: false },
   { Text: "Friends", Path: "friends", Active: false },
   { Text: "Tabs", Path: "tabs", Active: false },
   { Text: "Settings", Path: "settings", Active: false },
-  { Text: "Articles", Path: "articles", Active: true },
-  { Text: "Roadmap", Path: "roadmap", Active: true },
-  { Text: "FAQ", Path: "faq", Active: false },
-  { Text: "Our goals", Path: "about-us", Active: true },
-  { Text: "Waitlist", Path: "waitlist", Active: true },
 ];
