@@ -1,17 +1,17 @@
 import BackgroundContainer from "@/components/background";
-import { LoginPageContainer } from "./Login.style";
+import { LoginPageContainer } from "./VerifyEmail.style";
 import TriangleGrid from "@/components/triangle-side";
-import LoginCard from "@/components/authentication/login-card";
+import VerifyEmailCard from "@/components/authentication/email-verify-card";
 
-const Login = () => {
+const VerifyEmail = () => {
   return (
     <BackgroundContainer>
       <LoginPageContainer>
         <TriangleGrid />
-        <LoginCard />
+        <VerifyEmailCard />
       </LoginPageContainer>
     </BackgroundContainer>
   );
 };
 
-export default Login;
+export default VerifyEmail;

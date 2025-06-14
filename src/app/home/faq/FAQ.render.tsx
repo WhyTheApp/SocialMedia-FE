@@ -6,7 +6,7 @@ import {
 } from "./FAQ.style";
 import { FAQHeader } from "@/CONSTANTS/ui.constants";
 import PageContainer from "@/components/page-container/PageContainer.style";
-import { PageHeader } from "@/components/page-heeader";
+import { PageHeader } from "@/components/page-header";
 
 const FAQ = () => {
   return (

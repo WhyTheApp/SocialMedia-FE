@@ -1,0 +1,189 @@
+.loginContainer {
+  height: 100vh;
+  width: 100%;
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #888 transparent;
+}
+
+.loginTitle {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 32px;
+  padding: 0;
+  margin: 0;
+  word-break: break-word;
+}
+
+.styledLogo {
+  height: 115px;
+  min-height: 60px;
+  margin: 50px;
+  display: block;
+}
+
+.inputWrapper {
+  position: relative;
+  width: 80%;
+  max-width: 450px;
+}
+
+.customInput {
+  height: 60px;
+  width: 100%;
+  background-color: rgba(250, 250, 250, 0.07);
+  color: #a0aec0;
+  border-radius: 10px;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 16px;
+  border: none;
+  outline: none;
+}
+
+.togglePassword {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 22px;
+  color: #a0aec0;
+  user-select: none;
+}
+
+.styledCheckbox {
+  height: 16px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  appearance: none;
+  background: none;
+  border: 2px solid #ffffff;
+  cursor: pointer;
+}
+
+.styledCheckbox:checked {
+  background-color: #ffffff;
+}
+
+.rememberMeContainer {
+  width: 80%;
+  max-width: 450px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.consentsContainer {
+  width: 80%;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+}
+
+.checkboxContainer {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.bottomText {
+  color: var(--color-text2);
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.coloredLink {
+  color: #660033;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.dividerContainer {
+  width: 80%;
+  max-width: 450px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.dividerLine {
+  width: 80%;
+  height: 1px;
+  margin: 0;
+  border: none;
+  background: #718096;
+}
+
+.dividerText {
+  color: #718096;
+  font-weight: 600;
+  font-size: 16px;
+  white-space: nowrap;
+}
+
+.oauthSectionContainer {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  max-width: 450px;
+  gap: 16px;
+}
+
+.oauthButton {
+  all: unset;
+  height: 60px;
+  min-height: 40px;
+  width: 80%;
+  max-width: 450px;
+  border-radius: 10px;
+  font-family: inherit;
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  background: transparent;
+  cursor: pointer;
+  border-color: #660033;
+  border-style: solid;
+  border-width: 2px;
+}
+
+@media (max-height: 850px), (max-width: 750px) {
+  .loginContainer {
+    justify-content: flex-start;
+    gap: 15px;
+  }
+  .customInput {
+    font-size: 12px;
+    height: 60px;
+  }
+  .bottomText {
+    font-size: 14px;
+  }
+  .loginTitle {
+    font-size: 24px;
+  }
+  .styledLogo {
+    margin: 20px;
+  }
+}
+
+@media (max-width: 300px) {
+  .oauthButton {
+    gap: 7px;
+  }
+}

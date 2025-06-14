@@ -1,0 +1,34 @@
+.centeredContainer {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+}
+
+.softTitle {
+  color: #ffffff;
+  font-weight: 200;
+  font-size: 21px;
+}
+
+.normalText {
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.blockOfTextContainer {
+  position: relative;
+  height: 70%;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  padding: 20px;
+  margin: 0 auto;
+  overflow: auto;
+}

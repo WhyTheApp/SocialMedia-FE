@@ -1,4 +1,5 @@
 export const PLACEHOLDERS = {
-  UserName: "Your future username",
+  UserName: "Click to login",
+  UserLogged: "Welcome back!",
   UserHandle: "@YourFutureHandle",
 };

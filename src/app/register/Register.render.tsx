@@ -1,17 +1,17 @@
 import BackgroundContainer from "@/components/background";
-import { LoginPageContainer } from "./Login.style";
+import { LoginPageContainer } from "./Register.style";
 import TriangleGrid from "@/components/triangle-side";
-import LoginCard from "@/components/authentication/login-card";
+import RegisterCard from "@/components/authentication/register-card";
 
-const Login = () => {
+const Register = () => {
   return (
     <BackgroundContainer>
       <LoginPageContainer>
         <TriangleGrid />
-        <LoginCard />
+        <RegisterCard />
       </LoginPageContainer>
     </BackgroundContainer>
   );
 };
 
-export default Login;
+export default Register;
