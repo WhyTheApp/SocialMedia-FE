@@ -15,7 +15,7 @@ import {
   WaitlistHeader,
 } from "@/CONSTANTS/ui.constants";
 import { useRouter } from "next/navigation";
-import { PageHeader } from "@/components/page-heeader";
+import { PageHeader } from "@/components/page-header";
 
 const ThankYou = () => {
   const router = useRouter();

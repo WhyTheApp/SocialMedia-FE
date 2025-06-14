@@ -3,6 +3,8 @@
   height: 60px;
   min-height: 40px;
   min-width: 300px;
+  width: 80%;
+  max-width: 450px;
   border-radius: 10px;
   font-family: inherit;
   display: flex;

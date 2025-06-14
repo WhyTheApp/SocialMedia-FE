@@ -5,6 +5,7 @@ import UserImageSVG from "../../../public/user-placeholder.svg";
 
 interface Props {
   children: ReactNode;
+  onClick?: React.MouseEventHandler<HTMLDivElement>;
 }
 
 interface TextProps {
@@ -27,8 +28,12 @@ export function UserArea({ children }: Props) {
   return <div className={styles.userArea}>{children}</div>;
 }
 
-export function UserDetails({ children }: Props) {
-  return <div className={styles.userDetails}>{children}</div>;
+export function UserDetails({ children, onClick }: Props) {
+  return (
+    <div className={styles.userDetails} onClick={onClick}>
+      {children}
+    </div>
+  );
 }
 
 export function UsernameText({ children }: TextProps) {

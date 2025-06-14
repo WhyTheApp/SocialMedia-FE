@@ -13,7 +13,7 @@ import {
   BottomText,
 } from "./Roadmap.style";
 import { useRouter } from "next/navigation";
-import { PageHeader } from "@/components/page-heeader";
+import { PageHeader } from "@/components/page-header";
 import PageContainer from "@/components/page-container/PageContainer.style";
 import { RoadmapHeader } from "@/CONSTANTS/ui.constants";
 

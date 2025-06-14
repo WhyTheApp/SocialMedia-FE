@@ -33,6 +33,7 @@
   width: 85px;
   height: 85px;
   margin: 10px;
+  min-height: 20px;
 }
 
 .styledUserImage {
@@ -52,6 +53,7 @@
   max-height: 300px;
   background: linear-gradient(to right, #660033, #381024);
   border-radius: 15px;
+  cursor: pointer;
 }
 
 @media (max-width: 1200px) {

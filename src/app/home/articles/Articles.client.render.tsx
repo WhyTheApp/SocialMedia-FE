@@ -16,10 +16,10 @@ import {
   ArticleCardDetailsTextPart,
 } from "@/components/article-card/ArticleCard.style";
 import { useEffect, useRef, useState } from "react";
-import axios from "axios";
 import { marked } from "marked";
-import { PageHeader } from "@/components/page-heeader";
+import { PageHeader } from "@/components/page-header";
 import PageContainer from "@/components/page-container/PageContainer.style";
+import api from "@/services/Requests.service";
 
 const PAGE_SIZE = 10;
 
@@ -50,7 +50,7 @@ const ArticlesClient = ({ currentArticle }: Props) => {
     };
 
     try {
-      const response = await axios.post<ApiResponse>(url, data);
+      const response = await api.post<ApiResponse>(url, data);
       if (response.status === 200 || response.status === 201) {
         if (
           items.length + response.data.numberRetrieved >=
