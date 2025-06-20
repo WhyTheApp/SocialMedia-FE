@@ -20,7 +20,7 @@ export default async function ArticlesServer() {
       ? `${baseUrl}articles/get-article?articleId=${articleId}`
       : `${baseUrl}articles/get-featured`;
 
-  let currentArticle: Article | null = null;
+  let currentArticle: Article;
 
   try {
     const res = await fetch(url, { cache: "no-store" });
@@ -31,5 +31,5 @@ export default async function ArticlesServer() {
     console.error("SSR article fetch error:", e);
   }
 
-  return <ArticlesClient currentArticle={currentArticle} />;
+  return <ArticlesClient currentArticle={currentArticle!} />;
 }

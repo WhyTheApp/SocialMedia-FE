@@ -1,5 +1,7 @@
 import styles from "./Articles.module.css";
 import { ReactNode, Ref, UIEventHandler } from "react";
+import ExpandIcon from "@/icons/expand.svg";
+import CloseIcon from "@/icons/close.svg";
 
 interface ScrollProps {
   children: ReactNode;
@@ -16,6 +18,11 @@ type ArticleContentProps = {
   children?: React.ReactNode;
 };
 
+interface Props {
+  children?: ReactNode;
+  onClick?: React.MouseEventHandler<HTMLDivElement>;
+}
+
 export function SoftTitle({ children }: TextProps) {
   return <p className={styles.softTitle}>{children}</p>;
 }
@@ -28,7 +35,13 @@ export function NormalText({ children }: TextProps) {
   return <p className={styles.normalText}>{children}</p>;
 }
 
+export function ExpandButton({ onClick }: Props) {
+  return <ExpandIcon className={styles.expandArticle} onClick={onClick} />;
+}
 
+export function CloseButton({ onClick }: Props) {
+  return <CloseIcon className={styles.expandArticle} onClick={onClick} />;
+}
 
 export function ArticlesScrollContainer({
   ref,
@@ -46,8 +59,20 @@ export function ArticlesScrollContainer({
   );
 }
 
-export function MainArticleContainer({ children }: TextProps) {
-  return <div className={styles.mainArticleContainer}>{children}</div>;
+export function MainArticleContainer({ children, onClick }: Props) {
+  return (
+    <div className={styles.mainArticleContainer} onClick={onClick}>
+      {children}
+    </div>
+  );
+}
+
+export function ExpandedMainArticleContainer({ children, onClick }: Props) {
+  return (
+    <div className={styles.expandedMainArticleContainer} onClick={onClick}>
+      {children}
+    </div>
+  );
 }
 
 export function MainArticleContentContainer({ children }: TextProps) {
