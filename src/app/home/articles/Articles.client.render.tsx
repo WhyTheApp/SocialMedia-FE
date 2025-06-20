@@ -5,6 +5,9 @@ import {
   ArticleContent,
   ArticlesScrollContainer,
   ArticleTitle,
+  CloseButton,
+  ExpandButton,
+  ExpandedMainArticleContainer,
   MainArticleContainer,
   MainArticleContentContainer,
 } from "./Articles.style";
@@ -30,7 +33,7 @@ type ApiResponse = {
 };
 
 type Props = {
-  currentArticle: Article | null;
+  currentArticle: Article;
 };
 
 const ArticlesClient = ({ currentArticle }: Props) => {
@@ -39,6 +42,7 @@ const ArticlesClient = ({ currentArticle }: Props) => {
   const [pageNumber, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
+  const [expandedArticle, setExpandedArticle] = useState(false);
 
   const fetchArticles = async () => {
     const url = process.env.NEXT_PUBLIC_API_URL + "articles/get-filtered";
@@ -84,36 +88,60 @@ const ArticlesClient = ({ currentArticle }: Props) => {
     if (nearEnd) fetchMore();
   };
 
+  const ArticleContentData = (
+    <MainArticleContentContainer>
+      <ArticleTitle>{currentArticle.title}</ArticleTitle>
+      <ArticleContent html={marked(currentArticle.content)} />
+    </MainArticleContentContainer>
+  );
+
+  const ArticleDetailsData = (
+    <ArticleCardDetailsTextPart>
+      <ArticleCardDetailsNameSection>
+        {currentArticle.author}
+      </ArticleCardDetailsNameSection>
+      <ArticleCardDetailsDateSection>
+        {new Date(currentArticle.date).toLocaleDateString("en-GB", {
+          day: "2-digit",
+          month: "short",
+          year: "numeric",
+        })}
+      </ArticleCardDetailsDateSection>
+    </ArticleCardDetailsTextPart>
+  );
+
   return (
     <PageContainer>
-      <PageHeader>{MostRecentArticlesHeader}</PageHeader>
-      <ArticlesScrollContainer ref={containerRef} onScroll={handleScroll}>
-        {items.map((item, index) => (
-          <div key={index} style={{ scrollSnapAlign: "start" }}>
-            <ArticleCard {...item} />
-          </div>
-        ))}
-      </ArticlesScrollContainer>
+      {(expandedArticle && (
+        <ExpandedMainArticleContainer>
+          <CloseButton
+            onClick={() => {
+              setExpandedArticle(!expandedArticle);
+            }}
+          />
+          {ArticleContentData}
+        </ExpandedMainArticleContainer>
+      )) || (
+        <>
+          <PageHeader>{MostRecentArticlesHeader}</PageHeader>
 
-      {currentArticle && (
-        <MainArticleContainer>
-          <MainArticleContentContainer>
-            <ArticleTitle>{currentArticle.title}</ArticleTitle>
-            <ArticleContent html={marked(currentArticle.content)} />
-          </MainArticleContentContainer>
-          <ArticleCardDetailsTextPart>
-            <ArticleCardDetailsNameSection>
-              {currentArticle.author}
-            </ArticleCardDetailsNameSection>
-            <ArticleCardDetailsDateSection>
-              {new Date(currentArticle.date).toLocaleDateString("en-GB", {
-                day: "2-digit",
-                month: "short",
-                year: "numeric",
-              })}
-            </ArticleCardDetailsDateSection>
-          </ArticleCardDetailsTextPart>
-        </MainArticleContainer>
+          <ArticlesScrollContainer ref={containerRef} onScroll={handleScroll}>
+            {items.map((item, index) => (
+              <div key={index} style={{ scrollSnapAlign: "start" }}>
+                <ArticleCard {...item} />
+              </div>
+            ))}
+          </ArticlesScrollContainer>
+          <MainArticleContainer
+            onClick={() => {
+              setExpandedArticle(!expandedArticle);
+            }}
+          >
+            <ExpandButton />
+            {ArticleContentData}
+            {ArticleDetailsData}
+          </MainArticleContainer>
+        </>
       )}
     </PageContainer>
   );
