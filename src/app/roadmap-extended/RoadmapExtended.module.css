@@ -9,13 +9,13 @@
 }
 
 .softTitle {
-  color: #ffffff;
+  color: var(--color-text-full-opacity);;
   font-weight: 200;
   font-size: 21px;
 }
 
 .normalText {
-  color: white;
+  color: var(--color-text-full-opacity);
   font-weight: 500;
   font-size: 15px;
 }

@@ -24,13 +24,13 @@
 }
 
 .hardTitle {
-  color: white;
+  color: var(--color-text-full-opacity);
   font-weight: 600;
   font-size: 36px;
 }
 
 .normalText {
-  color: #ffffff;
+  color: var(--color-text-full-opacity);
   font-weight: 700;
   font-size: 13px;
 }
@@ -109,19 +109,19 @@
   align-items: flex-start;
   padding: 20px;
   justify-content: space-between;
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: var(--color-text-low-opacity);
   position: relative;
   overflow: hidden;
 }
 
 .cardTitle {
-  color: #ffffff;
+  color: var(--color-text-full-opacity);
   font-weight: 700;
   font-size: 16px;
 }
 
 .cardFooter {
-  color: #ffffff;
+  color: var(--color-text-full-opacity);
   font-weight: 700;
   font-size: 12px;
 }

@@ -1,12 +1,12 @@
 .bottomText {
-  color: var(--color-text2);
+  color: var(--color-text-full-opacity);
   font-weight: 600;
   font-size: 16px;
   text-align: right;
 }
 
 .coloredLink {
-  color: #660033;
+  color: var(--color-burgundy);
   text-decoration: none;
   cursor: pointer;
 }

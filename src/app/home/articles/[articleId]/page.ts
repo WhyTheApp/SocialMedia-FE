@@ -1,1 +1,1 @@
-export { default } from "../Articles.server.render";
+export { default } from "./ArticleViewer.server.render";

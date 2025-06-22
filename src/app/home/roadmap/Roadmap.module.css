@@ -2,14 +2,14 @@
   max-width: 800px;
   margin: 3rem auto;
   padding: 1rem;
-  border-left: 3px solid white;
+  border-left: 3px solid var(--color-text-full-opacity);
 }
 
 .roadmapItem {
   position: relative;
   padding: 1rem 1rem 1rem 2rem;
   margin-bottom: 2rem;
-  color: white;
+  color: var(--color-text-full-opacity);
 }
 
 .roadmapItem::before {
@@ -19,29 +19,29 @@
   top: 1.2rem;
   width: 12px;
   height: 12px;
-  border: 2px solid white;
+  border: 2px solid var(--color-text-full-opacity);
   border-radius: 50%;
 }
 
 .roadmapItem h3 {
   margin: 0 0 0.25rem 0;
-  color: white;
+  color: var(--color-text-full-opacity);
 }
 
 .roadmapItem p {
   margin: 0;
-  color: white;
+  color: var(--color-text-full-opacity);
 }
 
 .label {
   font-size: 0.875rem;
-  color: #d1d5db;
+  color: var(--color-text-full-opacity);
   font-weight: 600;
 }
 
 .currentBadge {
-  background: white;
-  color: black;
+  background: var(--color-text-full-opacity);
+  color: var(--color-bg);
   font-size: 0.75rem;
   padding: 0.2rem 0.5rem;
   border-radius: 9999px;
@@ -50,13 +50,13 @@
 }
 
 .coloredLink {
-  color: #660033;
+  color: var(--color-burgundy);
   text-decoration: none;
   cursor: pointer;
 }
 
 .bottomText {
-  color: var(--color-text2);
+  color: var(--color-text-full-opacity);
   font-weight: 600;
   font-size: 16px;
 }

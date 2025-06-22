@@ -1,5 +1,5 @@
 import styles from "./Authentication.module.css";
-import {Dispatch, ReactNode, SetStateAction, useState} from "react";
+import { Dispatch, ReactNode, SetStateAction, useState } from "react";
 import LogoSVG from "../../../public/whylogo.svg";
 import EyeOn from "../../../public/eye-on.svg";
 import EyeOff from "../../../public/eye-off.svg";
@@ -137,37 +137,41 @@ export function LoginDivider() {
 
 export function OauthSection() {
   return (
-      <div className={styles.oauthSectionContainer}>
-          {OAUTH_METHODS.map((item, index) => (
-              <button
-                  className={styles.oauthButton}
-                  key={item.name}
-                  id={`oauth-btn-${index}`}
-                  onClick={item.action}
-              >
-                  <img src={item.icon} alt={`${item.name} Logo`}/>
-                  {item.name}
-              </button>
-          ))}
-      </div>
+    <div className={styles.oauthSectionContainer}>
+      {OAUTH_METHODS.map((item, index) => (
+        <button
+          className={styles.oauthButton}
+          key={item.name}
+          id={`oauth-btn-${index}`}
+          onClick={item.action}
+        >
+          <img
+            src={item.icon}
+            className={styles.oauthLogo}
+            alt={`${item.name} Logo`}
+          />
+          {item.name}
+        </button>
+      ))}
+    </div>
   );
 }
 
 export function Consents({
-                             navigateToTerms,
-                             navigateToPrivacy,
-                             consentToTC,
-                             setConsentToTC,
-                             consentToPrivacy,
-                             setConsentToPrivacy,
-                         }: ConsentsProps) {
-    return (
-        <div className={styles.consentsContainer}>
-            <div className={styles.checkboxContainer}>
-                <StyledCheckbox
-                    checked={consentToTC}
-                    onChange={(e) => {
-                        setConsentToTC(e.target.checked);
+  navigateToTerms,
+  navigateToPrivacy,
+  consentToTC,
+  setConsentToTC,
+  consentToPrivacy,
+  setConsentToPrivacy,
+}: ConsentsProps) {
+  return (
+    <div className={styles.consentsContainer}>
+      <div className={styles.checkboxContainer}>
+        <StyledCheckbox
+          checked={consentToTC}
+          onChange={(e) => {
+            setConsentToTC(e.target.checked);
           }}
         />
         <BottomText>

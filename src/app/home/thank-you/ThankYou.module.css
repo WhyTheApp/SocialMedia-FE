@@ -1,5 +1,5 @@
 .normalText {
-  color: #ffffff;
+  color: var(--color-text-full-opacity);
   font-weight: 600;
   font-size: 32px;
   text-align: center;
@@ -18,19 +18,19 @@
   align-items: center;
   justify-content: center;
   border-radius: 15px;
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: var(--color-text-low-opacity);
   margin: 0 auto;
 }
 
 .bottomText {
-  color: var(--color-text2);
+  color: var(--color-text-full-opacity);
   font-weight: 600;
   font-size: 16px;
   text-align: right;
 }
 
 .coloredLink {
-  color: #660033;
+  color: var(--color-burgundy);
   text-decoration: none;
   cursor: pointer;
 }
@@ -47,4 +47,3 @@
   overflow-y: auto;
   overflow-x: hidden;
 }
-

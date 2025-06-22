@@ -1,7 +1,5 @@
 import styles from "./Articles.module.css";
 import { ReactNode, Ref, UIEventHandler } from "react";
-import ExpandIcon from "@/icons/expand.svg";
-import CloseIcon from "@/icons/close.svg";
 
 interface ScrollProps {
   children: ReactNode;
@@ -35,12 +33,8 @@ export function NormalText({ children }: TextProps) {
   return <p className={styles.normalText}>{children}</p>;
 }
 
-export function ExpandButton({ onClick }: Props) {
-  return <ExpandIcon className={styles.expandArticle} onClick={onClick} />;
-}
-
-export function CloseButton({ onClick }: Props) {
-  return <CloseIcon className={styles.expandArticle} onClick={onClick} />;
+export function MediumText({ children }: TextProps) {
+  return <p className={styles.mediumText}>{children}</p>;
 }
 
 export function ArticlesScrollContainer({
@@ -59,6 +53,12 @@ export function ArticlesScrollContainer({
   );
 }
 
+export function ArticlesVerticalScrollContainer({ children }: Props) {
+  return (
+    <div className={styles.articlesVerticalScrollContainer}>{children}</div>
+  );
+}
+
 export function MainArticleContainer({ children, onClick }: Props) {
   return (
     <div className={styles.mainArticleContainer} onClick={onClick}>
@@ -67,9 +67,9 @@ export function MainArticleContainer({ children, onClick }: Props) {
   );
 }
 
-export function ExpandedMainArticleContainer({ children, onClick }: Props) {
+export function ArticlesContainer({ ref, onScroll, children }: ScrollProps) {
   return (
-    <div className={styles.expandedMainArticleContainer} onClick={onClick}>
+    <div className={styles.articlesContainer} ref={ref} onScroll={onScroll}>
       {children}
     </div>
   );
@@ -90,4 +90,8 @@ export function ArticleContent({ html, children }: ArticleContentProps) {
       {...(html ? { dangerouslySetInnerHTML: { __html: html } } : { children })}
     />
   );
+}
+
+export function CenteredContainer({ children }: TextProps) {
+  return <div className={styles.centeredContainer}>{children}</div>;
 }

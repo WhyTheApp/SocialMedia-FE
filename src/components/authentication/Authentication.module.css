@@ -11,11 +11,11 @@
   position: relative;
   overflow-x: auto;
   scrollbar-width: thin;
-  scrollbar-color: #888 transparent;
+  scrollbar-color: var(--color-scrollbar);
 }
 
 .loginTitle {
-  color: #ffffff;
+  color: var(--color-text-full-opacity);
   font-weight: 600;
   font-size: 32px;
   padding: 0;
@@ -28,6 +28,7 @@
   min-height: 60px;
   margin: 50px;
   display: block;
+  color: var(--color-text-full-opacity);
 }
 
 .inputWrapper {
@@ -39,8 +40,8 @@
 .customInput {
   height: 60px;
   width: 100%;
-  background-color: rgba(250, 250, 250, 0.07);
-  color: #a0aec0;
+  background-color: var(--color-text-low-opacity);
+  color: var(--color-text-slightly-colored);
   border-radius: 10px;
   font-family: inherit;
   font-weight: 500;
@@ -57,7 +58,7 @@
   transform: translateY(-50%);
   cursor: pointer;
   font-size: 22px;
-  color: #a0aec0;
+  color: var(--color-text-slightly-colored);
   user-select: none;
 }
 
@@ -67,12 +68,12 @@
   border-radius: 50%;
   appearance: none;
   background: none;
-  border: 2px solid #ffffff;
+  border: 2px solid var(--color-text-full-opacity);
   cursor: pointer;
 }
 
 .styledCheckbox:checked {
-  background-color: #ffffff;
+  background-color: var(--color-text-full-opacity);
 }
 
 .rememberMeContainer {
@@ -97,13 +98,13 @@
 }
 
 .bottomText {
-  color: var(--color-text2);
+  color: var(--color-text-full-opacity);
   font-weight: 600;
   font-size: 16px;
 }
 
 .coloredLink {
-  color: #660033;
+  color: var(--color-burgundy);
   text-decoration: none;
   cursor: pointer;
 }
@@ -122,11 +123,11 @@
   height: 1px;
   margin: 0;
   border: none;
-  background: #718096;
+  background: var(--color-text-half-opacity);
 }
 
 .dividerText {
-  color: #718096;
+  color: var(--color-text-half-opacity);
   font-weight: 600;
   font-size: 16px;
   white-space: nowrap;
@@ -152,14 +153,18 @@
   gap: 14px;
   justify-content: center;
   align-items: center;
-  color: #ffffff;
+  color: var(--color-text-full-opacity);
   font-size: 16px;
   font-weight: 600;
   background: transparent;
   cursor: pointer;
-  border-color: #660033;
+  border-color: var(--color-burgundy);
   border-style: solid;
   border-width: 2px;
+}
+
+.oauthLogo {
+  color: red;
 }
 
 @media (max-height: 850px), (max-width: 750px) {

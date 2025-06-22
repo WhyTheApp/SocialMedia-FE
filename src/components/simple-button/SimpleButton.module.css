@@ -10,7 +10,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #ffffff;
+  color: var(--color-always-white);
   font-size: 16px;
   font-weight: 600;
   background: linear-gradient(to right, #012878, #660033);

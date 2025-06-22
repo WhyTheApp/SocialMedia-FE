@@ -1,5 +1,5 @@
 .background {
-  background-color: #0a0c16;
+  background-color: var(--color-bg);
 
   position: relative;
   height: 100%;
@@ -18,7 +18,7 @@
   width: 30%;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
-  background: #1b2142;
+  background: var(--color-blue-dot);
   filter: blur(10vw);
   top: 75%;
   right: 60%;
@@ -42,7 +42,7 @@
   width: 30%;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
-  background: #660033;
+  background: var(--color-red-dot);
   filter: blur(10vw);
   bottom: 75%;
   left: 70%;

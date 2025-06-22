@@ -101,6 +101,7 @@
 }
 
 .grid {
+  background-color: var(--color-always-dark-background);
   display: grid;
   grid-template-columns: repeat(2, var(--size));
   grid-template-rows: repeat(2, var(--size));
@@ -113,7 +114,10 @@
   display: grid;
   grid-template-columns: repeat(4, auto);
   width: fit-content;
+  border-radius: 16px;
+  box-shadow: 0 4px 250px 0 var(--color-drop-shadow);
 }
+
 @media (max-width: 1800px) {
   .fullContainer {
     --size: 90px;
