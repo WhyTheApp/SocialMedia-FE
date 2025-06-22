@@ -1,7 +1,9 @@
 .articleCard {
   height: 225px;
+  min-height: 100%;
   width: 240px;
-  background: rgba(255, 255, 255, 0.05);
+  max-height: 240px;
+  background: var(--color-text-low-opacity);
   border-radius: 15px;
 
   display: flex;
@@ -31,7 +33,7 @@
 }
 
 .articleCardTitle {
-  color: #c8cede;
+  color: var(--color-text-full-opacity);
   font-weight: 600;
   font-size: 14px;
   padding: 0;
@@ -40,7 +42,7 @@
 }
 
 .articleCardContentText {
-  color: #c8cede;
+  color: var(--color-text-full-opacity);
   font-weight: 600;
   font-size: 7px;
   padding: 0;
@@ -48,17 +50,8 @@
   word-break: break-word;
 }
 
-@media (max-width: 800px), (max-height: 950px) {
-  .articleCardTitle {
-    font-size: 11px;
-  }
-  .articleCardContentText {
-    display: none;
-  }
-}
-
 .articleCardDetails {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--color-text-low-opacity);
 
   border-radius: 15px;
   height: 65px;
@@ -94,32 +87,34 @@
   white-space: nowrap;
   overflow: hidden;
 
-  color: #ffffff;
+  color: var(--color-text-full-opacity);
   font-weight: 600;
   font-size: 16px;
 }
 
 .articleCardDetailsDateSection {
-  color: rgba(255, 255, 255, 0.45);
+  color: var(--color-text-half-opacity);
   font-weight: 600;
   font-size: 13px;
 }
 
 .articleFile {
   height: 20px;
+  fill: var(--color-text-low-opacity);
 }
 
 .moreButton {
   height: 30px;
   cursor: pointer;
+  fill: var(--color-text-low-opacity);
 }
 
 .popup {
   height: 65px;
   width: 150px;
 
-  background-color: #22242d;
-  border-color: white;
+  background-color: var(--color-bg);
+  border-color: var(--color-text-full-opacity);
   border-width: 2px;
   border-style: solid;
 
@@ -133,7 +128,7 @@
   display: flex;
   align-items: center;
 
-  color: #ffffff;
+  color: var(--color-text-full-opacity);
   font-weight: 600;
   font-size: 16px;
   cursor: pointer;

@@ -37,6 +37,8 @@
   scrollbar-width: none;
   -ms-overflow-style: none;
   z-index: 1;
+  border-radius: 0 30px 30px 0;
+  box-shadow: 0 4px 250px 0 var(--color-drop-shadow);
 }
 
 .sidebarContainer::-webkit-scrollbar {
@@ -61,11 +63,14 @@
   .sidebarContainer {
     align-items: center;
     height: 5%;
+    border-radius: 0;
+
     min-height: 60px;
 
     width: 100%;
     overflow-y: hidden;
     overflow-x: auto;
+    box-shadow: 0 40px 200px 10px var(--color-drop-shadow);
   }
 }
 

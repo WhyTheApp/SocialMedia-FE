@@ -14,13 +14,13 @@
 }
 
 .bottomText {
-  color: var(--color-text2);
+  color: var(--color-text-full-opacity);
   font-weight: 600;
   font-size: 16px;
 }
 
 .coloredLink {
-  color: #660033;
+  color: var(--color-burgundy);
   text-decoration: none;
   cursor: pointer;
 }
@@ -37,7 +37,7 @@
   align-items: center;
   justify-content: flex-start;
   border-radius: 15px;
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: var(--color-text-low-opacity);
 
   padding: 25px;
   margin: 0 auto;
@@ -56,8 +56,8 @@
   width: 70%;
   max-width: 450px;
   height: 60px;
-  background-color: rgba(250, 250, 250, 0.07);
-  color: #a0aec0;
+  background-color: var(--color-text-low-opacity);
+  color: var(--color-text-slightly-colored);
   border-radius: 10px;
   font-family: inherit;
   font-weight: 500;
@@ -70,8 +70,8 @@
   width: 70%;
   max-width: 450px;
   height: 160px;
-  background-color: rgba(250, 250, 250, 0.07);
-  color: #a0aec0;
+  background-color: var(--color-text-low-opacity);
+  color: var(--color-text-slightly-colored);
   vertical-align: top;
   border-radius: 10px;
   font-family: inherit;
@@ -113,12 +113,12 @@
   border-radius: 50%;
   appearance: none;
   background: none;
-  border: 2px solid #ffffff;
+  border: 2px solid var(--color-text-full-opacity);
   cursor: pointer;
 }
 
 .styledCheckbox:checked {
-  background-color: #ffffff;
+  background-color: var(--color-text-full-opacity);
 }
 
 .centeredContainer {

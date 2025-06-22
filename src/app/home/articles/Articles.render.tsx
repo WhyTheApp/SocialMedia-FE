@@ -2,29 +2,20 @@
 
 import { Article } from "@/CONSTANTS/article.constants";
 import {
-  ArticleContent,
-  ArticlesScrollContainer,
+  ArticlesContainer,
+  ArticlesVerticalScrollContainer,
   ArticleTitle,
-  CloseButton,
-  ExpandButton,
-  ExpandedMainArticleContainer,
-  MainArticleContainer,
-  MainArticleContentContainer,
+  CenteredContainer,
+  MediumText,
 } from "./Articles.style";
 import { MostRecentArticlesHeader } from "@/CONSTANTS/ui.constants";
 import ArticleCard from "@/components/article-card";
-import {
-  ArticleCardDetailsDateSection,
-  ArticleCardDetailsNameSection,
-  ArticleCardDetailsTextPart,
-} from "@/components/article-card/ArticleCard.style";
 import { useEffect, useRef, useState } from "react";
-import { marked } from "marked";
 import { PageHeader } from "@/components/page-header";
 import PageContainer from "@/components/page-container/PageContainer.style";
 import api from "@/services/Requests.service";
 
-const PAGE_SIZE = 10;
+const PAGE_SIZE = 50;
 
 type ApiResponse = {
   numberFound: number;
@@ -32,17 +23,12 @@ type ApiResponse = {
   results: Article[];
 };
 
-type Props = {
-  currentArticle: Article;
-};
-
-const ArticlesClient = ({ currentArticle }: Props) => {
+const ArticlesClient = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [items, setItems] = useState<Article[]>([]);
   const [pageNumber, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
-  const [expandedArticle, setExpandedArticle] = useState(false);
 
   const fetchArticles = async () => {
     const url = process.env.NEXT_PUBLIC_API_URL + "articles/get-filtered";
@@ -58,7 +44,7 @@ const ArticlesClient = ({ currentArticle }: Props) => {
       if (response.status === 200 || response.status === 201) {
         if (
           items.length + response.data.numberRetrieved >=
-          response.data.numberFound
+          response.data.numberFound 
         )
           setHasMore(false);
 
@@ -88,61 +74,25 @@ const ArticlesClient = ({ currentArticle }: Props) => {
     if (nearEnd) fetchMore();
   };
 
-  const ArticleContentData = (
-    <MainArticleContentContainer>
-      <ArticleTitle>{currentArticle.title}</ArticleTitle>
-      <ArticleContent html={marked(currentArticle.content)} />
-    </MainArticleContentContainer>
-  );
-
-  const ArticleDetailsData = (
-    <ArticleCardDetailsTextPart>
-      <ArticleCardDetailsNameSection>
-        {currentArticle.author}
-      </ArticleCardDetailsNameSection>
-      <ArticleCardDetailsDateSection>
-        {new Date(currentArticle.date).toLocaleDateString("en-GB", {
-          day: "2-digit",
-          month: "short",
-          year: "numeric",
-        })}
-      </ArticleCardDetailsDateSection>
-    </ArticleCardDetailsTextPart>
-  );
-
   return (
     <PageContainer>
-      {(expandedArticle && (
-        <ExpandedMainArticleContainer>
-          <CloseButton
-            onClick={() => {
-              setExpandedArticle(!expandedArticle);
-            }}
-          />
-          {ArticleContentData}
-        </ExpandedMainArticleContainer>
-      )) || (
-        <>
+      <div>
+        <ArticleTitle>Blueprint</ArticleTitle>
+        <MediumText>Dev blog, where we share our coding journey.</MediumText>
+        <MediumText>Join us as we build, learn, and grow together.</MediumText>
+      </div>
+      <CenteredContainer>
+        <ArticlesContainer ref={containerRef} onScroll={handleScroll}>
           <PageHeader>{MostRecentArticlesHeader}</PageHeader>
-
-          <ArticlesScrollContainer ref={containerRef} onScroll={handleScroll}>
+          <ArticlesVerticalScrollContainer>
             {items.map((item, index) => (
               <div key={index} style={{ scrollSnapAlign: "start" }}>
                 <ArticleCard {...item} />
               </div>
             ))}
-          </ArticlesScrollContainer>
-          <MainArticleContainer
-            onClick={() => {
-              setExpandedArticle(!expandedArticle);
-            }}
-          >
-            <ExpandButton />
-            {ArticleContentData}
-            {ArticleDetailsData}
-          </MainArticleContainer>
-        </>
-      )}
+          </ArticlesVerticalScrollContainer>
+        </ArticlesContainer>
+      </CenteredContainer>
     </PageContainer>
   );
 };

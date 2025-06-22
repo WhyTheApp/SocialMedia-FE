@@ -27,14 +27,18 @@
 }
 
 .navText {
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--color-unavailable);
   font-size: 24px;
   font-family: inherit;
   font-weight: 600;
 }
 
+.navText.active {
+  color: var(--color-text-full-opacity);
+}
+
 .navText.clicked {
-  color: #ffffff;
+  color: var(--color-always-white);
 }
 
 .iconWrapper {
@@ -55,19 +59,19 @@
 }
 
 .navIcon path {
-  fill: #6b6b6b;
+  fill: var(--color-unavailable);
 }
 
 .iconWrapper.active .navIcon path {
-  fill: #660033;
+  fill: var(--color-burgundy);
 }
 
 .iconWrapper.clicked .navIcon path {
-  fill: white;
+  fill: var(--color-text-full-opacity);
 }
 
 .iconWrapper.active.clicked .navIcon path {
-  fill: white;
+  fill: var(--color-always-white);
 }
 
 @media (max-width: 1200px) {

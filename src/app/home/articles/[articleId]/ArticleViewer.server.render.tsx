@@ -1,5 +1,5 @@
 import { Article } from "@/CONSTANTS/article.constants";
-import ArticlesClient from "./Articles.client.render";
+import ArticlesClient from "./ArticleViewer.client.render";
 import { headers } from "next/headers";
 
 export default async function ArticlesServer() {
