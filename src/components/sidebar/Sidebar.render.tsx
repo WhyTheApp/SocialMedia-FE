@@ -1,6 +1,7 @@
 import {
   NavigationContainer,
   SidebarContainer,
+  SocialMediaContainer,
   StyledLogo,
   StyledUserImage,
   UserArea,
@@ -9,11 +10,13 @@ import {
   UsernameText,
 } from "./Sidebar.style";
 import NavigationButton from "../navigation-button";
+
 import { PLACEHOLDERS } from "@/CONSTANTS/placeholders.constants";
 import { NavigationButtons } from "@/CONSTANTS/navigation.constants";
 import { useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { getUsername } from "@/services/TokenManager";
+import SocialMediaGroup from "../social-media-group/SocialMediaGroup.render";
 
 const Sidebar = () => {
   const pathname = usePathname();
@@ -59,6 +62,9 @@ const Sidebar = () => {
           );
         })}
       </NavigationContainer>
+      <SocialMediaContainer>
+        <SocialMediaGroup />
+      </SocialMediaContainer>
     </SidebarContainer>
   );
 };

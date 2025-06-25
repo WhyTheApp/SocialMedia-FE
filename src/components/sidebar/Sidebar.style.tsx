@@ -47,3 +47,7 @@ export function UsernameHandle({ children }: TextProps) {
 export function NavigationContainer({ children }: Props) {
   return <div className={styles.navigationContainer}>{children}</div>;
 }
+
+export function SocialMediaContainer({ children }: Props) {
+  return <div className={styles.socialMediaContainer}>{children}</div>;
+}

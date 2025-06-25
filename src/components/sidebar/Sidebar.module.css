@@ -117,8 +117,15 @@
   align-self: flex-start;
 }
 
+.socialMediaContainer {
+  width: 100%;
+}
+
 @media (max-width: 1200px) {
   .userDetails {
+    display: none;
+  }
+  .socialMediaContainer {
     display: none;
   }
 }
