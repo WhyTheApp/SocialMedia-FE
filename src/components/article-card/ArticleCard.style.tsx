@@ -5,6 +5,7 @@ import MoreIcon from "@/icons/more_vertical.svg";
 
 interface Props {
   children?: ReactNode;
+  html?: string | Promise<string>;
   onClick?: React.MouseEventHandler<HTMLDivElement>;
 }
 
@@ -45,7 +46,15 @@ export function ArticleCardTitle({ children }: Props) {
   return <p className={styles.articleCardTitle}>{children}</p>;
 }
 
-export function ArticleCardContentText({ children }: Props) {
+export function ArticleCardContentText({ children, html }: Props) {
+  if (html) {
+    return (
+      <p
+        className={styles.articleCardContentText}
+        dangerouslySetInnerHTML={{ __html: html }}
+      />
+    );
+  }
   return <p className={styles.articleCardContentText}>{children}</p>;
 }
 

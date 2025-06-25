@@ -58,7 +58,6 @@ const Details = () => {
     setLoading(true);
 
     const url = process.env.NEXT_PUBLIC_API_URL + "registers/add";
-    console.log(url);
 
     const data = {
       email: email,

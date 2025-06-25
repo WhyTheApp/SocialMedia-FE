@@ -13,7 +13,7 @@ import { PLACEHOLDERS } from "@/CONSTANTS/placeholders.constants";
 import { NavigationButtons } from "@/CONSTANTS/navigation.constants";
 import { useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { getToken, getUsername } from "@/services/TokenManager";
+import { getUsername } from "@/services/TokenManager";
 
 const Sidebar = () => {
   const pathname = usePathname();
@@ -27,8 +27,6 @@ const Sidebar = () => {
   const navigateToLogin = () => {
     router.push("/login");
   };
-
-  console.log(getToken());
 
   return (
     <SidebarContainer>

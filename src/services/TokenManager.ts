@@ -55,6 +55,11 @@ export function getUserId(): string | null {
   return decoded && decoded.sub ? decoded.sub : null;
 }
 
+export function getUserRole(): string | null {
+  const decoded = getDecodedToken();
+  return decoded && decoded.role ? decoded.role : null;
+}
+
 export function setToken(token: string | null) {
   inMemoryToken = token;
   if (token) {
@@ -91,6 +96,6 @@ interface JwtPayload {
   iss: string; // Issuer
   aud: string; // Audience
   exp: number; // Expiration time
-  iat?: number ; // Issued at time
+  iat?: number; // Issued at time
   [key: string]: string | number | undefined;
 }

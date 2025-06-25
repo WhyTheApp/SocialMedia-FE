@@ -13,6 +13,7 @@ import {
 } from "./ArticleCard.style";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { marked } from "marked";
 
 const ArticleCard = (article: Article) => {
   const [popup, setPopup] = useState(false);
@@ -44,7 +45,7 @@ const ArticleCard = (article: Article) => {
     <ArticleCardContainer>
       <ArticleCardContent onClick={navigateToArticle}>
         <ArticleCardTitle>{article.title}</ArticleCardTitle>
-        <ArticleCardContentText>{article.content}</ArticleCardContentText>
+        <ArticleCardContentText html={marked(article.content)} />
       </ArticleCardContent>
       <ArticleCardDetails>
         <ArticleCardDetailsTextPart>

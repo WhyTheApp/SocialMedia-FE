@@ -21,6 +21,11 @@ interface Props {
   onClick?: React.MouseEventHandler<HTMLDivElement>;
 }
 
+interface ButtonProps {
+  children?: ReactNode;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+}
+
 export function SoftTitle({ children }: TextProps) {
   return <p className={styles.softTitle}>{children}</p>;
 }
@@ -94,4 +99,12 @@ export function ArticleContent({ html, children }: ArticleContentProps) {
 
 export function CenteredContainer({ children }: TextProps) {
   return <div className={styles.centeredContainer}>{children}</div>;
+}
+
+export function AddArticleButton({ children, onClick }: ButtonProps) {
+  return (
+    <button className={styles.addArticleButton} onClick={onClick}>
+      {children}
+    </button>
+  );
 }
