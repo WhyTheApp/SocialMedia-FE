@@ -2,6 +2,7 @@
 
 import { Article } from "@/CONSTANTS/article.constants";
 import {
+  AddArticleButton,
   ArticlesContainer,
   ArticlesVerticalScrollContainer,
   ArticleTitle,
@@ -14,6 +15,8 @@ import { useEffect, useRef, useState } from "react";
 import { PageHeader } from "@/components/page-header";
 import PageContainer from "@/components/page-container/PageContainer.style";
 import api from "@/services/Requests.service";
+import { getUserRole } from "@/services/TokenManager";
+import { useRouter } from "next/navigation";
 
 const PAGE_SIZE = 50;
 
@@ -29,6 +32,7 @@ const ArticlesClient = () => {
   const [pageNumber, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
+  const router = useRouter();
 
   const fetchArticles = async () => {
     const url = process.env.NEXT_PUBLIC_API_URL + "articles/get-filtered";
@@ -44,7 +48,7 @@ const ArticlesClient = () => {
       if (response.status === 200 || response.status === 201) {
         if (
           items.length + response.data.numberRetrieved >=
-          response.data.numberFound 
+          response.data.numberFound
         )
           setHasMore(false);
 
@@ -74,8 +78,21 @@ const ArticlesClient = () => {
     if (nearEnd) fetchMore();
   };
 
+  const isUserAdmin = () => {
+    return getUserRole() == "Admin";
+  };
+
+  const navigateToAddArticle = () => {
+    router.push("/home/articles/add");
+  };
+
   return (
     <PageContainer>
+      {isUserAdmin() && (
+        <AddArticleButton onClick={navigateToAddArticle}>
+          Add article
+        </AddArticleButton>
+      )}
       <div>
         <ArticleTitle>Blueprint</ArticleTitle>
         <MediumText>Dev blog, where we share our coding journey.</MediumText>

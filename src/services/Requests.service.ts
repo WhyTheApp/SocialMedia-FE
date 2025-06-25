@@ -19,18 +19,16 @@ api.interceptors.request.use(
 api.interceptors.response.use(
   (response) => {
     const { url } = response.config;
-    console.log("BOUT TO EBGGREIE TOKEN SIR " + url);
-    console.log(response.data);
     if (
       [
         "authentication/login",
         "authentication/register",
         "authentication/refresh-token",
+        "authentication/verify-email",
       ].includes(url!) &&
       response.data &&
       response.data.token
     ) {
-      console.log("BOUT TO SET TOKEN SIR");
       setToken(response.data.token);
     }
     return response;

@@ -28,7 +28,12 @@ export const LargeContainerPlaceholder =
   "Anything else you might want to tell us?";
 
 export const MostRecentArticlesHeader = "Most Recent Articles";
+export const AddArticleHeader = "Add article";
 export const RoadmapHeader = "Our roadmap";
 export const GoalsHeader = "Our goals and values";
 export const WaitlistHeader = "Waitlist";
 export const FAQHeader = "Frequently asked questions";
+
+export const ArticleTitlePlaceholder = "Title";
+export const ArticleContentPlaceholder =
+  "Text content";
