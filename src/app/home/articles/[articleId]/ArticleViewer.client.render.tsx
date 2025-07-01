@@ -2,6 +2,7 @@
 
 import { Article } from "@/CONSTANTS/article.constants";
 import {
+  AddArticleButton,
   ArticleContent,
   ArticlesScrollContainer,
   ArticleTitle,
@@ -20,6 +21,8 @@ import { marked } from "marked";
 import { PageHeader } from "@/components/page-header";
 import PageContainer from "@/components/page-container/PageContainer.style";
 import api from "@/services/Requests.service";
+import { getUserRole } from "@/services/TokenManager";
+import { useRouter } from "next/navigation";
 
 const PAGE_SIZE = 10;
 
@@ -39,6 +42,7 @@ const ArticlesClient = ({ currentArticle }: Props) => {
   const [pageNumber, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
+  const router = useRouter();
 
   const fetchArticles = async () => {
     const url = process.env.NEXT_PUBLIC_API_URL + "articles/get-filtered";
@@ -107,8 +111,19 @@ const ArticlesClient = ({ currentArticle }: Props) => {
     </MainArticleContentContainer>
   );
 
+  const isUserAdmin = () => {
+    return getUserRole() == "Admin";
+  };
+
+  const editArticle = () => {
+    router.push("/home/articles/edit/" + currentArticle.articleId);
+  };
+
   return (
     <PageContainer>
+      {isUserAdmin() && (
+        <AddArticleButton onClick={editArticle}>Edit article</AddArticleButton>
+      )}
       <MainArticleContainer>{ArticleContentData}</MainArticleContainer>
       <PageHeader>{MostRecentArticlesHeader}</PageHeader>
       <ArticlesScrollContainer ref={containerRef} onScroll={handleScroll}>

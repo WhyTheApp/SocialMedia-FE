@@ -27,6 +27,10 @@ export function middleware(request: NextRequest) {
   if (articleDynamicMatch.test(pathname)) {
     return response;
   }
+  const articleEditDynamicMatch = /^\/home\/articles\/edit\/\d+$/;
+  if (articleEditDynamicMatch.test(pathname)) {
+    return response;
+  }
 
   const isValidPath = validPaths.includes(pathname);
 
