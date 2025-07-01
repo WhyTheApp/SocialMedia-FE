@@ -10,7 +10,6 @@ import {
 } from "./Details.style";
 
 import { useState } from "react";
-import axios from "axios";
 import { useRouter } from "next/navigation";
 import {
   AgreeText,
@@ -23,7 +22,8 @@ import {
 import { Title } from "@/components/title";
 import SimpleButton from "@/components/simple-button";
 import PageContainer from "@/components/page-container/PageContainer.style";
-import { PageHeader } from "@/components/page-heeader";
+import { PageHeader } from "@/components/page-header";
+import api from "@/services/Requests.service";
 
 const Details = () => {
   const [email, setEmail] = useState("");
@@ -58,7 +58,6 @@ const Details = () => {
     setLoading(true);
 
     const url = process.env.NEXT_PUBLIC_API_URL + "registers/add";
-    console.log(url);
 
     const data = {
       email: email,
@@ -66,7 +65,7 @@ const Details = () => {
     };
 
     try {
-      await axios.post(url, data).then((response) => {
+      await api.post(url, data).then((response) => {
         if (response.status === 200 || response.status === 201) {
           handlePageChange();
         } else {

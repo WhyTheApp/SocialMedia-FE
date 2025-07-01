@@ -1,6 +1,7 @@
 import {
   NavigationContainer,
   SidebarContainer,
+  SocialMediaContainer,
   StyledLogo,
   StyledUserImage,
   UserArea,
@@ -9,28 +10,39 @@ import {
   UsernameText,
 } from "./Sidebar.style";
 import NavigationButton from "../navigation-button";
+
 import { PLACEHOLDERS } from "@/CONSTANTS/placeholders.constants";
 import { NavigationButtons } from "@/CONSTANTS/navigation.constants";
 import { useState } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { getUsername } from "@/services/TokenManager";
+import SocialMediaGroup from "../social-media-group/SocialMediaGroup.render";
 
 const Sidebar = () => {
   const pathname = usePathname();
   const indexOfTab = 2;
   const initialButton = pathname.split("/")[indexOfTab] || "waitlist";
-
   const [clickedButton, setClickedButton] = useState<string | null>(
     initialButton
   );
+  const router = useRouter();
+
+  const navigateToLogin = () => {
+    router.push("/login");
+  };
 
   return (
     <SidebarContainer>
       <StyledLogo />
       <UserArea>
         <StyledUserImage />
-        <UserDetails>
-          <UsernameText>{PLACEHOLDERS.UserName}</UsernameText>
-          <UsernameHandle>{PLACEHOLDERS.UserHandle}</UsernameHandle>
+        <UserDetails onClick={navigateToLogin}>
+          <UsernameText>
+            {getUsername() ? getUsername() : PLACEHOLDERS.UserHandle}
+          </UsernameText>
+          <UsernameHandle>
+            {getUsername() ? PLACEHOLDERS.UserLogged : PLACEHOLDERS.UserName}
+          </UsernameHandle>
         </UserDetails>
       </UserArea>
 
@@ -50,6 +62,9 @@ const Sidebar = () => {
           );
         })}
       </NavigationContainer>
+      <SocialMediaContainer>
+        <SocialMediaGroup />
+      </SocialMediaContainer>
     </SidebarContainer>
   );
 };

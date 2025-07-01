@@ -2,12 +2,13 @@
 
 import { Article } from "@/CONSTANTS/article.constants";
 import {
+  AddArticleButton,
   ArticleContent,
   ArticlesScrollContainer,
   ArticleTitle,
   MainArticleContainer,
   MainArticleContentContainer,
-} from "./Articles.style";
+} from "../Articles.style";
 import { MostRecentArticlesHeader } from "@/CONSTANTS/ui.constants";
 import ArticleCard from "@/components/article-card";
 import {
@@ -16,10 +17,12 @@ import {
   ArticleCardDetailsTextPart,
 } from "@/components/article-card/ArticleCard.style";
 import { useEffect, useRef, useState } from "react";
-import axios from "axios";
 import { marked } from "marked";
-import { PageHeader } from "@/components/page-heeader";
+import { PageHeader } from "@/components/page-header";
 import PageContainer from "@/components/page-container/PageContainer.style";
+import api from "@/services/Requests.service";
+import { getUserRole } from "@/services/TokenManager";
+import { useRouter } from "next/navigation";
 
 const PAGE_SIZE = 10;
 
@@ -30,7 +33,7 @@ type ApiResponse = {
 };
 
 type Props = {
-  currentArticle: Article | null;
+  currentArticle: Article;
 };
 
 const ArticlesClient = ({ currentArticle }: Props) => {
@@ -39,6 +42,7 @@ const ArticlesClient = ({ currentArticle }: Props) => {
   const [pageNumber, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
+  const router = useRouter();
 
   const fetchArticles = async () => {
     const url = process.env.NEXT_PUBLIC_API_URL + "articles/get-filtered";
@@ -50,7 +54,7 @@ const ArticlesClient = ({ currentArticle }: Props) => {
     };
 
     try {
-      const response = await axios.post<ApiResponse>(url, data);
+      const response = await api.post<ApiResponse>(url, data);
       if (response.status === 200 || response.status === 201) {
         if (
           items.length + response.data.numberRetrieved >=
@@ -84,8 +88,43 @@ const ArticlesClient = ({ currentArticle }: Props) => {
     if (nearEnd) fetchMore();
   };
 
+  const ArticleDetailsData = (
+    <ArticleCardDetailsTextPart>
+      <ArticleCardDetailsNameSection>
+        {currentArticle.author}
+      </ArticleCardDetailsNameSection>
+      <ArticleCardDetailsDateSection>
+        {new Date(currentArticle.date).toLocaleDateString("en-GB", {
+          day: "2-digit",
+          month: "short",
+          year: "numeric",
+        })}
+      </ArticleCardDetailsDateSection>
+    </ArticleCardDetailsTextPart>
+  );
+
+  const ArticleContentData = (
+    <MainArticleContentContainer>
+      <ArticleTitle>{currentArticle.title}</ArticleTitle>
+      {ArticleDetailsData}
+      <ArticleContent html={marked(currentArticle.content)} />
+    </MainArticleContentContainer>
+  );
+
+  const isUserAdmin = () => {
+    return getUserRole() == "Admin";
+  };
+
+  const editArticle = () => {
+    router.push("/home/articles/edit/" + currentArticle.articleId);
+  };
+
   return (
     <PageContainer>
+      {isUserAdmin() && (
+        <AddArticleButton onClick={editArticle}>Edit article</AddArticleButton>
+      )}
+      <MainArticleContainer>{ArticleContentData}</MainArticleContainer>
       <PageHeader>{MostRecentArticlesHeader}</PageHeader>
       <ArticlesScrollContainer ref={containerRef} onScroll={handleScroll}>
         {items.map((item, index) => (
@@ -94,27 +133,6 @@ const ArticlesClient = ({ currentArticle }: Props) => {
           </div>
         ))}
       </ArticlesScrollContainer>
-
-      {currentArticle && (
-        <MainArticleContainer>
-          <MainArticleContentContainer>
-            <ArticleTitle>{currentArticle.title}</ArticleTitle>
-            <ArticleContent html={marked(currentArticle.content)} />
-          </MainArticleContentContainer>
-          <ArticleCardDetailsTextPart>
-            <ArticleCardDetailsNameSection>
-              {currentArticle.author}
-            </ArticleCardDetailsNameSection>
-            <ArticleCardDetailsDateSection>
-              {new Date(currentArticle.date).toLocaleDateString("en-GB", {
-                day: "2-digit",
-                month: "short",
-                year: "numeric",
-              })}
-            </ArticleCardDetailsDateSection>
-          </ArticleCardDetailsTextPart>
-        </MainArticleContainer>
-      )}
     </PageContainer>
   );
 };

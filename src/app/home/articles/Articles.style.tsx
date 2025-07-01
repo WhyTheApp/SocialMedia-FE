@@ -16,6 +16,16 @@ type ArticleContentProps = {
   children?: React.ReactNode;
 };
 
+interface Props {
+  children?: ReactNode;
+  onClick?: React.MouseEventHandler<HTMLDivElement>;
+}
+
+interface ButtonProps {
+  children?: ReactNode;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+}
+
 export function SoftTitle({ children }: TextProps) {
   return <p className={styles.softTitle}>{children}</p>;
 }
@@ -28,7 +38,9 @@ export function NormalText({ children }: TextProps) {
   return <p className={styles.normalText}>{children}</p>;
 }
 
-
+export function MediumText({ children }: TextProps) {
+  return <p className={styles.mediumText}>{children}</p>;
+}
 
 export function ArticlesScrollContainer({
   ref,
@@ -46,8 +58,26 @@ export function ArticlesScrollContainer({
   );
 }
 
-export function MainArticleContainer({ children }: TextProps) {
-  return <div className={styles.mainArticleContainer}>{children}</div>;
+export function ArticlesVerticalScrollContainer({ children }: Props) {
+  return (
+    <div className={styles.articlesVerticalScrollContainer}>{children}</div>
+  );
+}
+
+export function MainArticleContainer({ children, onClick }: Props) {
+  return (
+    <div className={styles.mainArticleContainer} onClick={onClick}>
+      {children}
+    </div>
+  );
+}
+
+export function ArticlesContainer({ ref, onScroll, children }: ScrollProps) {
+  return (
+    <div className={styles.articlesContainer} ref={ref} onScroll={onScroll}>
+      {children}
+    </div>
+  );
 }
 
 export function MainArticleContentContainer({ children }: TextProps) {
@@ -64,5 +94,17 @@ export function ArticleContent({ html, children }: ArticleContentProps) {
       className={styles.articleContent}
       {...(html ? { dangerouslySetInnerHTML: { __html: html } } : { children })}
     />
+  );
+}
+
+export function CenteredContainer({ children }: TextProps) {
+  return <div className={styles.centeredContainer}>{children}</div>;
+}
+
+export function AddArticleButton({ children, onClick }: ButtonProps) {
+  return (
+    <button className={styles.addArticleButton} onClick={onClick}>
+      {children}
+    </button>
   );
 }

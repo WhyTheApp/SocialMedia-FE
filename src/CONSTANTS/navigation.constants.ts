@@ -51,7 +51,7 @@ export const NavigationButtons: {
   Active: boolean;
 }[] = [
   { Text: "Roadmap", Path: "roadmap", Active: true },
-  { Text: "Articles", Path: "articles", Active: true },
+  { Text: "Blueprint", Path: "articles", Active: true },
   { Text: "FAQ", Path: "faq", Active: true },
   { Text: "Our goals", Path: "about-us", Active: true },
   { Text: "Waitlist", Path: "waitlist", Active: true },

@@ -1,0 +1,143 @@
+.triangle {
+  width: 0;
+  height: 0;
+  z-index: 3;
+  border-left: var(--left, 0px) solid transparent;
+  border-right: var(--right, var(--size)) solid transparent;
+  border-bottom: var(--bottom, var(--size)) solid var(--color, #660033);
+  border-top: var(--top, 0px) solid var(--color, #660033);
+}
+
+/* Border type 1 - Right triangle */
+.triangle[data-type="1-1"] {
+  --left: 0px;
+  --right: var(--size);
+  --bottom: var(--size);
+  --top: 0px;
+  --color: #660033;
+}
+.triangle[data-type="1-2"] {
+  --left: 0px;
+  --right: var(--size);
+  --bottom: var(--size);
+  --top: 0px;
+  --color: #1b2142;
+}
+.triangle[data-type="1-3"] {
+  --left: 0px;
+  --right: var(--size);
+  --bottom: var(--size);
+  --top: 0px;
+  --color: #381024;
+}
+
+/* Border type 2 - Left triangle */
+.triangle[data-type="2-1"] {
+  --left: var(--size);
+  --right: 0px;
+  --bottom: var(--size);
+  --top: 0px;
+  --color: #660033;
+}
+.triangle[data-type="2-2"] {
+  --left: var(--size);
+  --right: 0px;
+  --bottom: var(--size);
+  --top: 0px;
+  --color: #1b2142;
+}
+.triangle[data-type="2-3"] {
+  --left: var(--size);
+  --right: 0px;
+  --bottom: var(--size);
+  --top: 0px;
+  --color: #381024;
+}
+
+/* Border type 3 - Upside down left triangle */
+.triangle[data-type="3-1"] {
+  --left: var(--size);
+  --right: 0px;
+  --bottom: 0px;
+  --top: var(--size);
+  --color: #660033;
+}
+.triangle[data-type="3-2"] {
+  --left: var(--size);
+  --right: 0px;
+  --bottom: 0px;
+  --top: var(--size);
+  --color: #1b2142;
+}
+.triangle[data-type="3-3"] {
+  --left: var(--size);
+  --right: 0px;
+  --bottom: 0px;
+  --top: var(--size);
+  --color: #381024;
+}
+
+/* Border type 3 - Upside down right triangle */
+.triangle[data-type="4-1"] {
+  --left: 0px;
+  --right: var(--size);
+  --bottom: 0px;
+  --top: var(--size);
+  --color: #660033;
+}
+.triangle[data-type="4-2"] {
+  --left: 0px;
+  --right: var(--size);
+  --bottom: 0px;
+  --top: var(--size);
+  --color: #1b2142;
+}
+.triangle[data-type="4-3"] {
+  --left: 0px;
+  --right: var(--size);
+  --bottom: 0px;
+  --top: var(--size);
+  --color: #381024;
+}
+
+.grid {
+  background-color: var(--color-always-dark-background);
+  display: grid;
+  grid-template-columns: repeat(2, var(--size));
+  grid-template-rows: repeat(2, var(--size));
+  width: fit-content;
+}
+
+.fullContainer {
+  --size: 100px;
+
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  width: fit-content;
+  border-radius: 16px;
+  box-shadow: 0 4px 250px 0 var(--color-drop-shadow);
+}
+
+@media (max-width: 1800px) {
+  .fullContainer {
+    --size: 90px;
+  }
+}
+
+@media (max-width: 1600px) {
+  .fullContainer {
+    --size: 80px;
+  }
+}
+
+@media (max-width: 1400px) {
+  .fullContainer {
+    --size: 70px;
+  }
+}
+
+@media (max-width: 1250px) {
+  .fullContainer {
+    display: none;
+  }
+}

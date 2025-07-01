@@ -1,5 +1,5 @@
 import { Article } from "@/CONSTANTS/article.constants";
-import ArticlesClient from "./Articles.client.render";
+import ArticlesClient from "./ArticleViewer.client.render";
 import { headers } from "next/headers";
 
 export default async function ArticlesServer() {
@@ -20,7 +20,7 @@ export default async function ArticlesServer() {
       ? `${baseUrl}articles/get-article?articleId=${articleId}`
       : `${baseUrl}articles/get-featured`;
 
-  let currentArticle: Article | null = null;
+  let currentArticle: Article;
 
   try {
     const res = await fetch(url, { cache: "no-store" });
@@ -31,5 +31,5 @@ export default async function ArticlesServer() {
     console.error("SSR article fetch error:", e);
   }
 
-  return <ArticlesClient currentArticle={currentArticle} />;
+  return <ArticlesClient currentArticle={currentArticle!} />;
 }

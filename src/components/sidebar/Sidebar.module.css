@@ -4,7 +4,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  background: rgba(0, 0, 0, 0.3);
+  background: var(--color-sidebar);
   border-radius: 0 30px 30px 0;
   z-index: 1;
   overflow-y: auto;
@@ -33,6 +33,8 @@
   width: 85px;
   height: 85px;
   margin: 10px;
+  min-height: 20px;
+  color: var(--color-text-full-opacity);
 }
 
 .styledUserImage {
@@ -52,6 +54,7 @@
   max-height: 300px;
   background: linear-gradient(to right, #660033, #381024);
   border-radius: 15px;
+  cursor: pointer;
 }
 
 @media (max-width: 1200px) {
@@ -100,7 +103,7 @@
 }
 
 .usernameText {
-  color: white;
+  color: var(--color-always-white);
   font-size: 18px;
   font-weight: 700;
   margin: 0;
@@ -108,14 +111,21 @@
 }
 
 .usernameHandle {
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--color-always-white);
   font-size: 14px;
   margin: 0;
   align-self: flex-start;
 }
 
+.socialMediaContainer {
+  width: 100%;
+}
+
 @media (max-width: 1200px) {
   .userDetails {
+    display: none;
+  }
+  .socialMediaContainer {
     display: none;
   }
 }

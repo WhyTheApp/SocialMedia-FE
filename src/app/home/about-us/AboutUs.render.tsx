@@ -8,7 +8,7 @@ import {
 import { AboutUsCards } from "@/CONSTANTS/about.constants";
 import { GoalsHeader } from "@/CONSTANTS/ui.constants";
 import PageContainer from "@/components/page-container/PageContainer.style";
-import { PageHeader } from "@/components/page-heeader";
+import { PageHeader } from "@/components/page-header";
 
 const AboutUs = () => {
   return (

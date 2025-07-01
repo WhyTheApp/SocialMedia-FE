@@ -31,6 +31,20 @@ export default function RootLayout({
             `,
             }}
           />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+              (function() {
+                function setTheme() {
+                  var theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                  document.documentElement.setAttribute('data-theme', theme);
+                }
+                setTheme();
+                window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', setTheme);
+              })();
+            `,
+            }}
+          />
           <link rel="icon" href="/favicon.ico" sizes="any" />
           <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
@@ -40,7 +54,7 @@ export default function RootLayout({
             font-family: "Outfit", sans-serif;
             box-sizing: border-box;
             min-height: 100vh;
-            background-color: #1e1e1e;
+            background-color: var(--color-bg);
 
           }
           *, *::before, *::after {
