@@ -25,7 +25,7 @@ import { useState } from "react";
 import SimpleButton from "@/components/simple-button";
 import { ArticleContent, ArticleTitle, MediumText } from "../Articles.style";
 import api from "@/services/Requests.service";
-import { getUsername } from "@/services/TokenManager";
+import { getUserName } from "@/services/TokenManager";
 import {
   ArticleCardDetailsDateSection,
   ArticleCardDetailsNameSection,
@@ -91,7 +91,7 @@ const AddArticle = () => {
     await api.post("articles/add", {
       title: title,
       content: content,
-      author: getUsername(),
+      author: getUserName(),
     });
 
     router.push("/home/articles");
@@ -143,7 +143,7 @@ const AddArticle = () => {
       <ArticleTitle>{title}</ArticleTitle>
       <ArticleCardDetailsTextPart>
         <ArticleCardDetailsNameSection>
-          {getUsername()}
+          {getUserName()}
         </ArticleCardDetailsNameSection>
         <ArticleCardDetailsDateSection>
           {new Date().toLocaleDateString("en-GB", {

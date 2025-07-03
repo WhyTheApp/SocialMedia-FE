@@ -15,7 +15,7 @@ import { PLACEHOLDERS } from "@/CONSTANTS/placeholders.constants";
 import { NavigationButtons } from "@/CONSTANTS/navigation.constants";
 import { useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { getUsername } from "@/services/TokenManager";
+import { getUserName, getUserUsername } from "@/services/TokenManager";
 import SocialMediaGroup from "../social-media-group/SocialMediaGroup.render";
 
 const Sidebar = () => {
@@ -38,10 +38,10 @@ const Sidebar = () => {
         <StyledUserImage />
         <UserDetails onClick={navigateToLogin}>
           <UsernameText>
-            {getUsername() ? getUsername() : PLACEHOLDERS.UserHandle}
+            {getUserName() ? getUserName() : PLACEHOLDERS.UserHandle}
           </UsernameText>
           <UsernameHandle>
-            {getUsername() ? PLACEHOLDERS.UserLogged : PLACEHOLDERS.UserName}
+            {getUserName() ? `@${getUserUsername()}` : PLACEHOLDERS.UserName}
           </UsernameHandle>
         </UserDetails>
       </UserArea>
