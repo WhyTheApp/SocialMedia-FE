@@ -21,7 +21,7 @@ const ArticleCard = (article: Article) => {
   const router = useRouter();
 
   const navigateToArticle = () => {
-    router.push("/home/articles/" + article.articleId);
+    router.push("/home/articles/" + article.slug);
   };
 
   const moreAction = () => {
@@ -30,7 +30,7 @@ const ArticleCard = (article: Article) => {
 
   const copyLink = async () => {
     await navigator.clipboard.writeText(
-      "https://whythe.app/home/articles/" + article.articleId
+      "https://whythe.app/home/articles/" + article.slug
     );
 
     setPopup(false);

@@ -10,15 +10,16 @@ export default async function ArticlesServer() {
     headersList.get("x-pathname") || headersList.get("next-url") || "";
 
   const pathParts = pathname.split("/");
-  const articleId =
+  const articleIdOrSlug =
     pathParts[pathParts.length - 1] !== "articles"
       ? pathParts[pathParts.length - 1]
       : null;
 
-  const url =
-    articleId != null && articleId != ""
-      ? `${baseUrl}articles/get-article?articleId=${articleId}`
-      : `${baseUrl}articles/get-featured`;
+  const isNumeric = /^\d+$/.test(articleIdOrSlug!);
+
+  const url = isNumeric
+    ? `${baseUrl}articles/get-article?articleId=${articleIdOrSlug}`
+    : `${baseUrl}articles/get-article?slug=${articleIdOrSlug}`;
 
   let currentArticle: Article;
 

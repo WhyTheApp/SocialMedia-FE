@@ -6,25 +6,28 @@ import path from "path";
 export async function GET() {
   const baseUrl = "https://whythe.app";
 
+  const backendUrl = process.env.NEXT_PUBLIC_API_URL;
+
   const filePath = path.join(process.cwd(), "validPaths.json");
   const rawData = readFileSync(filePath, "utf8");
   const staticRoutes: string[] = JSON.parse(rawData);
 
-  let latestId = 0;
+  let articleRoutes: string[] = [];
   try {
-    const res = await fetch(`${baseUrl}/api/Articles/get-latest-article-id`);
-    if (res.ok) {
-      latestId = await res.json();
-    }
-  } catch (err) {
-    console.error("Failed to fetch latest article ID:", err);
-  }
+    const res = await fetch(`${backendUrl}articles/get-slug-map`);
 
-  // Generate article paths from 1 to latestId
-  const articleRoutes = Array.from(
-    { length: latestId },
-    (_, i) => `/home/articles/${i + 1}`
-  );
+    const slugList: { id: number; slug: string }[] = await res.json();
+    const slugMap: Record<string, string> = {};
+    for (const { id, slug } of slugList) {
+      slugMap[id.toString()] = slug;
+    }
+
+    console.log(slugMap);
+
+    articleRoutes = slugList.map(({ slug }) => `/home/articles/${slug}`);
+  } catch (err) {
+    console.error("❌ Failed to generate article routes:", err);
+  }
 
   const routes = [...staticRoutes, ...articleRoutes];
 
