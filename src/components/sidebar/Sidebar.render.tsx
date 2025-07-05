@@ -31,9 +31,13 @@ const Sidebar = () => {
     router.push("/login");
   };
 
+  const navigateToLanding = () => {
+    router.push("/home/landing");
+  };
+
   return (
     <SidebarContainer>
-      <StyledLogo />
+      <StyledLogo onClick={navigateToLanding} />
       <UserArea>
         <StyledUserImage />
         <UserDetails onClick={navigateToLogin}>

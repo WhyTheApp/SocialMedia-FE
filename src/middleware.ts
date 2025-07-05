@@ -45,7 +45,7 @@ export async function middleware(request: NextRequest) {
 
   if (pathname === "/home") {
     const url = request.nextUrl.clone();
-    url.pathname = "/home/waitlist";
+    url.pathname = "/home/landing";
     return NextResponse.redirect(url);
   }
 
@@ -74,7 +74,7 @@ export async function middleware(request: NextRequest) {
 
   if (!isValidPath) {
     const url = request.nextUrl.clone();
-    url.pathname = "/home/waitlist";
+    url.pathname = "/home/landing";
     return NextResponse.redirect(url);
   }
 

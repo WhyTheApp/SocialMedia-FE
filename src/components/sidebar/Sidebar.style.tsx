@@ -4,7 +4,7 @@ import LogoSVG from "../../../public/whylogo.svg";
 import UserImageSVG from "../../../public/user-placeholder.svg";
 
 interface Props {
-  children: ReactNode;
+  children?: ReactNode;
   onClick?: React.MouseEventHandler<HTMLDivElement>;
 }
 
@@ -16,8 +16,8 @@ export function SidebarContainer({ children }: Props) {
   return <div className={styles.sidebarContainer}>{children}</div>;
 }
 
-export function StyledLogo() {
-  return <LogoSVG className={styles.styledLogo} />;
+export function StyledLogo({ onClick }: Props) {
+  return <LogoSVG className={styles.styledLogo} onClick={onClick} />;
 }
 
 export function StyledUserImage() {
