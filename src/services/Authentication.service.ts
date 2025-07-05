@@ -37,7 +37,7 @@ export const AuthWithGoogle = async () => {
 
   const params = new URLSearchParams({
     client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID!,
-    redirect_uri: "http://localhost:3000/auth/callback",
+    redirect_uri: window.location.origin + "/auth/callback",
     response_type: "code",
     scope: "openid profile email",
     code_challenge_method: "S256",
