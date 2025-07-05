@@ -25,6 +25,7 @@ api.interceptors.response.use(
         "authentication/register",
         "authentication/refresh-token",
         "authentication/verify-email",
+        "authentication/google-login",
       ].includes(url!) &&
       response.data &&
       response.data.token

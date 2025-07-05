@@ -2,6 +2,7 @@ import toast from "react-hot-toast";
 import api from "./Requests.service";
 import { Dispatch, SetStateAction } from "react";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
+import { generateCodeChallenge, generateCodeVerifier } from "./PKCE.helper";
 
 type AuthenticationProps = {
   isLoading: boolean;
@@ -29,7 +30,21 @@ interface ErrorWithResponse {
 }
 
 export const AuthWithGoogle = async () => {
-  toast.error("Not yet available");
+  const verifier = generateCodeVerifier();
+  const challenge = await generateCodeChallenge(verifier);
+
+  sessionStorage.setItem("pkce_verifier", verifier);
+
+  const params = new URLSearchParams({
+    client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID!,
+    redirect_uri: "http://localhost:3000/auth/callback",
+    response_type: "code",
+    scope: "openid profile email",
+    code_challenge_method: "S256",
+    code_challenge: challenge,
+  });
+
+  window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?${params.toString()}`;
 };
 
 export const AuthWithApple = async () => {
@@ -87,14 +102,14 @@ export const localRegister = async ({
 
   if (!isValidPassword(password!)) {
     toast.error(
-        "Password must be at least 8 characters and include uppercase, lowercase, number, and special character."
+      "Password must be at least 8 characters and include uppercase, lowercase, number, and special character."
     );
     return;
   }
 
   if (!isValidUsername(username!)) {
     toast.error(
-        "Username must start with a letter, contain only letters, numbers, underscores and be between 3 and 30 characters.."
+      "Username must start with a letter, contain only letters, numbers, underscores and be between 3 and 30 characters.."
     );
     return;
   }
@@ -138,7 +153,7 @@ export const localRegister = async ({
   }
 };
 
-  export const verifyEmail = async ({
+export const verifyEmail = async ({
   userId,
   code,
   isLoading,
@@ -183,11 +198,11 @@ function isValidUsername(username: string) {
 
 function isErrorWithResponse(error: unknown): error is ErrorWithResponse {
   return (
-      typeof error === "object" &&
-      error !== null &&
-      "response" in error &&
-      typeof (error as Record<string, unknown>).response === "object" &&
-      (error as Record<string, unknown>).response !== null
+    typeof error === "object" &&
+    error !== null &&
+    "response" in error &&
+    typeof (error as Record<string, unknown>).response === "object" &&
+    (error as Record<string, unknown>).response !== null
   );
 }
 
