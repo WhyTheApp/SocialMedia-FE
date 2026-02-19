@@ -39,6 +39,8 @@
   --color-scrollbar: 888 transparent;
   --color-unavailable: #6b6b6b;
   --color-drop-shadow: rgba(27, 33, 66, 0.5);
+
+  --base-gradient: linear-gradient(to right, #012878, #660033);
 }
 
 [data-theme="dark"] {

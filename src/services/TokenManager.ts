@@ -47,7 +47,12 @@ export function getDecodedToken(): JwtPayload | null {
   return null;
 }
 
-export function getUsername(): string | null {
+export function getUserUsername(): string | null {
+  const decoded = getDecodedToken();
+  return decoded && decoded.username ? decoded.username : null;
+}
+
+export function getUserName(): string | null {
   const decoded = getDecodedToken();
   return decoded && decoded.name ? decoded.name : null;
 }
@@ -93,7 +98,8 @@ export function removeToken() {
 
 interface JwtPayload {
   sub: string; // User ID (from JwtRegisteredClaimNames.Sub)
-  name: string; // Username
+  username: string; // Username
+  name: string; // Name
   role: string; // User role
   iss: string; // Issuer
   aud: string; // Audience

@@ -13,7 +13,7 @@
   color: var(--color-always-white);
   font-size: 16px;
   font-weight: 600;
-  background: linear-gradient(to right, #012878, #660033);
+  background: var(--base-gradient);
   cursor: pointer;
 }
 

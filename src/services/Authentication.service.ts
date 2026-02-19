@@ -1,12 +1,14 @@
 import toast from "react-hot-toast";
 import api from "./Requests.service";
-import {Dispatch, SetStateAction} from "react";
-import {AppRouterInstance} from "next/dist/shared/lib/app-router-context.shared-runtime";
+import { Dispatch, SetStateAction } from "react";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
+import { generateCodeChallenge, generateCodeVerifier } from "./PKCE.helper";
 
 type AuthenticationProps = {
   isLoading: boolean;
   setIsLoading: Dispatch<SetStateAction<boolean>>;
   username?: string;
+  name?: string;
   email?: string;
   userId?: string;
   code?: string;
@@ -15,8 +17,34 @@ type AuthenticationProps = {
   router: AppRouterInstance;
 };
 
+interface ErrorResponseData {
+  errors?: Record<string, string[]>;
+}
+
+interface ErrorResponse {
+  data?: ErrorResponseData;
+}
+
+interface ErrorWithResponse {
+  response?: ErrorResponse;
+}
+
 export const AuthWithGoogle = async () => {
-  toast.error("Not yet available");
+  const verifier = generateCodeVerifier();
+  const challenge = await generateCodeChallenge(verifier);
+
+  sessionStorage.setItem("pkce_verifier", verifier);
+
+  const params = new URLSearchParams({
+    client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID!,
+    redirect_uri: window.location.origin + "/auth/callback",
+    response_type: "code",
+    scope: "openid profile email",
+    code_challenge_method: "S256",
+    code_challenge: challenge,
+  });
+
+  window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?${params.toString()}`;
 };
 
 export const AuthWithApple = async () => {
@@ -60,6 +88,7 @@ export const localRegister = async ({
   isLoading,
   setIsLoading,
   username,
+  name,
   email,
   password,
   router,
@@ -78,6 +107,13 @@ export const localRegister = async ({
     return;
   }
 
+  if (!isValidUsername(username!)) {
+    toast.error(
+      "Username must start with a letter, contain only letters, numbers, underscores and be between 3 and 30 characters.."
+    );
+    return;
+  }
+
   setIsLoading(true);
 
   const url = "authentication/register";
@@ -85,6 +121,7 @@ export const localRegister = async ({
   const data = {
     email: email,
     username: username,
+    name: name,
     password: password,
   };
 
@@ -94,9 +131,26 @@ export const localRegister = async ({
       toast.success("Account created! Logging you in...");
       router.push("/verify-email");
     }
-  } catch {}
+  } catch (error: unknown) {
+    if (isErrorWithResponse(error)) {
+      const response = error.response;
+      if (response && isErrorResponseData(response.data)) {
+        const errors = response.data.errors;
 
-  setIsLoading(false);
+        if (errors?.Username?.length) {
+          toast.error(errors.Username[0]);
+          return;
+        }
+
+        if (errors?.Email?.length) {
+          toast.error("Email is invalid or already used.");
+          return;
+        }
+      }
+    }
+
+    toast.error("Please try again.");
+  }
 };
 
 export const verifyEmail = async ({
@@ -136,4 +190,29 @@ function isValidEmail(email: string) {
 
 function isValidPassword(password: string) {
   return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\w\s]).{8,}$/.test(password);
+}
+
+function isValidUsername(username: string) {
+  return /^[a-zA-Z][a-zA-Z0-9_]{2,29}$/.test(username);
+}
+
+function isErrorWithResponse(error: unknown): error is ErrorWithResponse {
+  return (
+    typeof error === "object" &&
+    error !== null &&
+    "response" in error &&
+    typeof (error as Record<string, unknown>).response === "object" &&
+    (error as Record<string, unknown>).response !== null
+  );
+}
+
+function isErrorResponseData(data: unknown): data is ErrorResponseData {
+  if (typeof data !== "object" || data === null) return false;
+
+  if ("errors" in data) {
+    const errors = (data as { errors: unknown }).errors;
+    return typeof errors === "object" && errors !== null;
+  }
+
+  return true;
 }
