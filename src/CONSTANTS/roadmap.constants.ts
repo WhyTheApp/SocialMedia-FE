@@ -1,204 +1,99 @@
-export const RoadmapExtendedText = `This roadmap outlines the development of WHY, a web-based social media platform designed to prioritize free speech and equitable content visibility. Spanning from Q2 2025 to Q3 2026, the plan is tailored for a team of two developers, aiming for a beta launch in Q2 2026 and a full launch in Q3 2026. Each phase includes specific deliverables, expected outcomes, and practical considerations to ensure feasibility and appeal to users and investors. The roadmap leverages modern development tools to streamline tasks and incorporates iterative testing to align with user needs.
+export const RoadmapExtendedText = `This roadmap outlines how we plan to build WHY, our open source social media platform. We are a small team and we are being upfront about that. We do not have exact dates for everything because we would rather be honest than overpromise. Here is what we are working on and what comes next.
 
---------------------
+Planning and Foundation
 
-Q2 2025: Planning & Initial Pages
-Description: Finalize app planning and design informational pages including Our Goals, Waitlist, FAQ, and Roadmap. Deploy the initial website featuring a sidebar that previews the navigation structure of the upcoming WHY app, with placeholders for Profile, Friends, Tabs, Settings, News, Roadmap, FAQ, Our Goals, and Waitlist. Launch the News page as a dev blog to share technical insights and app progress updates.
+We started by figuring out what WHY should actually be. We wrote down the core ideas, designed the informational pages (Our Goals, Waitlist, FAQ, Roadmap), and got the initial website live. The sidebar already shows what the final app navigation will look like. We also set up a dev blog (the Articles page) to share progress and technical decisions as we go.
 
-Detailed Tasks:
+This phase also included setting up the backend with C# .NET and PostgreSQL, getting CI/CD pipelines running through GitHub, and making sure the hosting infrastructure is solid.
 
-App Planning: Define the app’s vision, target audience, and core features (e.g., profiles, friend connections, Tabs for post organization). Create user stories and wireframes to guide development.
-UI Design: Create UI mockups for using tools like Figma.
-Informational Pages: Design static pages for Our Goals (mission statement), Waitlist (sign-up form), FAQ (common questions), and Roadmap (high-level plan). Create CI/CD leveraging the Github repositories and hosting server.
-Website Deployment: Launch a website with a sidebar showcasing navigation placeholders for all planned sections. Ensure the design aligns with the app’s intended UI/UX.
-News Page (Dev Blog): Set up a blog to share technical insights (e.g., tech stack choices) and progress updates, using a custom solution.
+User Accounts and Profiles
 
-Expected Outcomes:
+The next major step is building user authentication and the Profile page. Secure registration, login, password reset, email verification, all the basics done right. The Profile page will let users set up their identity with a username, bio, and profile picture.
 
-A clear development plan to streamline future phases.
-An initial website to attract early adopters and investors.
-A dev blog fostering community engagement and transparency.
-Infrastructure: Set up a backend (C# .NET) and database (PostgreSQL) to manage user data.
-Feasibility: With approximately two months remaining in Q2 2025 (since project start: April 20 to June 30), a team of two can complete these tasks. One developer can focus on planning and content, while the other handles website design and deployment. Static site generators reduce development time, making this phase achievable.
+We are keeping this simple on purpose. Get the core right first, then expand based on what users actually want.
 
-Considerations:
+Social Features
 
-Use responsive design frameworks for the website.
-Ensure the News page is easily updatable to maintain regular posts.
+Once profiles are in place, we move on to the social layer. That means a Friends system where you can send requests, accept or decline them, and see your friends list. We are also building Tabs, which are community spaces organized around topics. Think of them as places to post, share, and discuss things you care about.
 
---------------------
+The sidebar navigation will become fully functional at this stage, connecting all the main sections of the app.
 
-Q3 2025: Core UI Development
-Description: Implement secure user authentication and registration systems. Develop the Profile page allowing users to create and edit their profiles. Design the user interface for Friends and Settings pages. Set up the necessary infrastructure to support user data and interactions.
+Feed Algorithm and Testing
 
-Detailed Tasks:
+This is a big one. We want to build a feed that is fair. No boosting influencers, no pay-to-play, no engagement bait pushed to the top. We are looking at combining chronological ordering with user preferences to surface content that actually matters to you.
 
-User Authentication: Implement secure registration and login using a custom solution. Include features like password reset and email verification.
-Profile Page: Develop a functional page with fields for username, bio, and profile picture. Create frontend forms and backend APIs for data storage.
-Infrastructure: expand the .NET backend
+Once the feed is working, we will run testing with a small group of early users from the waitlist. Their feedback will shape what we prioritize before opening up to more people.
 
-Expected Outcomes:
+AI Content Detection
 
-A secure authentication system for user onboarding.
-A functional Profile page as the app’s core user experience.
-UI designs ready for implementation in the next phase.
-Backend infrastructure to support social features.
-Feasibility: Three months (July to September) is sufficient for these tasks. Authentication setup, taking about one to two weeks. The Profile page, focusing on essential features, can be developed in one month. UI design and infrastructure setup can run concurrently, fitting within the quarter.
+We are building tools to identify and label AI-generated content. Social media is getting flooded with low effort AI posts and it is making it harder for genuine creators to be seen. Our goal is to give users confidence that what they see on WHY was made by a real person.
 
-Considerations:
+Content Moderation and Community Tools
 
-Prioritize security with encryption methods like bcrypt for passwords.
-Keep Profile page features minimal to meet deadlines, expanding later based on feedback.
+We need moderation that is transparent and community-driven. That means clear guidelines, reporting tools, and appeal processes. We are not interested in silencing opinions. The line is illegal activity and genuine harm, nothing else.
 
---------------------
+Ongoing Improvements
 
-Q4 2025: Social Features
-Description: Fully implement the Friends system, enabling users to send friend requests, accept or decline them, and view their friends list. Develop the Tabs feature for users to create, organize, and share posts. Activate sidebar navigation to access Profile, Friends, and Settings pages.
-
-Detailed Tasks:
-
-Friends System: Build backend logic for friend requests and relationships, with a frontend interface for sending, accepting, and viewing friends. Use the database schema from Q2-Q3.
-Tabs Feature: Develop a system for users to create and organize posts into categories or boards, similar to Pinterest’s boards. Implement basic post creation and assignment.
-Sidebar Navigation: Enable sidebar links to Profile, Friends, and Settings, ensuring seamless navigation within the app.
-Expected Outcomes:
-
-A functional social network for user connections and content sharing.
-Active navigation enhancing usability.
-A foundation for content engagement in the next phase.
-Feasibility: From October to December, the team can leverage Q2-Q3’s infrastructure. The Friends system, estimated at 2–4 weeks, and Tabs, around 3–5 weeks, are manageable with basic implementations. Navigation activation is straightforward, fitting within the three-month period.
-
-Considerations:
-
-Start with simple Tabs functionality, adding features like filters in later phases.
-
---------------------
-
-Q1 2026: Content & Engagement
-Description: In Q1 2026, our primary initiative is to develop and implement a sophisticated feed algorithm that upholds our principles of free speech and ensures content is presented without favoritism towards influencers or popular users, fostering a fair and diverse content experience for all users. In tandem, we will initiate alpha testing with a select group of developers and waitlist users to gather valuable feedback on our core features, including the new feed algorithm.
-
-Detailed Tasks:
-
-Feed Algorithm: Design a feed that avoids bias by using approaches like chronological ordering, user preference-based sorting and other suitable algorithms.
-Alpha Testing: Conduct testing with a small group of waitlist users and developers to evaluate Profile, Friends, Tabs, and the feed. Use surveys and analytics for feedback.
-
-Expected Outcomes:
-
-A fair feed prototype enhancing user trust.
-Valuable feedback to refine features before the beta launch.
-Feasibility: Developing a basic feed algorithm, such as a chronological feed, can take 4–6 weeks. Alpha testing, including setup and analysis, fits within the remaining time. The team can focus on simplicity to meet the three-month deadline.
-
-Considerations:
-
-Ensure testing includes diverse user scenarios to validate free speech principles.
-
---------------------
-
-Q2 2026: Beta Launch
-Description: Release the beta version of WHY, making all sidebar section: Profile, Friends, Tabs, Settings, News, Roadmap, FAQ, Our Goals, Waitlist, fully functional and accessible. Invite users from the waitlist to join the beta and provide feedback. Address any bugs and usability issues based on user input. Finalize preparations for the official public launch.
-
-Detailed Tasks:
-
-Feature Completion: Fully implement Settings and ensure all sidebar sections are functional. Integrate News and Roadmap pages with dynamic content.
-Beta Release: Deploy the beta app, inviting waitlist users to join.
-Feedback Collection: Gather user feedback through in-app forms and address critical bugs.
-Launch Preparation: Plan marketing and finalize launch strategies.
-Expected Outcomes:
-
-A fully navigable beta app showcasing WHY’s value proposition.
-Actionable feedback for final improvements.
-Readiness for the public launch.
-Feasibility: Polishing features and fixing bugs in three months is achievable, building on prior work. Beta deployment and feedback collection are standard tasks for this phase.
-
-Considerations:
-
-Use automated testing tools like Jest to identify bugs.
-Prioritize user-reported issues to enhance satisfaction.
-Q3 2026: Full Launch
-Description: Provided we fix any inconvenience that may appear during the beta phase, in Q3 2026 we start the journey.
-
-Detailed Tasks:
-
-Bug Fixes: Address remaining issues from beta feedback.
-Official Launch: Release WHY to the public, supported by marketing efforts.
-Post-Launch Support: Monitor performance and provide updates.
-
-Expected Outcomes:
-
-A stable, public app attracting users and investors.
-A foundation for future enhancements.
-Feasibility: Three months allows sufficient time to resolve beta issues and launch, assuming no major setbacks.
-
-Considerations:
-
-Plan a phased rollout to manage server load.
-Prepare a support system for user inquiries.
-
-
-Timeline Overview
-
-Q2 2025:	Planning, informational pages, website, News page	
-(Foundation for development and engagement)
-
-Q3 2025:	Authentication, Profile page, UI designs, infrastructure	
-(Core systems for user interactions)
-
-Q4 2025:	Friends system, Tabs, sidebar navigation	
-(Functional social features)
-
-Q1 2026:	Feed algorithm, alpha testing	
-(Fair feed and user feedback)
-Q2 2026:	Beta launch, feedback collection	
-(Working beta and launch preparation)
-
-Q3 2026:	Full launch, bug fixes	
-(Stable public app)
+We will keep iterating based on what users tell us. New features, bug fixes, performance improvements. This is not a set-it-and-forget-it platform. We are building WHY with the community, and that means it keeps evolving.
 `;
 
-export const RoadmapEvents = [
+export interface RoadmapMilestone {
+  title: string;
+  description: string;
+  status: "done" | "in-progress" | "upcoming";
+}
+
+export const RoadmapEvents: RoadmapMilestone[] = [
   {
-    label: "Q2 2025",
-    title: "📝 Planning & Initial Pages",
+    title: "Planning and Foundation",
     description:
-      "Finalize app planning and design informational pages including Our Goals, Waitlist, FAQ, and Roadmap. Deploy the initial website featuring a sidebar that previews the navigation structure of the upcoming WHY app, with placeholders for Profile, Friends, Tabs, Settings, News, Roadmap, FAQ, Our Goals, and Waitlist. Launch the News page as a dev blog to share technical insights and app progress updates.",
-    current: true,
+      "Define the vision, design informational pages, deploy the initial website with sidebar navigation, set up backend infrastructure, and launch the dev blog.",
+    status: "done",
   },
   {
-    label: "Q3 2025",
-    title: "🖥️ Core UI Development",
+    title: "User Accounts and Profiles",
     description:
-      "Implement secure user authentication and registration systems. Develop the Profile page allowing users to create and edit their profiles. Design the user interface for Friends and Settings pages. Set up the necessary infrastructure to support user data and interactions.",
-    current: false,
+      "Build secure authentication (registration, login, email verification, password reset) and the Profile page with username, bio, and profile picture.",
+    status: "in-progress",
   },
   {
-    label: "Q4 2025",
-    title: "💬 Social Features",
+    title: "Social Features",
     description:
-      "Fully implement the Friends system, enabling users to send friend requests, accept or decline them, and view their friends list. Develop the Tabs feature for users to create, organize, and share posts. Activate sidebar navigation to access Profile, Friends, and Settings pages.",
-    current: false,
+      "Implement the Friends system (requests, friends list) and Tabs for topic-based communities. Make all sidebar navigation sections functional.",
+    status: "upcoming",
   },
   {
-    label: "Q1 2026",
-    title: "📊 Content & Engagement",
+    title: "Feed Algorithm",
     description:
-      "In Q1 2026, our primary initiative is to develop and implement a sophisticated feed algorithm that upholds our principles of free speech and ensures content is presented without favoritism towards influencers or popular users, fostering a fair and diverse content experience for all users. In tandem we will initiate alpha testing with a select group of developers and waitlist users to gather valuable feedback on our core features, including the new feed algorithm.",
-    current: false,
+      "Build a fair, open source feed algorithm that combines chronological ordering with user preferences. No influencer boosting, no pay-to-play.",
+    status: "upcoming",
   },
   {
-    label: "Q2 2026",
-    title: "🚀 Beta Launch",
+    title: "Early User Testing",
     description:
-      "Release the beta version of WHY, making all sidebar sections—Profile, Friends, Tabs, Settings, News, Roadmap, FAQ, Our Goals, and Waitlist—fully functional and accessible. Invite users from the waitlist to join the beta and provide feedback. Address any bugs and usability issues based on user input. Finalize preparations for the official public launch.",
-    current: false,
+      "Invite waitlist users to test the platform and gather real feedback on core features, usability, and the feed algorithm.",
+    status: "upcoming",
   },
   {
-    label: "Q3 2026",
-    title: "🚀 Full Launch",
+    title: "AI Content Detection",
     description:
-      "Provided we fix any inconvenience that may appear during the beta phase, in Q3 2026 we start the journey.",
-    current: false,
+      "Develop tools to identify and label AI-generated content, protecting genuine creators and keeping the platform authentic.",
+    status: "upcoming",
+  },
+  {
+    title: "Community Moderation Tools",
+    description:
+      "Build transparent, community-driven moderation with clear guidelines, reporting tools, and appeal processes.",
+    status: "upcoming",
+  },
+  {
+    title: "Ongoing Improvements",
+    description:
+      "Iterate based on user feedback. New features, bug fixes, and performance improvements. WHY keeps evolving with its community.",
+    status: "upcoming",
   },
 ];
 
 export const RoadmapExtendedViewTextStart = "See the ";
-export const RoadmapDetailedViewInsertText = "detailed view ";
-export const RoadmapExtendedViewTextEnd = "of our roadmap";
+export const RoadmapDetailedViewInsertText = "full roadmap ";
+export const RoadmapExtendedViewTextEnd = "for more details";

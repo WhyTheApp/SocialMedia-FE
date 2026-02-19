@@ -3,25 +3,56 @@ import { ReactNode } from "react";
 
 interface Props {
   children: ReactNode;
+  className?: string;
 }
 
-interface TextProps {
-  children: ReactNode;
+export function BentoGrid({ children }: Props) {
+  return <div className={styles.bentoGrid}>{children}</div>;
 }
 
-export function NormalText({ children }: TextProps) {
-  return <p className={styles.normalText}>{children}</p>;
+interface CategoryCardProps extends Props {
+  span2?: boolean;
+  span2row?: boolean;
 }
 
-export function QuestionContainer({ children }: Props) {
-  return <div className={styles.questionContainer}>{children}</div>;
+export function CategoryCard({
+  children,
+  span2,
+  span2row,
+}: CategoryCardProps) {
+  const classes = [
+    styles.categoryCard,
+    span2 ? styles.span2 : "",
+    span2row ? styles.span2row : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
+  return <div className={classes}>{children}</div>;
 }
 
-export function QuestionTitleContainer({ children }: Props) {
-  return <div className={styles.questionTitleContainer}>{children}</div>;
+export function CategoryTitle({ children }: Props) {
+  return <h3 className={styles.categoryTitle}>{children}</h3>;
 }
 
+interface FaqItemProps {
+  question: string;
+  answer: string;
+  isOpen: boolean;
+  onClick: () => void;
+}
 
-export function QuestionContentContainer({ children }: Props) {
-  return <div className={styles.questionContentContainer}>{children}</div>;
+export function FaqItem({ question, answer, isOpen, onClick }: FaqItemProps) {
+  return (
+    <div className={styles.faqItem} onClick={onClick}>
+      <div className={styles.faqQuestion}>
+        {question}
+        <span
+          className={`${styles.faqChevron} ${isOpen ? styles.open : ""}`}
+        >
+          &#9660;
+        </span>
+      </div>
+      {isOpen && <div className={styles.faqAnswer}>{answer}</div>}
+    </div>
+  );
 }

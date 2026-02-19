@@ -5,30 +5,29 @@ interface Props {
   children: ReactNode;
 }
 
-interface TextProps {
-  children: ReactNode;
+export function BentoGrid({ children }: Props) {
+  return <div className={styles.bentoGrid}>{children}</div>;
 }
 
-export function NormalText({ children }: TextProps) {
-  return <p className={styles.normalText}>{children}</p>;
+interface GoalCardProps extends Props {
+  span2?: boolean;
 }
 
-export function CardsContainer({ children }: Props) {
-  return <div className={styles.cardsContainer}>{children}</div>;
+export function GoalCard({ children, span2 }: GoalCardProps) {
+  const classes = [styles.goalCard, span2 ? styles.span2 : ""]
+    .filter(Boolean)
+    .join(" ");
+  return <div className={classes}>{children}</div>;
 }
 
-export function InputContainer({ children }: Props) {
-  return <div className={styles.inputContainer}>{children}</div>;
+export function CardTitle({ children }: Props) {
+  return <h3 className={styles.cardTitle}>{children}</h3>;
 }
 
-export function InputInner({ children }: Props) {
-  return <div className={styles.inputInner}>{children}</div>;
+export function CardContent({ children }: Props) {
+  return <p className={styles.cardContent}>{children}</p>;
 }
 
-export function CardTitle({ children }: TextProps) {
-  return <p className={styles.cardTitle}>{children}</p>;
-}
-
-export function CardFooter({ children }: TextProps) {
-  return <p className={styles.cardFooter}>{children}</p>;
+export function CardFooter({ children }: Props) {
+  return <div className={styles.cardFooter}>{children}</div>;
 }

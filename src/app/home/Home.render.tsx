@@ -27,3 +27,4 @@ const HomeLayout = ({ children }: HomeLayoutProps) => {
 };
 
 export default HomeLayout;
+

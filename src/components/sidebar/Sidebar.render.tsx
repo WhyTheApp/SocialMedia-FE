@@ -1,6 +1,8 @@
 import {
   NavigationContainer,
+  NavigationWrapper,
   SidebarContainer,
+  SidebarHeader,
   SocialMediaContainer,
   StyledLogo,
   StyledUserImage,
@@ -10,12 +12,13 @@ import {
   UsernameText,
 } from "./Sidebar.style";
 import NavigationButton from "../navigation-button";
+import TriangleGrid from "../triangle-side";
 
 import { PLACEHOLDERS } from "@/CONSTANTS/placeholders.constants";
 import { NavigationButtons } from "@/CONSTANTS/navigation.constants";
 import { useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { getUserName, getUserUsername } from "@/services/TokenManager";
+import { getUsername } from "@/services/TokenManager";
 import SocialMediaGroup from "../social-media-group/SocialMediaGroup.render";
 
 const Sidebar = () => {
@@ -31,41 +34,42 @@ const Sidebar = () => {
     router.push("/login");
   };
 
-  const navigateToLanding = () => {
-    router.push("/home/landing");
-  };
-
   return (
     <SidebarContainer>
-      <StyledLogo onClick={navigateToLanding} />
-      <UserArea>
-        <StyledUserImage />
-        <UserDetails onClick={navigateToLogin}>
-          <UsernameText>
-            {getUserName() ? getUserName() : PLACEHOLDERS.UserHandle}
-          </UsernameText>
-          <UsernameHandle>
-            {getUserName() ? `@${getUserUsername()}` : PLACEHOLDERS.UserName}
-          </UsernameHandle>
-        </UserDetails>
-      </UserArea>
+      <SidebarHeader>
+        <StyledLogo />
+        <UserArea>
+          <StyledUserImage />
+          <UserDetails onClick={navigateToLogin}>
+            <UsernameText>
+              {getUsername() ? getUsername() : PLACEHOLDERS.UserHandle}
+            </UsernameText>
+            <UsernameHandle>
+              {getUsername() ? PLACEHOLDERS.UserLogged : PLACEHOLDERS.UserName}
+            </UsernameHandle>
+          </UserDetails>
+        </UserArea>
+      </SidebarHeader>
 
-      <NavigationContainer>
-        {NavigationButtons.map(({ Text, Path, Active }) => {
-          const key = Path;
-          return (
-            <NavigationButton
-              key={key}
-              Text={Text}
-              Path={Path}
-              Active={Active}
-              Clicked={clickedButton === key}
-              setClickedButton={setClickedButton}
-              Key={key}
-            />
-          );
-        })}
-      </NavigationContainer>
+      <NavigationWrapper>
+        <TriangleGrid />
+        <NavigationContainer>
+          {NavigationButtons.map(({ Text, Path, Active }) => {
+            const key = Path;
+            return (
+              <NavigationButton
+                key={key}
+                Text={Text}
+                Path={Path}
+                Active={Active}
+                Clicked={clickedButton === key}
+                setClickedButton={setClickedButton}
+                Key={key}
+              />
+            );
+          })}
+        </NavigationContainer>
+      </NavigationWrapper>
       <SocialMediaContainer>
         <SocialMediaGroup />
       </SocialMediaContainer>
@@ -74,3 +78,4 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
+

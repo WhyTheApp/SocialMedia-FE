@@ -1,127 +1,86 @@
-.centeredContainer {
-  position: relative;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  align-items: center;
-  justify-content: center;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-@media (max-width: 1400px) {
-  .centeredContainer {
-    justify-content: start;
-  }
-}
-
-@media (max-width: 1000px) {
-  .softTitle {
-    display: none;
-  }
-}
-
-.hardTitle {
-  color: var(--color-text-full-opacity);
-  font-weight: 600;
-  font-size: 36px;
-}
-
-.normalText {
-  color: var(--color-text-full-opacity);
-  font-weight: 700;
-  font-size: 13px;
-}
-
-.cardsContainer {
+/* -- Bento Grid Layout -- */
+.bentoGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 20px;
-  padding: 40px;
-  height: 60%;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  padding: 30px;
   width: 100%;
   box-sizing: border-box;
 }
 
-.cardsContainer > :nth-child(1) {
-  margin: auto 0 0 auto;
-}
-
-.cardsContainer > :nth-child(2) {
-  margin: auto auto 0 0;
-}
-
-.cardsContainer > :nth-child(3) {
-  margin: 0 0 auto auto;
-}
-
-.cardsContainer > :nth-child(4) {
-  margin: 0 auto auto 0;
-}
-
-@media (max-width: 1400px) {
-  .cardsContainer {
-    display: flex;
-    flex-direction: column;
-
-    align-items: flex-start;
-    padding: 20px;
-    height: auto;
-  }
-
-  .cardsContainer > :nth-child(1),
-  .cardsContainer > :nth-child(2),
-  .cardsContainer > :nth-child(3),
-  .cardsContainer > :nth-child(4) {
-    margin: auto auto auto auto;
-  }
-}
-
-@media (max-width: 1400px) {
-  .cardsContainer {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    height: auto;
-    padding: 20px;
-  }
-
-  .cardsContainer > * {
-    justify-self: center;
-    align-self: center;
-  }
-}
-
-.inputInner {
-  height: 100%;
-  min-height: 250px;
-  max-height: 250px;
-  width: 100%;
-  max-width: 500px;
-
+/* -- Goal Card -- */
+.goalCard {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 32px;
   display: flex;
   flex-direction: column;
-  border-radius: 15px;
-
-  gap: 30px;
-  align-items: flex-start;
-  padding: 20px;
   justify-content: space-between;
-  background-color: var(--color-text-low-opacity);
-  position: relative;
-  overflow: hidden;
+  gap: 16px;
+  transition: border-color 0.3s ease, transform 0.2s ease;
+  min-height: 200px;
 }
 
+.goalCard:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+  transform: translateY(-3px);
+}
+
+.goalCard.span2 {
+  grid-column: span 2;
+}
+
+/* -- Card Title (Bigger, no icon) -- */
 .cardTitle {
-  color: var(--color-text-full-opacity);
-  font-weight: 700;
-  font-size: 16px;
+  color: var(--color-always-white);
+  font-weight: 800;
+  font-size: 22px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin: 0;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+/* -- Card Body -- */
+.cardContent {
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.7;
+  flex-grow: 1;
+  margin: 0;
+}
+
+/* -- Card Footer -- */
 .cardFooter {
-  color: var(--color-text-full-opacity);
+  color: var(--color-burgundy);
   font-weight: 700;
-  font-size: 12px;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* -- Responsive -- */
+@media (max-width: 1200px) {
+  .bentoGrid {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 20px;
+  }
+
+  .goalCard.span2 {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 750px) {
+  .bentoGrid {
+    grid-template-columns: 1fr;
+    padding: 16px;
+  }
 }
