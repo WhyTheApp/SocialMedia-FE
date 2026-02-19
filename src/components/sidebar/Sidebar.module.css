@@ -1,16 +1,16 @@
 .sidebarContainer {
   display: flex;
-  min-height: 100%;
+  height: 100%;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  background: var(--color-sidebar);
+  /* Transparent with blur to soften triangles */
+  background: rgba(10, 12, 22, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border-radius: 0 30px 30px 0;
   z-index: 1;
-  overflow-y: auto;
-  overflow-x: hidden;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+  overflow: hidden;
 }
 
 @media (max-width: 1200px) {
@@ -26,6 +26,8 @@
     border-radius: 0;
     overflow-x: auto;
     overflow-y: hidden;
+    background: var(--color-always-dark-background);
+    /* Solid on mobile for readability */
   }
 }
 
@@ -33,6 +35,7 @@
   width: 85px;
   height: 85px;
   margin: 10px;
+  padding: 10px;
   min-height: 20px;
   color: var(--color-text-full-opacity);
 }
@@ -50,11 +53,26 @@
   gap: 20px;
   padding: 20px;
   width: 90%;
-  height: 10%;
   max-height: 300px;
-  background: linear-gradient(to right, #660033, #381024);
   border-radius: 15px;
   cursor: pointer;
+  background: linear-gradient(to right, #660033, #381024);
+}
+
+.sidebarHeader {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  /* Solid header background */
+  background: var(--color-always-dark-background);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  flex-shrink: 0;
+  /* Prevent shrinking */
+  z-index: 2;
+  /* Ensure on top */
 }
 
 @media (max-width: 1200px) {
@@ -63,6 +81,7 @@
     height: 60px;
     margin: 10px;
   }
+
   .userArea {
     width: auto;
     background: none;
@@ -71,6 +90,7 @@
     justify-content: center;
     padding: 10px;
   }
+
   .styledUserImage {
     width: 40px;
     height: 40px;
@@ -86,6 +106,7 @@
     margin-top: 0;
     margin-bottom: 0;
   }
+
   .styledUserImage {
     margin: 10px;
     width: 30px;
@@ -119,24 +140,65 @@
 
 .socialMediaContainer {
   width: 100%;
+  /* Solid footer background */
+  background: var(--color-always-dark-background);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 20px;
+  /* Make footer sticky at bottom */
+  margin-top: auto;
+  flex-shrink: 0;
+  z-index: 2;
 }
 
 @media (max-width: 1200px) {
   .userDetails {
     display: none;
   }
+
   .socialMediaContainer {
     display: none;
   }
 }
 
+.navigationWrapper {
+  position: relative;
+  flex-grow: 1;
+  min-height: 0;
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* The TriangleGrid sits as an absolute background layer */
+.navigationWrapper>div:first-child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
 .navigationContainer {
   width: 90%;
-  padding-top: 25px;
-  padding-bottom: 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   display: flex;
   flex-direction: column;
   gap: 20px;
+  overflow-y: auto;
+  max-height: 100%;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  position: relative;
+  z-index: 1;
+}
+
+.navigationContainer::-webkit-scrollbar {
+  display: none;
 }
 
 @media (max-width: 1200px) {

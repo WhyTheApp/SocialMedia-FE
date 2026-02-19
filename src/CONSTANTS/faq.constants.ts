@@ -1,152 +1,187 @@
-export const FAQ_QUESTIONS = [
+export interface FAQCategory {
+  title: string;
+  span2?: boolean;
+  span2row?: boolean;
+  questions: { question: string; answer: string }[];
+}
+
+export const FAQ_CATEGORIES: FAQCategory[] = [
   {
-    question: "What is WHY?",
-    answer:
-      "WHY is an upcoming, open-source social media platform owned by its users, not corporations. We’re building a space that brings back the friend-focused vibes of 2012 Facebook, with subreddit-style “tabs” for niche interests and a fair algorithm that lifts real talent. It’s all about authentic connections, true free speech, and putting users first.",
+    title: "About WHY",
+    span2: true,
+    questions: [
+      {
+        question: "What is WHY?",
+        answer:
+          "WHY is an open source social media platform that is owned by its users, not by a company. We want to bring back the kind of social media that actually felt social. Think friend-focused feeds, community spaces for your interests, and an algorithm that helps real people get noticed. No corporate games.",
+      },
+      {
+        question: "Why are we building WHY?",
+        answer:
+          "Honestly? Because every major platform right now has let its users down in one way or another. Censorship on one, ads on another, data scandals on a third. We got tired of waiting for someone to fix it, so we decided to build something better ourselves.",
+      },
+      {
+        question: "How is WHY different from other platforms?",
+        answer:
+          "WHY is not owned by investors or advertisers. It is open source, so you can actually see what is running under the hood. We care about your friends showing up in your feed, not whatever a marketing team paid to put there. Privacy is built in from day one, and we actually mean it when we say free speech.",
+      },
+      {
+        question: "What does user-owned mean?",
+        answer:
+          "It means there is no CEO making decisions behind closed doors. The people who use WHY are the ones who shape it. You get a say in what features we build, what policies we set, and where this whole thing goes. It is a platform built by its community.",
+      },
+    ],
   },
   {
-    question: "Why are we building WHY?",
-    answer:
-      "We’re tired of X’s censorship, Facebook’s ad overload, Reddit’s corporate sellout, TikTok’s privacy issues, and Instagram’s influencer noise. WHY is our answer—a platform that ditches the corporate baggage and gives power back to users with privacy, fairness, and real conversations.",
+    title: "Features",
+    span2row: true,
+    questions: [
+      {
+        question: "What features will WHY have?",
+        answer:
+          "Friend-focused feeds like the early days of Facebook, community tabs for specific topics and interests, direct messaging, and multimedia sharing. We are not forcing anyone into short form content or trends. You post what you want, how you want.",
+      },
+      {
+        question: "What are tabs on WHY?",
+        answer:
+          "Tabs are community spaces built around topics you actually care about. Think of them like subreddits but on a social media platform. Each one has its own feed, its own moderators, and its own culture. Dive into code, music, cooking, memes, whatever you are into.",
+      },
+      {
+        question: "Will WHY push short-form content?",
+        answer:
+          "No. You can post short stuff if you want to, but we will never force reels or stories on you. No autoplay, no algorithmic pressure to watch one more video. Your timeline is yours.",
+      },
+      {
+        question: "How will the algorithm work?",
+        answer:
+          "It will be fully open source so anyone can check what it does. The goal is simple: show you things from people you follow and topics you care about. We will also mix in some new perspectives so you are not stuck in a bubble, but it will never be driven by ad money.",
+      },
+      {
+        question: "How will WHY support creators?",
+        answer:
+          "By actually showing their work. Our algorithm is designed to surface quality content based on how good it is, not how much someone paid to promote it. Real talent deserves to be seen, and that is exactly what we are building for.",
+      },
+    ],
   },
   {
-    question: "How is WHY different from other social media platforms?",
-    answer:
-      "WHY isn’t beholden to shareholders or ad revenue. It’s user-owned and open-source, meaning transparency and community control. We prioritize friend feeds over forced trends, protect your privacy with GDPR, and champion free speech without bias—something most platforms can’t claim.",
+    title: "Free Speech",
+    questions: [
+      {
+        question: "How will WHY handle free speech?",
+        answer:
+          "We believe everyone should be able to speak their mind regardless of political leaning. Left, right, center, it does not matter. As long as you are not breaking the law or directly harming someone, your voice has a place here.",
+      },
+      {
+        question: "Will WHY censor content?",
+        answer:
+          "Only content that is illegal or genuinely dangerous. We are not interested in silencing opinions just because they are unpopular. Our moderation guidelines will be transparent and you will always have a way to appeal.",
+      },
+      {
+        question: "How will WHY tackle echo chambers?",
+        answer:
+          "By designing the feed to show you more than just what you already agree with. We want to encourage real conversations, not just people shouting into a void where everyone already agrees. Diverse perspectives make a community stronger.",
+      },
+      {
+        question: "Will WHY have community guidelines?",
+        answer:
+          "Yes, and they will be straightforward. No harm, no illegal activity. Beyond that, you can say what you think. The guidelines are shaped by the community, not by a legal team trying to cover a corporation.",
+      },
+    ],
   },
   {
-    question: "What does “user-owned” mean for WHY?",
-    answer:
-      "No CEOs or boardrooms here. WHY is governed by its users, who shape its features, policies, and future. Think of it as a social media co-op where your voice actually matters, not just another corporate cash grab.",
+    title: "Privacy and Data",
+    questions: [
+      {
+        question: "How will WHY protect my privacy?",
+        answer:
+          "Privacy is not an afterthought for us. We are based in Europe and we follow GDPR to the letter. We will never track you without asking first and we will never sell your data to anyone. Period.",
+      },
+      {
+        question: "Will WHY sell user data?",
+        answer:
+          "Never. That is how the old platforms make their money, but it is not how we work. Your information belongs to you and only you.",
+      },
+      {
+        question: "How does WHY handle user data?",
+        answer:
+          "We only collect what we need to keep the platform running. You can view, download, or delete your data at any time. No fine print, no tricks, no hidden clauses.",
+      },
+      {
+        question: "Why does GDPR compliance matter?",
+        answer:
+          "Because it is the highest standard for data protection in the world. Being GDPR compliant means we are legally required to respect your rights and keep your data safe. It is not a marketing checkbox for us, it is a core principle.",
+      },
+    ],
   },
   {
-    question: "Why is WHY open-source?",
-    answer:
-      "Open-source means our code is public—anyone can check it, tweak it, or improve it. It keeps us honest, builds trust, and lets the community help craft a platform that truly serves its users, not hidden agendas.",
+    title: "Fighting AI Content",
+    span2: true,
+    questions: [
+      {
+        question: "How does WHY deal with AI-generated content?",
+        answer:
+          "We think social media should be a place for real people sharing real thoughts. AI generated posts, comments, and profiles are flooding every other platform right now and making it harder for genuine creators to get noticed. We are building tools to detect and label AI content so users always know what is real and what is not.",
+      },
+      {
+        question: "Will WHY ban AI-generated content?",
+        answer:
+          "We are not going to ban all AI use outright, but we will make sure it is clearly labeled. If someone passes off AI-generated work as their own, that goes against what WHY stands for. We want to protect the people who actually put in the effort to create something original.",
+      },
+      {
+        question: "Why does protecting genuine creators matter?",
+        answer:
+          "Because the internet is getting flooded with low effort AI output and it is pushing real creators out of the spotlight. Musicians, artists, writers, developers, they all deserve a platform where their work is valued. That is what we are trying to build.",
+      },
+      {
+        question: "How will WHY verify that content is human-made?",
+        answer:
+          "We are working on detection systems and community-driven reporting tools. The goal is to give users confidence that what they are seeing comes from a real person. It is a hard problem, but it is one we care deeply about solving.",
+      },
+    ],
   },
   {
-    question: "What features will WHY have?",
-    answer:
-      "Expect friend-focused feeds like early Facebook, “tabs” for niche communities (think subreddits), direct messaging, and multimedia sharing. No forced short-form content—just tools for real, unfiltered connections.",
+    title: "Open Source",
+    questions: [
+      {
+        question: "Why is WHY open source?",
+        answer:
+          "Because transparency matters. Our code is public for anyone to read, audit, or contribute to. It keeps us honest and it means the community can actually help shape the product instead of just using it.",
+      },
+      {
+        question: "How can developers contribute?",
+        answer:
+          "Head over to our GitHub repo and check out the contribution guide. Whether you want to fix a bug, suggest a feature, or build something new, all skill levels are welcome. We are building this together.",
+      },
+    ],
   },
   {
-    question: "What are “tabs” on WHY?",
-    answer:
-      "Tabs are community spaces for specific interests—like coding, music, or memes. Each has its own feed, moderators, and vibe, letting you dive deep into what you love without the clutter of a generic feed.",
-  },
-  {
-    question: "Will WHY push short-form content like TikTok or Instagram?",
-    answer:
-      "Nope. We’re not about addictive reels or fleeting stories. You can post what you want—short or long—but we won’t shove trends down your throat. It’s your space, your rules.",
-  },
-  {
-    question: "How will WHY’s algorithm work?",
-    answer:
-      "Our algorithm will be open-source and user-friendly, prioritizing what you care about—friends and interests—while mixing in diverse perspectives. It’s built to lift quality content, not just what’s loud or viral.",
-  },
-  {
-    question: "How will WHY support creators and talent?",
-    answer:
-      "We’ll spotlight real talent with a fair algorithm that values substance over hype. No pay-to-play or influencer overload—your work gets seen based on merit, not metrics.",
-  },
-  {
-    question: "How will WHY handle free speech?",
-    answer:
-      "We’re all in on true free speech—left, right, or center. You can speak your mind without bias or silencing, as long as it’s legal and doesn’t harm others. No echo chambers, just open debate.",
-  },
-  {
-    question: "Will WHY censor content?",
-    answer:
-      "Only what’s illegal or dangerous—like violence or harassment. We’re not here to mute opinions we don’t like. Transparent guidelines and appeal tools will keep moderation fair.",
-  },
-  {
-    question: "How will WHY tackle echo chambers?",
-    answer:
-      "Our feed won’t trap you in a bubble. It’ll blend your interests with new viewpoints, sparking real discussions instead of preaching to the choir. Diversity of thought is our strength.",
-  },
-  {
-    question: "What about controversial topics on WHY?",
-    answer:
-      "Bring it on. We’ll provide tools for respectful debate, not shutdowns. Sensitive stuff stays up unless it crosses legal or safety lines—because real talk matters.",
-  },
-  {
-    question: "Will WHY have community guidelines?",
-    answer:
-      "Yes, but they’ll be clear, community-driven, and focused on safety, not control. Expect rules against harm, not opinions, with input from users like you.",
-  },
-  {
-    question: "How will WHY protect my privacy?",
-    answer:
-      "Privacy isn’t optional—it’s baked in. Based in Europe with GDPR compliance, we won’t track you without consent or sell your data. You’re in charge of what we know.",
-  },
-  {
-    question: "Will WHY sell user data?",
-    answer:
-      "Never. That’s the old social media playbook. Your info stays yours, period.",
-  },
-  {
-    question: "How does WHY handle user data?",
-    answer:
-      "We collect only what’s needed to run the platform, and we’re upfront about it. You can see, download, or wipe your data anytime—no shady fine print.",
-  },
-  {
-    question: "Why is GDPR compliance a big deal for WHY?",
-    answer:
-      "It’s the gold standard for privacy. Being GDPR-compliant means we’re legally bound to protect your rights, unlike some platforms that dodge accountability.",
-  },
-  {
-    question: "Will WHY have ads?",
-    answer:
-      "Minimal, if at all. We’re not an ad machine like Facebook. Any ads will be low-key and optional, keeping the focus on your friends, not sponsors.",
-  },
-  {
-    question: "When will WHY launch?",
-    answer:
-      "Not yet! We’re still building, guided by our roadmap. Follow us on social media or sign up for updates to catch the beta drop.",
-  },
-  {
-    question: "How can I stay updated on WHY?",
-    answer:
-      "Hit up our website and join the newsletter, or follow us on X and LinkedIn. We’ll keep you posted on progress and sneak peeks.",
-  },
-  {
-    question: "How can I get involved with WHY?",
-    answer:
-      "Spread the word, join the convo, or—if you code—dive into our open-source project on GitHub. We’re stronger with you in the mix.",
-  },
-  {
-    question: "How can developers contribute to WHY?",
-    answer:
-      "Jump into our GitHub repo! From bug fixes to new features, all skill levels are welcome. Check the contribution guide and help us build something epic.",
-  },
-  {
-    question: "How will WHY be funded?",
-    answer:
-      "We’re exploring user-friendly options—donations, premium perks, or ethical partnerships. No corporate overlords or data sales, just sustainable community support.",
-  },
-  {
-    question: "Why is WHY better than X?",
-    answer:
-      "In our view, X is noisy, censored, and ad-driven. WHY cuts the bias, keeps it friend-first, and lets you breathe without constant promo spam. It’s social media with soul.",
-  },
-  {
-    question: "What makes WHY different from Bluesky?",
-    answer:
-      "As we see it, Bluesky promised a fresh start but feels like X 2.0—still tangled in old patterns. WHY’s fully user-owned and open-source, built from scratch for privacy and free speech, not a recycled clone.",
-  },
-  {
-    question: "How will WHY avoid being just another social media flop?",
-    answer:
-      "We’re not chasing trends or copying failures. User ownership, transparency, and a focus on real connections set us apart—no hype, just substance.",
-  },
-  {
-    question: "What’s on WHY’s roadmap?",
-    answer:
-      "Core features, beta testing, and a solid community base are up first. We’re also locking down privacy and funding plans. Details are on our site—check it out!",
-  },
-  {
-    question: "Why should I care about WHY?",
-    answer:
-      "Because you deserve better than ad-choked, censored, data-hungry platforms. WHY’s your shot at a social media that’s yours—built for connection, not exploitation. Join us!",
+    title: "Getting Involved",
+    questions: [
+      {
+        question: "When will WHY launch?",
+        answer:
+          "We are still building it out. Follow us on social media or sign up on the waitlist to be the first to know when we go live.",
+      },
+      {
+        question: "How can I get involved?",
+        answer:
+          "Spread the word, give us feedback, join the conversation on our social channels, or contribute code on GitHub if that is your thing. Every bit of support helps us get closer to launch.",
+      },
+      {
+        question: "How will WHY be funded?",
+        answer:
+          "Through user-friendly options like donations, optional premium features, or ethical partnerships. No corporate investors calling the shots and no selling your data. We want to be sustainable without selling out.",
+      },
+      {
+        question: "Will WHY have ads?",
+        answer:
+          "If we do have any, they will be minimal and clearly marked. We are not building an ad machine. The experience should be about connecting with people, not scrolling past sponsored posts.",
+      },
+      {
+        question: "Why should I care about WHY?",
+        answer:
+          "Because you have probably felt let down by every other social media platform at some point. WHY is a chance to be part of something that is actually built for you. A platform where your privacy matters, your voice is heard, and real human content comes first.",
+      },
+    ],
   },
 ];

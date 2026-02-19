@@ -1,65 +1,119 @@
-@media (max-width: 1000px) {
-  .softTitle {
-    display: none;
-  }
+/* -- Bento Grid Layout -- */
+.bentoGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  padding: 30px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.normalText {
-  color: var(--color-text-full-opacity);
-  font-weight: 700;
-  font-size: 13px;
-}
-
-.questionContainer {
+/* -- Category Card -- */
+.categoryCard {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 28px;
   display: flex;
   flex-direction: column;
-  background: var(--color-text-low-opacity);
-
-  border-radius: 24px;
-  height: 400px;
-  width: 60%;
-
-  margin: 20px;
-  padding-bottom: 20px;
-
-  color: var(--color-text-full-opacity);
+  gap: 20px;
+  transition: border-color 0.3s ease, transform 0.2s ease;
 }
 
-.questionTitleContainer {
-  display: flex;
-  align-items: center;
-  padding: 30px;
+.categoryCard:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
 
-  background: var(--color-text-low-opacity);
+/* Span variations for bento effect */
+.categoryCard.span2 {
+  grid-column: span 2;
+}
 
-  border-radius: 24px;
-  min-height: 60px;
-  width: 60%;
+.categoryCard.span2row {
+  grid-row: span 2;
+}
 
-  color: var(--color-text-full-opacity);
+/* -- Category Title (Bigger, no emoji) -- */
+.categoryTitle {
+  color: var(--color-always-white);
+  font-weight: 800;
+  font-size: 22px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin: 0;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* -- FAQ Item -- */
+.faqItem {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 14px;
+  padding: 16px 20px;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.faqItem:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.faqQuestion {
+  color: var(--color-always-white);
   font-weight: 600;
-  font-size: 18px;
-}
-
-.questionContentContainer {
+  font-size: 14px;
+  margin: 0;
   display: flex;
-  padding: 20px;
-  padding-left: 40px;
-
-  color: var(--color-text-full-opacity);
-  font-weight: 500;
-  font-size: 16px;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
 }
 
+.faqChevron {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 12px;
+  transition: transform 0.25s ease;
+  flex-shrink: 0;
+}
+
+.faqChevron.open {
+  transform: rotate(180deg);
+}
+
+.faqAnswer {
+  color: rgba(255, 255, 255, 0.65);
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.65;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* -- Responsive -- */
 @media (max-width: 1200px) {
-  .questionContainer {
-    width: 90%;
-  }
-  .questionTitleContainer {
-    width: 100%;
+  .bentoGrid {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 20px;
   }
 
-  .questionContentContainer {
-    overflow-x: auto;
+  .categoryCard.span2 {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 750px) {
+  .bentoGrid {
+    grid-template-columns: 1fr;
+    padding: 16px;
+  }
+
+  .categoryCard.span2row {
+    grid-row: span 1;
   }
 }
