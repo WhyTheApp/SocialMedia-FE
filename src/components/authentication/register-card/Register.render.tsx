@@ -23,6 +23,7 @@ import { localRegister } from "@/services/Authentication.service";
 
 const Register = () => {
   const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -61,6 +62,13 @@ const Register = () => {
           setEmail(e.target.value);
         }}
       />
+      <CustomInput
+        placeholder="Your name"
+        value={name}
+        onChange={(e) => {
+          setName(e.target.value);
+        }}
+      />
       <CustomPasswordInput
         placeholder="Password"
         value={password}
@@ -82,6 +90,7 @@ const Register = () => {
             isLoading,
             setIsLoading,
             username,
+            name,
             email,
             password,
             router,

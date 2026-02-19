@@ -1,0 +1,14 @@
+.centeredContainer {
+  height: 100%;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.basicText {
+  color: var(--color-always-white);
+  font-weight: 600;
+  font-size: 32px;
+}
