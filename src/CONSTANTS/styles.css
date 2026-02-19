@@ -23,19 +23,19 @@
 }
 
 :root {
-  --color-bg: #e4e8ff;
+  --color-bg: #0a0c16;
   --color-always-white: #ffffff;
   --color-always-dark-background: #0a0c16;
   --color-burgundy: #660033;
   --color-burgundy-scary: #381024;
   --color-blue: #1b2142;
-  --color-text-full-opacity: #000000;
-  --color-text-half-opacity: rgba(0, 0, 0, 0.45);
-  --color-text-low-opacity: rgba(0, 0, 0, 0.05);
-  --color-text-slightly-colored: #2d2e3d;
-  --color-sidebar: rgba(0, 0, 0, 0.03);
-  --color-blue-dot: rgba(0, 0, 0, 0);
-  --color-red-dot: rgba(0, 0, 0, 0);
+  --color-text-full-opacity: #ffffff;
+  --color-text-half-opacity: rgba(255, 255, 255, 0.45);
+  --color-text-low-opacity: rgba(255, 255, 255, 0.05);
+  --color-text-slightly-colored: #a0aec0;
+  --color-sidebar: rgba(255, 255, 255, 0.05);
+  --color-blue-dot: #1b2142;
+  --color-red-dot: #660033;
   --color-scrollbar: 888 transparent;
   --color-unavailable: #6b6b6b;
   --color-drop-shadow: rgba(27, 33, 66, 0.5);

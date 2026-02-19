@@ -16,6 +16,10 @@ export function SidebarContainer({ children }: Props) {
   return <div className={styles.sidebarContainer}>{children}</div>;
 }
 
+export function SidebarHeader({ children }: Props) {
+  return <div className={styles.sidebarHeader}>{children}</div>;
+}
+
 export function StyledLogo() {
   return <LogoSVG className={styles.styledLogo} />;
 }
@@ -46,6 +50,10 @@ export function UsernameHandle({ children }: TextProps) {
 
 export function NavigationContainer({ children }: Props) {
   return <div className={styles.navigationContainer}>{children}</div>;
+}
+
+export function NavigationWrapper({ children }: Props) {
+  return <div className={styles.navigationWrapper}>{children}</div>;
 }
 
 export function SocialMediaContainer({ children }: Props) {

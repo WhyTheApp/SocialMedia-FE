@@ -7,7 +7,9 @@ const TOKEN_KEY = "jwt_token";
 
 function isBrowser() {
   return (
-    typeof window !== "undefined" && typeof window.localStorage !== "undefined"
+    typeof window !== "undefined" &&
+    typeof window.localStorage !== "undefined" &&
+    typeof window.localStorage.getItem === "function"
   );
 }
 

@@ -32,17 +32,13 @@
 
 .sidebarContainer {
   width: 20%;
-  overflow-y: auto;
-  overflow-x: hidden;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+  overflow: hidden;
+  /* Changed from auto to hidden for sticky layout */
   z-index: 1;
   border-radius: 0 30px 30px 0;
   box-shadow: 0 4px 250px 0 var(--color-drop-shadow);
-}
-
-.sidebarContainer::-webkit-scrollbar {
-  display: none;
+  height: 100%;
+  /* Ensure it takes full height */
 }
 
 @media (max-width: 1200px) {

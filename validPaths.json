@@ -1,0 +1,21 @@
+[
+  "/home",
+  "/home/about-us",
+  "/home/articles",
+  "/home/articles/[articleId]",
+  "/home/articles/add",
+  "/home/articles/edit",
+  "/home/articles/edit/[articleId]",
+  "/home/details",
+  "/home/faq",
+  "/home/roadmap",
+  "/home/thank-you",
+  "/home/waitlist",
+  "/login",
+  "/privacy",
+  "/register",
+  "/roadmap-extended",
+  "/sitemap.xml",
+  "/terms",
+  "/verify-email"
+]
