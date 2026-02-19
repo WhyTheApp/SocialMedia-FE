@@ -1,4 +1,6 @@
 [
+  "/auth",
+  "/auth/callback",
   "/home",
   "/home/about-us",
   "/home/articles",
@@ -8,6 +10,7 @@
   "/home/articles/edit/[articleId]",
   "/home/details",
   "/home/faq",
+  "/home/landing",
   "/home/roadmap",
   "/home/thank-you",
   "/home/waitlist",
